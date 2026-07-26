@@ -1,0 +1,38 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "三级甲等",
+    "medical_score": "优",
+    "nearest_hospital": "解放军总医院海南医院（301海南分院）",
+    "hospital_grade": "三级甲等综合医院",
+    "hospital_distance_km": 8,
+    "hospital_beds": 1200,
+    "key_departments": [
+      "内科",
+      "心内科",
+      "老年病科",
+      "康复医学科",
+      "健康管理中心",
+      "国际医疗部",
+      "急诊科"
+    ],
+    "medical_features": [
+      "301海南分院为三级甲等综合医院，是海南省顶级医疗资源之一",
+      "承担国家级保健和康复疗养任务，医疗技术全国领先",
+      "设有国际医疗部和高端健康管理中心",
+      "海棠湾区域规划有国际医疗旅游先行区",
+      "三亚市中医院提供中医药康养服务"
+    ],
+    "emergency_capability": "301海南医院急救中心距海棠湾各酒店约 5–15 分钟车程；三亚市中心另有市人民医院（三级甲等）",
+    "tertiary_hospital_distance_km": 8,
+    "tertiary_hospital": "解放军总医院海南医院（三级甲等）/ 三亚市人民医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；解放军总医院海南医院官网；海南省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wst.hainan.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "三亚海棠湾"
+  }
+}

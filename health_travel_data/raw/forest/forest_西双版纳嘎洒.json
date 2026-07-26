@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "80.5%",
+    "forest_coverage_value": 80.5,
+    "forest_type": "热带雨林与热带季雨林",
+    "forest_features": [
+      "中国面积最大、最完整的热带雨林生态系统",
+      "生物多样性极为丰富，高等植物 5,000 余种",
+      "拥有望天树、箭毒木等热带雨林标志性树种",
+      "西双版纳热带雨林国家公园是中国唯一的热带雨林自然保护区"
+    ],
+    "greening_rate": "85.0%",
+    "forest_area_km2": "约 16,000 km²（西双版纳州全域）",
+    "national_forest_park": "西双版纳热带雨林国家公园",
+    "forest_conservation_level": "国家级自然保护区 / 联合国教科文组织人与生物圈保护区",
+    "source": "国家林业和草原局《中国森林资源报告》；云南省林业和草原局《2023年云南林业发展统计公报》；西双版纳州林业和草原局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lcj.yn.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "西双版纳嘎洒"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带季风气候",
+    "climate_code": "Cfa",
+    "average_temperature": "17.9℃",
+    "summer_temperature": "24–33℃",
+    "winter_temperature": "5–14℃",
+    "annual_precipitation": "1700–2000mm",
+    "humidity": "年均相对湿度 78%",
+    "sunshine_hours": "年均 1,600–1,800 小时",
+    "best_season": "4–6月、9–11月（春秋最佳，茶香四溢）",
+    "climate_features": [
+      "四季分明，冬无严寒夏无酷暑",
+      "九曲溪水域调节局部小气候，夏季沿溪凉爽",
+      "武夷山自然保护区森林覆盖率达 96.7%，形成独特的森林小气候",
+      "春季（3–5月）是采茶季，'岩骨花香'正当时",
+      "秋季天高云淡，'武夷山水甲东南'"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 福建省气象局 2023年气候公报 / 武夷山市气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101230801.shtml",
+      "http://fj.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "武夷山",
+    "province": "福建省",
+    "city": "南平市"
+  }
+}

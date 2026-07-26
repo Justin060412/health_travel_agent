@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "92.3%",
+    "forest_coverage_value": 92.3,
+    "forest_type": "亚热带常绿阔叶林与毛竹林",
+    "forest_features": [
+      "以毛竹林为主要植被类型，竹海面积超过 60 平方公里",
+      "莫干山竹、云、泉'三胜'闻名天下",
+      "拥有大量百年以上古树名木（银杏、金钱松、柳杉等）",
+      "竹林具有极强的碳汇能力和空气净化功能"
+    ],
+    "greening_rate": "95.0%",
+    "forest_area_km2": "约 400 km²（莫干山地区）",
+    "national_forest_park": "莫干山国家森林公园",
+    "forest_conservation_level": "国家级风景名胜区 / 国家级生态功能区",
+    "source": "国家林业和草原局《中国森林资源报告》；浙江省林业局《2023年浙江林业发展统计公报》；德清县自然资源和规划局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.zj.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "莫干山"
+  }
+}

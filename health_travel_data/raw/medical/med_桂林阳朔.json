@@ -1,0 +1,35 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "二级甲等",
+    "medical_score": "良",
+    "nearest_hospital": "阳朔县人民医院",
+    "hospital_grade": "二级甲等综合医院",
+    "hospital_distance_km": 5,
+    "hospital_beds": 500,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "中医科",
+      "老年病科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "阳朔县人民医院为二级甲等综合医院，可满足常见病和多发病诊疗",
+      "桂林市有桂林医学院附属医院（三级甲等）等优质医疗资源",
+      "阳朔县中医院提供中医药康养服务",
+      "桂林市正在推进'漓江康养带'医疗设施建设"
+    ],
+    "emergency_capability": "阳朔县 120 急救中心；桂林医学院附属医院（三级甲等）距约 65 公里（1 小时车程）",
+    "tertiary_hospital_distance_km": 65,
+    "tertiary_hospital": "桂林医学院附属医院（三级甲等）/ 桂林市人民医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；阳朔县人民医院官网；桂林市卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wsjkw.gxzf.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "桂林阳朔"
+  }
+}

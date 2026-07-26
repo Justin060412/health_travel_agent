@@ -1,0 +1,24 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 40,
+    "pm25_annual": 20,
+    "pm10_annual": 42,
+    "negative_oxygen": "3,000–15,000 个/cm³（苍山洱海区域）",
+    "air_quality_features": [
+      "高原地区大气扩散条件好",
+      "大理市无重工业，主要产业为旅游和农业",
+      "苍山森林和洱海湿地共同调节空气质量",
+      "全年空气质量优良天数比例 > 98%"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；大理州生态环境局《2023年大理州环境状况公报》；云南省生态环境厅公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjt.yn.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "大理古城"
+  }
+}

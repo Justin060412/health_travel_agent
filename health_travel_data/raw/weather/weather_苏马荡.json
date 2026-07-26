@@ -1,0 +1,30 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带山地季风气候",
+    "climate_code": "Cfb",
+    "average_temperature": "13.5℃",
+    "summer_temperature": "18–28℃",
+    "winter_temperature": "0–8℃",
+    "annual_precipitation": "1200–1400mm",
+    "humidity": "年均相对湿度 75%",
+    "sunshine_hours": "年均 1,400–1,500 小时",
+    "best_season": "6–9月（夏季凉爽，避暑最佳）",
+    "climate_features": [
+      "夏季凉爽，最热月（7月）均温 22–24℃，比同纬度低 6–8℃",
+      "冬季寒冷但干燥，最冷月（1月）均温 1–3℃",
+      "昼夜温差大，典型山地气候特征",
+      "年降水量适中，雨热同季"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 湖北省气象局 2023年气候公报 / 恩施州气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101301201.shtml",
+      "http://hb.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "苏马荡",
+    "province": "湖北省",
+    "city": "恩施州利川市"
+  }
+}

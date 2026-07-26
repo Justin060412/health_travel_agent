@@ -1,0 +1,25 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 40,
+    "pm25_annual": 22,
+    "pm10_annual": 42,
+    "negative_oxygen": "5,000–25,000 个/cm³（莫干山竹林区域）",
+    "air_quality_features": [
+      "长三角地区空气质量最优区域之一",
+      "竹海森林净化能力强",
+      "德清县为全国生态文明建设示范县",
+      "全年空气质量优良天数比例 > 92%",
+      "距离上海/杭州较近但空气质量远优于大城市"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；湖州市生态环境局《2023年湖州市环境状况公报》；浙江省生态环境厅公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjt.zj.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "莫干山"
+  }
+}

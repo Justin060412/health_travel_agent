@@ -1,0 +1,30 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "南亚热带季风气候",
+    "climate_code": "Cfa",
+    "average_temperature": "20.5℃",
+    "summer_temperature": "22–30℃",
+    "winter_temperature": "10–18℃",
+    "annual_precipitation": "1500–1800mm",
+    "humidity": "年均相对湿度 78%",
+    "sunshine_hours": "年均 1,500–1,600 小时",
+    "best_season": "10–次年4月（冬季温暖干燥，避寒最佳）",
+    "climate_features": [
+      "冬季温和干燥，最冷月（1月）均温 10–12℃",
+      "夏季高温多雨，最热月（7月）均温 27–28℃",
+      "无明显严寒，全年无霜期 340 天以上",
+      "雨热同季，干湿季分明"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 广西气象局 2023年气候公报 / 《中国气候区划》中国科学院",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101301201.shtml",
+      "http://gx.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "巴马瑶族自治县",
+    "province": "广西壮族自治区",
+    "city": "河池市"
+  }
+}

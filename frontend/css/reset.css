@@ -1,0 +1,121 @@
+/* ============================================================
+   AI 康养旅居 — Reset & Base
+   全局重置 + body/html 基础样式
+   ============================================================ */
+
+/* ── Box Sizing ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── HTML 根元素 ──────────────────────────────────────────── */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Body 基础 ────────────────────────────────────────────── */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── 媒体元素 ─────────────────────────────────────────────── */
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── 链接 ─────────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── 列表 ─────────────────────────────────────────────────── */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ── 按钮重置 ─────────────────────────────────────────────── */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── 输入框重置 ───────────────────────────────────────────── */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* ── 标题 ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.3;
+}
+
+/* ── 段落 ─────────────────────────────────────────────────── */
+p {
+  line-height: 1.65;
+}
+
+/* ── 选中颜色 ─────────────────────────────────────────────── */
+::selection {
+  background: var(--color-forest-200);
+  color: var(--color-forest-900);
+}
+
+/* ── 焦点可见样式（无障碍） ───────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-forest-400);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* ── 减少动画偏好 ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

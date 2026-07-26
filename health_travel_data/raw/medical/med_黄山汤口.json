@@ -1,0 +1,36 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "二级甲等",
+    "medical_score": "良",
+    "nearest_hospital": "黄山区人民医院",
+    "hospital_grade": "二级甲等综合医院",
+    "hospital_distance_km": 25,
+    "hospital_beds": 500,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "中医科",
+      "骨科（山地运动损伤）",
+      "急诊科"
+    ],
+    "medical_features": [
+      "黄山区人民医院可满足常见病和多发病诊疗",
+      "黄山市人民医院（三级甲等）距约 60 公里",
+      "黄山景区内设有医疗急救站和多个卫生室",
+      "黄山市正在打造'新安医学'康养品牌（新安医学为重要中医流派）",
+      "黄山工人疗养院等机构可提供疗养服务"
+    ],
+    "emergency_capability": "黄山风景区 120 急救中心；黄山市人民医院（三级甲等）距约 60 公里（约 1 小时车程）",
+    "tertiary_hospital_distance_km": 60,
+    "tertiary_hospital": "黄山市人民医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；黄山市人民医院官网；安徽省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wjw.ah.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "黄山汤口"
+  }
+}

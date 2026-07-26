@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "78.4%",
+    "forest_coverage_value": 78.4,
+    "forest_type": "亚热带常绿阔叶林",
+    "forest_features": [
+      "盘阳河流域原始次生林保存完好",
+      "森林覆盖率高，负氧离子含量丰富",
+      "富硒土壤区域的植被具有特殊康养价值",
+      "拥有多个国家级生态公益林区"
+    ],
+    "greening_rate": "82.1%",
+    "forest_area_km2": "约 1,560 km²",
+    "national_forest_park": "巴马盘阳河国家森林公园（部分）",
+    "forest_conservation_level": "国家级生态功能区",
+    "source": "国家林业和草原局《中国森林资源报告》；广西壮族自治区林业局《2023年广西林业发展统计公报》；河池市林业局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.gxzf.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "巴马瑶族自治县"
+  }
+}

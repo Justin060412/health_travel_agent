@@ -1,0 +1,36 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "二级甲等",
+    "medical_score": "良",
+    "nearest_hospital": "庐山人民医院",
+    "hospital_grade": "二级甲等综合医院",
+    "hospital_distance_km": 2,
+    "hospital_beds": 300,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "中医科",
+      "疗养科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "庐山人民医院位于牯岭街，为庐山山上唯一综合医院",
+      "设有疗养科，具备一定的康养医疗服务能力",
+      "庐山历史上就是著名疗养胜地，有多家疗养院和休养所",
+      "九江市第一人民医院（三级甲等）距约 36 公里（1 小时车程）",
+      "庐山疗养院体系完善，可提供基础康养医疗服务"
+    ],
+    "emergency_capability": "庐山 120 急救中心；九江市第一人民医院（三级甲等）距约 36 公里（约 1 小时车程，含下山时间）",
+    "tertiary_hospital_distance_km": 36,
+    "tertiary_hospital": "九江市第一人民医院（三级甲等）/ 九江学院附属医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；庐山人民医院官网；九江市卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wjw.jiangxi.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "庐山牯岭镇"
+  }
+}

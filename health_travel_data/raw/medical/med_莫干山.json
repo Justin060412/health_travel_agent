@@ -1,0 +1,36 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "二级甲等",
+    "medical_score": "良",
+    "nearest_hospital": "德清县人民医院",
+    "hospital_grade": "二级甲等综合医院",
+    "hospital_distance_km": 20,
+    "hospital_beds": 800,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "中医科",
+      "老年病科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "德清县人民医院为二级甲等综合医院，诊疗水平在县级医院中较高",
+      "湖州市中心医院（三级甲等）距约 50 公里（约 50 分钟车程）",
+      "杭州多家三甲医院（浙大附属医院等）距约 60–80 公里（约 1–1.5 小时车程）",
+      "莫干山区域有多家高端康养度假村自带医疗室和健康管理中心",
+      "长三角地区医疗资源丰富，可共享优质医疗"
+    ],
+    "emergency_capability": "德清县 120 急救中心；湖州市中心医院（三级甲等）距约 50 公里；杭州市浙医一院/浙医二院（三级特等）距约 60–80 公里",
+    "tertiary_hospital_distance_km": 50,
+    "tertiary_hospital": "湖州市中心医院（三级甲等）/ 浙江大学医学院附属第一医院（三级特等，约 70 公里）",
+    "source": "国家卫生健康委员会医院等级公开信息；德清县人民医院官网；浙江省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wsjkw.zj.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "莫干山"
+  }
+}

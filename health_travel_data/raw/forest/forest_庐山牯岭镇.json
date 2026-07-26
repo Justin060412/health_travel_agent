@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "90.2%",
+    "forest_coverage_value": 90.2,
+    "forest_type": "亚热带常绿阔叶林与针阔混交林（山地垂直带谱）",
+    "forest_features": [
+      "庐山植物园是中国第一个亚高山植物园（创建于 1934 年）",
+      "植被垂直分布明显：常绿阔叶林→常绿落叶阔叶混交林→针叶林",
+      "拥有大量古树名木和珍稀植物",
+      "森林与云雾结合形成独特的'云中森林'景观"
+    ],
+    "greening_rate": "95.0%",
+    "forest_area_km2": "约 300 km²（庐山风景名胜区）",
+    "national_forest_park": "庐山山南国家森林公园",
+    "forest_conservation_level": "世界文化景观遗产 / 世界地质公园 / 国家级自然保护区",
+    "source": "国家林业和草原局《中国森林资源报告》；江西省林业局《2023年江西林业发展统计公报》；庐山国家级自然保护区管理局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.jiangxi.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "庐山牯岭镇"
+  }
+}

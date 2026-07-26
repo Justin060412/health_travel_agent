@@ -1,0 +1,32 @@
+[
+  {
+    "place_id": 225182113,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 4783941,
+    "lat": "29.5716330",
+    "lon": "115.9766013",
+    "class": "boundary",
+    "type": "administrative",
+    "place_rank": 16,
+    "importance": 0.22274623325780465,
+    "addresstype": "town",
+    "name": "牯岭镇",
+    "display_name": "牯岭镇, 庐山市, 九江市, 江西省, 中国",
+    "address": {
+      "town": "牯岭镇",
+      "city": "庐山市",
+      "region": "九江市",
+      "state": "江西省",
+      "ISO3166-2-lvl4": "CN-JX",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.4985005",
+      "29.6208222",
+      "115.9253570",
+      "116.0273496"
+    ]
+  }
+]

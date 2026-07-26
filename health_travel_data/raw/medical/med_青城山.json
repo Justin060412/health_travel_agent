@@ -1,0 +1,37 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "三级乙等",
+    "medical_score": "优",
+    "nearest_hospital": "都江堰市人民医院",
+    "hospital_grade": "三级乙等综合医院",
+    "hospital_distance_km": 15,
+    "hospital_beds": 1200,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "老年病科",
+      "中医科",
+      "中西医结合科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "都江堰市人民医院为三级乙等综合医院，诊疗能力较强",
+      "距离成都市仅 60 公里，可共享华西医院（全国顶级三级甲等）等优质医疗资源",
+      "青城山周边有多家道家养生机构和太极康复中心",
+      "都江堰市被列为四川省'医养结合'示范城市",
+      "区域内有多家高端康养社区配备基础医疗设施"
+    ],
+    "emergency_capability": "都江堰市 120 急救中心，成都市华西医院（三级特等）距约 60 公里（1 小时车程）",
+    "tertiary_hospital_distance_km": 60,
+    "tertiary_hospital": "四川大学华西医院（三级特等）/ 成都市第五人民医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；都江堰市人民医院官网；成都市卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wjw.chengdu.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "青城山"
+  }
+}

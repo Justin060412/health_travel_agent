@@ -1,0 +1,15 @@
+/* ============================================================
+   AI 康养旅居 — Footer
+   极简底部
+   ============================================================ */
+
+.footer {
+  border-top: 1px solid var(--color-border-light);
+  background: var(--color-warm-white-50);
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}

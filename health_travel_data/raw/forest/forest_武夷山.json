@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "96.7%",
+    "forest_coverage_value": 96.7,
+    "forest_type": "中亚热带原生性常绿阔叶林",
+    "forest_features": [
+      "地球同纬度最完整、最典型、面积最大的中亚热带原生性森林生态系统",
+      "高等植物 3,700 余种，其中珍稀濒危物种众多",
+      "是世界生物模式标本产地之一（武夷山模式标本 1,000 余种）",
+      "茶园与森林交错分布，形成独特的'茶—林'复合生态系统"
+    ],
+    "greening_rate": "98.0%",
+    "forest_area_km2": "约 1,000 km²（武夷山国家公园）",
+    "national_forest_park": "武夷山国家森林公园 / 武夷山国家公园",
+    "forest_conservation_level": "世界文化与自然双重遗产 / 世界人与生物圈保护区 / 国家公园",
+    "source": "国家林业和草原局《中国森林资源报告》；福建省林业局《2023年福建林业发展统计公报》；武夷山国家公园管理局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.fujian.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "武夷山"
+  }
+}

@@ -1,0 +1,48 @@
+/* ============================================================
+   AI 康养旅居 — Font Loading
+   Sprint 6 Phase 3: 设计字体升级
+   中文: HarmonyOS Sans SC / PingFang SC / Noto Sans SC
+   英文: SF Pro Display / Inter
+   数字: Inter (tabular-nums)
+   ============================================================ */
+
+/* ── Inter (Google Fonts) — 英文正文 + 数字 ──────────────── */
+/* weights: 400, 500, 600, 700 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+/* ── HarmonyOS Sans SC — 中文设计字体 ────────────────────── */
+/* 尝试从多个 CDN 加载，任一成功即可 */
+/* 主 CDN: jsDelivr (npm harmonyos-sans-web) */
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: local('HarmonyOS Sans SC'),
+       local('HarmonyOS_Sans_SC'),
+       url('https://cdn.jsdelivr.net/npm/harmonyos-sans-web@1.0.1/fonts/HarmonyOS_Sans_SC_Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: local('HarmonyOS Sans SC'),
+       local('HarmonyOS_Sans_SC'),
+       url('https://cdn.jsdelivr.net/npm/harmonyos-sans-web@1.0.1/fonts/HarmonyOS_Sans_SC_Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: local('HarmonyOS Sans SC'),
+       local('HarmonyOS_Sans_SC'),
+       url('https://cdn.jsdelivr.net/npm/harmonyos-sans-web@1.0.1/fonts/HarmonyOS_Sans_SC_Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── SF Pro Display fallback: system font on Apple devices ── */
+/* Inter is used as the closest match on non-Apple platforms */
+/* No @font-face needed — declared in font stack via system-ui */

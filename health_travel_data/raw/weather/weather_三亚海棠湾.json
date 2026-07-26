@@ -1,0 +1,30 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "热带海洋性季风气候",
+    "climate_code": "Am",
+    "average_temperature": "25.7℃",
+    "summer_temperature": "26–33℃",
+    "winter_temperature": "18–26℃",
+    "annual_precipitation": "1200–1600mm",
+    "humidity": "年均相对湿度 78%",
+    "sunshine_hours": "年均 2,500–2,700 小时",
+    "best_season": "10–次年4月（冬季温暖干燥，避寒最佳）",
+    "climate_features": [
+      "全年长夏无冬，最冷月（1月）均温 21–25℃",
+      "日照充足，'天然温室'，有利于骨关节疾病康复",
+      "雨季集中在 5–10 月，多为午后阵雨",
+      "海洋性气候调节，空气质量极佳"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 海南省气象局 2023年气候公报 / 三亚市气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101310201.shtml",
+      "http://hi.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "三亚海棠湾",
+    "province": "海南省",
+    "city": "三亚市"
+  }
+}

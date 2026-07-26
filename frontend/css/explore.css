@@ -1,0 +1,425 @@
+/**
+ * AI 康养旅居 — Explore Stage
+ * Sprint 7 Act 2 Redesign: 沉浸式数字地球探索空间
+ *
+ * 设计参考：Google Earth · Apple Vision Pro · NASA Earth
+ * 布局：左标题+HUD | 中地球 | 右信息卡
+ */
+
+/* ═══════════════════════════════════════════════════════
+   Stage — 全屏黑暗空间
+   ═══════════════════════════════════════════════════════ */
+
+.explore-stage {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  background: #060a08;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Three.js canvas container fills stage */
+.explore-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.explore-canvas-wrap canvas {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Left Panel — Title + HUD
+   ═══════════════════════════════════════════════════════ */
+
+.explore-left {
+  position: absolute;
+  left: clamp(24px, 5vw, 64px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+  max-width: 260px;
+}
+
+.explore-brand {
+  margin-bottom: 32px;
+}
+
+.explore-eyebrow {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 12px;
+}
+
+.explore-title {
+  font-family: var(--font-display, 'HarmonyOS Sans SC', 'Inter', system-ui, sans-serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 12px;
+}
+
+.explore-desc {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0;
+  max-width: 240px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HUD — 实时环境数据
+   ═══════════════════════════════════════════════════════ */
+
+.explore-hud {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.hud-row {
+  display: flex;
+  gap: 8px;
+}
+
+.hud-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.hud-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.hud-icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.hud-icon svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
+
+.hud-value {
+  font-family: 'SF Pro Display', 'Inter', var(--font-sans, system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.9);
+  font-variant-numeric: tabular-nums;
+}
+
+.hud-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Center — Earth Container (invisible, canvas does the work)
+   ═══════════════════════════════════════════════════════ */
+
+.explore-center {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Bottom Guidance — 始终可见的探索引导
+   ═══════════════════════════════════════════════════════ */
+
+.explore-guidance {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.explore-guidance-hint {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.5s ease;
+  pointer-events: none;
+}
+
+/* 提示文字在不同状态的颜色变化 */
+.explore-guidance-hint.state-dragging,
+.explore-guidance-hint.state-inertia {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.explore-guidance-hint.state-focused {
+  color: rgba(210, 180, 130, 0.7);
+}
+
+/* Guidance CTA 按钮 — 玻璃质感 + 呼吸微光 */
+.explore-guidance .btn {
+  padding: 12px 32px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow:
+    0 0 20px rgba(140, 180, 140, 0.06),
+    0 4px 24px rgba(0, 0, 0, 0.2);
+  animation: guidanceBreath 4s ease-in-out infinite;
+}
+
+@keyframes guidanceBreath {
+  0%, 100% { box-shadow: 0 0 20px rgba(140, 180, 140, 0.06), 0 4px 24px rgba(0, 0, 0, 0.2); }
+  50%      { box-shadow: 0 0 32px rgba(140, 180, 140, 0.12), 0 4px 24px rgba(0, 0, 0, 0.2); }
+}
+
+.explore-guidance .btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 0 40px rgba(140, 180, 140, 0.12),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: none;
+}
+
+.explore-guidance .btn svg {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Chapter Nav (dark theme override — kept for other chapters)
+   ═══════════════════════════════════════════════════════ */
+
+.explore-stage .chapter-nav {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.explore-stage .chapter-nav-label {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.explore-stage .chapter-nav-btn {
+  color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.explore-stage .chapter-nav-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.explore-stage .chapter-nav-arrow {
+  stroke: rgba(255, 255, 255, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Entrance Animation — Stage-level
+   ═══════════════════════════════════════════════════════ */
+
+.chapter-1.active .explore-left {
+  animation: exploreLeftFadeIn 1000ms var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) 1000ms both;
+}
+
+/* Guidance bar fades in after entrance */
+.chapter-1.active .explore-guidance {
+  animation: guidanceFadeIn 600ms var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) 2200ms both;
+}
+
+@keyframes exploreLeftFadeIn {
+  from { opacity: 0; transform: translateY(calc(-50% + 20px)); }
+  to   { opacity: 1; transform: translateY(-50%); }
+}
+
+@keyframes guidanceFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .explore-left {
+    left: 24px;
+    max-width: 220px;
+  }
+  .explore-title {
+    font-size: 28px;
+  }
+  .hud-item {
+    padding: 8px 10px;
+  }
+  .hud-value {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .explore-left {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+    padding: 16px 20px 0;
+    text-align: center;
+  }
+  .explore-desc {
+    max-width: 100%;
+  }
+  .explore-hud {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hud-row {
+    flex: 1;
+    min-width: 140px;
+  }
+  .explore-stage {
+    display: flex;
+    flex-direction: column;
+  }
+  .explore-canvas-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 50vh;
+  }
+}
+
+/* Act 2 — Wellness Earth: a brighter, cinematic spatial scene */
+.explore-stage {
+  background:
+    radial-gradient(ellipse 52% 72% at 51% 48%, rgba(31, 104, 91, .2) 0%, rgba(7, 29, 43, .12) 40%, transparent 70%),
+    radial-gradient(ellipse 100% 100% at 50% 0%, #163a55 0%, #071c2b 34%, #04121e 78%, #030b13 100%);
+}
+
+.explore-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(2, 13, 22, .48), transparent 28%, transparent 70%, rgba(2, 13, 22, .36));
+}
+
+.explore-canvas-wrap { filter: saturate(1.12) brightness(1.2); }
+
+.explore-left { z-index: 4; }
+.explore-eyebrow { color: rgba(169, 235, 204, .78); letter-spacing: .14em; }
+.explore-title { font-size: clamp(38px, 3.25vw, 60px); text-shadow: 0 12px 40px rgba(0,0,0,.32); }
+.explore-desc { color: rgba(226, 243, 242, .67); max-width: 270px; }
+.explore-hud { border-color: rgba(164, 230, 203, .14); background: rgba(7, 29, 38, .38); backdrop-filter: blur(18px); }
+.hud-item { border-color: rgba(164, 230, 203, .08); background: rgba(255,255,255,.025); }
+
+.explore-journey {
+  position: absolute;
+  top: clamp(34px, 6vh, 72px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: min(420px, 38vw);
+  text-align: center;
+  pointer-events: none;
+}
+.journey-kicker { display:block; margin-bottom: 12px; color: rgba(193,232,223,.55); font-size: 10px; letter-spacing: .18em; }
+.journey-steps { display:flex; align-items:center; justify-content:center; gap:10px; color:rgba(220,240,239,.35); font-size:11px; letter-spacing:.05em; }
+.journey-steps i { width:34px; height:1px; background:rgba(183,235,211,.25); }
+.journey-steps span { transition:color .6s ease, text-shadow .6s ease; }
+.journey-steps span.is-active { color:#dcffef; text-shadow:0 0 18px rgba(104,234,172,.62); }
+
+.explore-guidance { z-index: 6; }
+.explore-guidance-hint { color: rgba(220,244,242,.72); background: rgba(5,24,33,.32); border: 1px solid rgba(177,237,213,.12); border-radius: 99px; padding: 8px 15px; }
+
+@media (max-width: 768px) {
+  .explore-journey { top: 30px; width: 90%; }
+  .journey-steps i { width: 18px; }
+}
+
+@media (max-width: 430px) {
+  .explore-left {
+    padding: 12px 16px 0;
+  }
+  .explore-title {
+    font-size: 22px;
+  }
+  .hud-row {
+    min-width: 120px;
+  }
+  .hud-value {
+    font-size: 14px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Accessibility
+   ═══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-1.active .explore-left {
+    animation: none;
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@media (forced-colors: active) {
+  .explore-stage {
+    background: Canvas;
+  }
+}

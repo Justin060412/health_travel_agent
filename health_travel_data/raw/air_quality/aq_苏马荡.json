@@ -1,0 +1,24 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 38,
+    "pm25_annual": 15,
+    "pm10_annual": 35,
+    "negative_oxygen": "5,000–30,000 个/cm³（齐岳山及苏马荡森林公园区域）",
+    "air_quality_features": [
+      "武陵山区腹地，无工业污染源",
+      "高山植被覆盖率高，空气自净能力强",
+      "苏马荡森林公园负氧离子浓度达到康养级别",
+      "全年空气质量优良天数比例 > 97%"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；恩施州生态环境局《2023年恩施州环境状况公报》；利川市生态环境分局公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjj.enshi.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "苏马荡"
+  }
+}

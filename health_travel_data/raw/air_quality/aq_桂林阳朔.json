@@ -1,0 +1,24 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 42,
+    "pm25_annual": 22,
+    "pm10_annual": 45,
+    "negative_oxygen": "3,000–15,000 个/cm³（漓江及喀斯特山林区域）",
+    "air_quality_features": [
+      "喀斯特地貌区域植被覆盖良好，空气湿润净化能力强",
+      "阳朔以旅游业和农业为主，无重工业",
+      "漓江流域湿地调节空气质量",
+      "全年空气质量优良天数比例 > 93%"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；桂林市生态环境局《2023年桂林市环境状况公报》；广西壮族自治区生态环境厅公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjt.gxzf.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "桂林阳朔"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "76.5%",
+    "forest_coverage_value": 76.5,
+    "forest_type": "亚热带常绿阔叶林",
+    "forest_features": [
+      "'青城天下幽'——森林茂密，终年常绿",
+      "拥有大量古树名木和珍稀植物（银杏、楠木、香果树等）",
+      "森林康养步道体系完善（约 50 公里）",
+      "与都江堰水利工程共同构成世界文化遗产"
+    ],
+    "greening_rate": "85.0%",
+    "forest_area_km2": "约 1,200 km²（都江堰市全域）",
+    "national_forest_park": "成都龙池国家森林公园（邻近）",
+    "forest_conservation_level": "世界遗产地保护范围 / 国家级风景名胜区",
+    "source": "国家林业和草原局《中国森林资源报告》；四川省林业和草原局《2023年四川林业发展统计公报》；成都市公园城市建设管理局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lcj.sc.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "青城山"
+  }
+}

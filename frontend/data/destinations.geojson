@@ -1,0 +1,529 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "中国康养旅居目的地数据集 — GeoJSON",
+    "description": "收录中国优质康养旅居目的地，含多维康养属性。坐标系统 WGS84 (EPSG:4326)。",
+    "source": "上海师范大学 环境与地理科学学院 · AI康养旅居助手项目",
+    "date": "2026-07-10",
+    "count": 12,
+    "coordinate_system": "WGS84 (EPSG:4326)",
+    "specification": "RFC 7946"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.25589,
+          24.143744
+        ]
+      },
+      "properties": {
+        "name": "巴马瑶族自治县",
+        "province": "广西壮族自治区",
+        "city": "巴马瑶族自治县",
+        "climate": "南亚热带季风气候",
+        "altitude": 600,
+        "average_temperature": "20.5℃",
+        "summer_temperature": "22–30℃",
+        "winter_temperature": "10–18℃",
+        "air_quality": "优",
+        "air_quality_index": 35,
+        "forest_coverage": "78.4%",
+        "medical_level": "二级甲等",
+        "budget_level": "经济型",
+        "monthly_cost_low": 1500,
+        "monthly_cost_high": 4000,
+        "suitable_people": "中老年养生人群、慢性病康复、冬季避寒、长寿文化体验",
+        "features": [
+          "长寿之乡",
+          "地磁养生",
+          "弱碱性水",
+          "瑶族文化",
+          "洞穴疗养"
+        ],
+        "best_season": "10–次年4月（冬季温暖干燥，避寒最佳）",
+        "score": 4.7,
+        "image_source": "Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 广西气象局 2023年气候公报 / 《中国气候区划》中国科学院; 中国环境监测总站《2023中国生态环境状况公报》；河池市生态环境局《2023年河池市环境状况公报》；广西壮族自治区生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；广西壮族自治区林业局《2023年广西林业发展统计公报》；河池市林业局公开数据; 国家卫生健康委员会医院等级公开信息；巴马瑶族自治县人民医院官网；河池市卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101301201.shtml; http://gx.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.gxzf.gov.cn/; http://www.forestry.gov.cn/; http://lyj.gxzf.gov.cn/; https://www.nhc.gov.cn/; http://wsjkw.gxzf.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.756566,
+          18.409058
+        ]
+      },
+      "properties": {
+        "name": "三亚海棠湾",
+        "province": "海南省",
+        "city": "海棠区",
+        "climate": "热带海洋性季风气候",
+        "altitude": 10,
+        "average_temperature": "25.7℃",
+        "summer_temperature": "26–33℃",
+        "winter_temperature": "18–26℃",
+        "air_quality": "优",
+        "air_quality_index": 32,
+        "forest_coverage": "68.5%",
+        "medical_level": "三级甲等",
+        "budget_level": "高端型",
+        "monthly_cost_low": 3500,
+        "monthly_cost_high": 8000,
+        "suitable_people": "冬季避寒人群、中老年养生、术后康复疗养、高端康养度假、海洋运动爱好者",
+        "features": [
+          "热带滨海",
+          "冬季避寒",
+          "海洋康养",
+          "温泉SPA",
+          "森林疗养",
+          "国际医疗旅游"
+        ],
+        "best_season": "10–次年4月（冬季温暖干燥，避寒最佳）",
+        "score": 4.5,
+        "image_source": "Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 海南省气象局 2023年气候公报 / 三亚市气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；海南省生态环境厅《2023年海南省环境状况公报》；三亚市生态环境局公开数据; 国家林业和草原局《中国森林资源报告》；海南省林业局《2023年海南林业发展统计公报》；三亚市林业局公开数据; 国家卫生健康委员会医院等级公开信息；解放军总医院海南医院官网；海南省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101310201.shtml; http://hi.cma.gov.cn/; https://www.mee.gov.cn/; http://hnsthb.hainan.gov.cn/; http://www.forestry.gov.cn/; http://lyj.hainan.gov.cn/; https://www.nhc.gov.cn/; http://wst.hainan.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.762161,
+          21.955238
+        ]
+      },
+      "properties": {
+        "name": "西双版纳嘎洒",
+        "province": "云南省",
+        "city": "景洪市",
+        "climate": "热带季风气候",
+        "altitude": 550,
+        "average_temperature": "21.5℃",
+        "summer_temperature": "24–34℃",
+        "winter_temperature": "13–28℃",
+        "air_quality": "优",
+        "air_quality_index": 36,
+        "forest_coverage": "80.5%",
+        "medical_level": "三级甲等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5000,
+        "suitable_people": "冬季避寒人群、热带雨林生态体验、傣族文化爱好者、温泉疗养、中老年慢性病康复",
+        "features": [
+          "热带雨林",
+          "傣族文化",
+          "温泉疗养",
+          "冬季避寒",
+          "生物多样性",
+          "禅修养生"
+        ],
+        "best_season": "11–次年4月（干季凉爽，避寒最佳）",
+        "score": 4.4,
+        "image_source": "Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 云南省气象局 2023年气候公报 / 西双版纳州气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；西双版纳州生态环境局《2023年西双版纳州环境状况公报》；云南省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；云南省林业和草原局《2023年云南林业发展统计公报》；西双版纳州林业和草原局公开数据; 国家卫生健康委员会医院等级公开信息；西双版纳州人民医院官网；云南省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101291601.shtml; http://yn.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.yn.gov.cn/; http://www.forestry.gov.cn/; http://lcj.yn.gov.cn/; https://www.nhc.gov.cn/; http://ynswsjkw.yn.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.162525,
+          25.698321
+        ]
+      },
+      "properties": {
+        "name": "大理古城",
+        "province": "云南省",
+        "city": "大理市",
+        "climate": "高原季风气候",
+        "altitude": 1970,
+        "average_temperature": "15.1℃",
+        "summer_temperature": "18–26℃",
+        "winter_temperature": "4–16℃",
+        "air_quality": "优",
+        "air_quality_index": 40,
+        "forest_coverage": "58.2%",
+        "medical_level": "三级甲等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5000,
+        "suitable_people": "文艺青年旅居、中老年冬季避寒、高原康养体验、白族文化体验、户外运动爱好者",
+        "features": [
+          "苍山洱海",
+          "白族文化",
+          "高原气候",
+          "文艺旅居",
+          "骑行徒步",
+          "禅修养生"
+        ],
+        "best_season": "全年宜居，3–5月、9–11月气候最佳",
+        "score": 4.8,
+        "image_source": "Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 云南省气象局 2023年气候公报 / 大理州气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；大理州生态环境局《2023年大理州环境状况公报》；云南省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；云南省林业和草原局《2023年云南林业发展统计公报》；大理州林业和草原局公开数据; 国家卫生健康委员会医院等级公开信息；大理州人民医院官网；云南省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101290201.shtml; http://yn.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.yn.gov.cn/; http://www.forestry.gov.cn/; http://lcj.yn.gov.cn/; https://www.nhc.gov.cn/; http://ynswsjkw.yn.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.487183,
+          24.863029
+        ]
+      },
+      "properties": {
+        "name": "桂林阳朔",
+        "province": "广西壮族自治区",
+        "city": "桂林市",
+        "climate": "亚热带季风气候",
+        "altitude": 150,
+        "average_temperature": "19.5℃",
+        "summer_temperature": "24–33℃",
+        "winter_temperature": "6–14℃",
+        "air_quality": "优",
+        "air_quality_index": 42,
+        "forest_coverage": "71.2%",
+        "medical_level": "二级甲等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5500,
+        "suitable_people": "山水田园旅居、户外运动爱好者（攀岩/徒步/骑行）、中老年养生、书画摄影爱好者",
+        "features": [
+          "喀斯特山水",
+          "漓江风光",
+          "户外运动",
+          "田园养生",
+          "攀岩徒步",
+          "书画艺术"
+        ],
+        "best_season": "4–6月、9–11月（春秋温和，景色最佳）",
+        "score": 4.6,
+        "image_source": "Wikipedia (Wikimedia Commons)",
+        "image_license": "CC BY-SA 3.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 广西气象局 2023年气候公报 / 桂林市气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；桂林市生态环境局《2023年桂林市环境状况公报》；广西壮族自治区生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；广西壮族自治区林业局《2023年广西林业发展统计公报》；桂林市林业和园林局公开数据; 国家卫生健康委员会医院等级公开信息；阳朔县人民医院官网；桂林市卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101300501.shtml; http://gx.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.gxzf.gov.cn/; http://www.forestry.gov.cn/; http://lyj.gxzf.gov.cn/; https://www.nhc.gov.cn/; http://wsjkw.gxzf.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.713567,
+          30.475037
+        ]
+      },
+      "properties": {
+        "name": "苏马荡",
+        "province": "湖北省",
+        "city": "利川市",
+        "climate": "亚热带山地季风气候",
+        "altitude": 1500,
+        "average_temperature": "13.5℃",
+        "summer_temperature": "18–28℃",
+        "winter_temperature": "0–8℃",
+        "air_quality": "优",
+        "air_quality_index": 38,
+        "forest_coverage": "87.3%",
+        "medical_level": "二级甲等",
+        "budget_level": "经济型",
+        "monthly_cost_low": 1500,
+        "monthly_cost_high": 3500,
+        "suitable_people": "夏季避暑人群、中老年养生、慢性呼吸系统疾病康复、土家族文化体验",
+        "features": [
+          "避暑胜地",
+          "森林氧吧",
+          "土家族文化",
+          "富硒土壤",
+          "高山蔬菜",
+          "夏季康养"
+        ],
+        "best_season": "6–9月（夏季凉爽，避暑最佳）",
+        "score": 4.5,
+        "image_source": "Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 湖北省气象局 2023年气候公报 / 恩施州气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；恩施州生态环境局《2023年恩施州环境状况公报》；利川市生态环境分局公开数据; 国家林业和草原局《中国森林资源报告》；湖北省林业局《2023年湖北林业发展统计公报》；恩施州林业局公开数据; 国家卫生健康委员会医院等级公开信息；利川市人民医院官网；恩施州卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101301201.shtml; http://hb.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjj.enshi.gov.cn/; http://www.forestry.gov.cn/; http://lyj.hubei.gov.cn/; https://www.nhc.gov.cn/; http://wjw.hubei.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.976601,
+          29.571633
+        ]
+      },
+      "properties": {
+        "name": "庐山牯岭镇",
+        "province": "江西省",
+        "city": "庐山市",
+        "climate": "亚热带山地气候",
+        "altitude": 1164,
+        "average_temperature": "11.6℃",
+        "summer_temperature": "18–26℃",
+        "winter_temperature": "-2–6℃",
+        "air_quality": "优",
+        "air_quality_index": 38,
+        "forest_coverage": "90.2%",
+        "medical_level": "二级甲等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5500,
+        "suitable_people": "夏季避暑人群、中老年养生、文化名山巡礼、温泉疗养、摄影爱好者",
+        "features": [
+          "避暑名山",
+          "世界遗产",
+          "森林氧吧",
+          "民国建筑群",
+          "文化名山",
+          "温泉疗养"
+        ],
+        "best_season": "6–9月（夏季凉爽，避暑最佳）；冬季可观雾凇雪景",
+        "score": 4.7,
+        "image_source": "Wikipedia (Wikimedia Commons)",
+        "image_license": "CC BY-SA 3.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 江西省气象局 2023年气候公报 / 庐山气象站公开数据; 中国环境监测总站《2023中国生态环境状况公报》；九江市生态环境局《2023年九江市环境状况公报》；江西省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；江西省林业局《2023年江西林业发展统计公报》；庐山国家级自然保护区管理局公开数据; 国家卫生健康委员会医院等级公开信息；庐山人民医院官网；九江市卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101240201.shtml; http://jx.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.jiangxi.gov.cn/; http://www.forestry.gov.cn/; http://lyj.jiangxi.gov.cn/; https://www.nhc.gov.cn/; http://wjw.jiangxi.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.186817,
+          30.084519
+        ]
+      },
+      "properties": {
+        "name": "黄山汤口",
+        "province": "安徽省",
+        "city": "黄山区",
+        "climate": "亚热带山地气候",
+        "altitude": 500,
+        "average_temperature": "16.5℃",
+        "summer_temperature": "22–32℃",
+        "winter_temperature": "1–10℃",
+        "air_quality": "优",
+        "air_quality_index": 35,
+        "forest_coverage": "91.5%",
+        "medical_level": "二级甲等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 6000,
+        "suitable_people": "避暑康养人群、温泉疗养、徽州文化体验、摄影及户外爱好者、中老年养生",
+        "features": [
+          "世界遗产",
+          "黄山温泉",
+          "森林康养",
+          "徽州文化",
+          "避暑胜地",
+          "摄影天堂"
+        ],
+        "best_season": "4–6月、9–11月（春秋最佳）；夏季山顶凉爽适合避暑",
+        "score": 4.8,
+        "image_source": "Wikimedia Commons",
+        "image_license": "Public Domain",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 安徽省气象局 2023年气候公报 / 黄山气象站公开数据; 中国环境监测总站《2023中国生态环境状况公报》；黄山市生态环境局《2023年黄山市环境状况公报》；安徽省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；安徽省林业局《2023年安徽林业发展统计公报》；黄山风景区管理委员会公开数据; 国家卫生健康委员会医院等级公开信息；黄山市人民医院官网；安徽省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101221001.shtml; http://ah.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.ah.gov.cn/; http://www.forestry.gov.cn/; http://lyj.ah.gov.cn/; https://www.nhc.gov.cn/; http://wjw.ah.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.029769,
+          27.759045
+        ]
+      },
+      "properties": {
+        "name": "武夷山",
+        "province": "福建省",
+        "city": "武夷山市",
+        "climate": "亚热带季风气候",
+        "altitude": 300,
+        "average_temperature": "17.9℃",
+        "summer_temperature": "24–33℃",
+        "winter_temperature": "5–14℃",
+        "air_quality": "优",
+        "air_quality_index": 33,
+        "forest_coverage": "96.7%",
+        "medical_level": "二级甲等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5000,
+        "suitable_people": "茶文化养生爱好者、森林康养、中老年避暑、户外徒步、禅修及太极养生",
+        "features": [
+          "世界遗产",
+          "茶文化",
+          "丹霞地貌",
+          "森林氧吧",
+          "禅修养生",
+          "九曲溪漂流"
+        ],
+        "best_season": "4–6月、9–11月（春秋最佳，茶香四溢）",
+        "score": 4.7,
+        "image_source": "Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 福建省气象局 2023年气候公报 / 武夷山市气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；南平市生态环境局《2023年南平市环境状况公报》；福建省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；福建省林业局《2023年福建林业发展统计公报》；武夷山国家公园管理局公开数据; 国家卫生健康委员会医院等级公开信息；武夷山市立医院官网；福建省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101230801.shtml; http://fj.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.fujian.gov.cn/; http://www.forestry.gov.cn/; http://lyj.fujian.gov.cn/; https://www.nhc.gov.cn/; http://wjw.fujian.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.588768,
+          30.881316
+        ]
+      },
+      "properties": {
+        "name": "青城山",
+        "province": "四川省",
+        "city": "都江堰市",
+        "climate": "亚热带湿润季风气候",
+        "altitude": 900,
+        "average_temperature": "15.2℃",
+        "summer_temperature": "22–30℃",
+        "winter_temperature": "4–10℃",
+        "air_quality": "优",
+        "air_quality_index": 45,
+        "forest_coverage": "76.5%",
+        "medical_level": "三级乙等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5000,
+        "suitable_people": "中老年养生、道教文化爱好者、慢性病康复疗养、避暑度假、亚健康调理",
+        "features": [
+          "道教名山",
+          "世界遗产",
+          "森林氧吧",
+          "太极拳",
+          "道家养生",
+          "温泉康养"
+        ],
+        "best_season": "4–10月（春秋温和宜人，避暑消夏最佳）",
+        "score": 4.6,
+        "image_source": "Wikipedia (Wikimedia Commons)",
+        "image_license": "CC BY-SA 3.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 四川省气象局 2023年气候公报 / 都江堰市气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；成都市生态环境局《2023年成都市环境状况公报》；都江堰市生态环境局公开数据; 国家林业和草原局《中国森林资源报告》；四川省林业和草原局《2023年四川林业发展统计公报》；成都市公园城市建设管理局公开数据; 国家卫生健康委员会医院等级公开信息；都江堰市人民医院官网；成都市卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101270101.shtml; http://sc.cma.gov.cn/; https://www.mee.gov.cn/; http://sthj.chengdu.gov.cn/; http://www.forestry.gov.cn/; http://lcj.sc.gov.cn/; https://www.nhc.gov.cn/; http://wjw.chengdu.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.895112,
+          30.600321
+        ]
+      },
+      "properties": {
+        "name": "莫干山",
+        "province": "浙江省",
+        "city": "德清县",
+        "climate": "亚热带山地气候",
+        "altitude": 700,
+        "average_temperature": "13.5℃",
+        "summer_temperature": "20–30℃",
+        "winter_temperature": "-1–8℃",
+        "air_quality": "优",
+        "air_quality_index": 40,
+        "forest_coverage": "92.3%",
+        "medical_level": "二级甲等",
+        "budget_level": "高端型",
+        "monthly_cost_low": 3500,
+        "monthly_cost_high": 9000,
+        "suitable_people": "高端康养度假、避暑休闲、户外运动爱好者（骑行/徒步/越野）、禅修瑜伽、中老年养生",
+        "features": [
+          "避暑胜地",
+          "竹海森林",
+          "民宿文化",
+          "户外运动",
+          "禅修养生",
+          "民国别墅群"
+        ],
+        "best_season": "6–9月（夏季凉爽，避暑最佳）；4–5月春笋季",
+        "score": 4.5,
+        "image_source": "Wikimedia Commons",
+        "image_license": "Public Domain",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 浙江省气象局 2023年气候公报 / 德清县气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；湖州市生态环境局《2023年湖州市环境状况公报》；浙江省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；浙江省林业局《2023年浙江林业发展统计公报》；德清县自然资源和规划局公开数据; 国家卫生健康委员会医院等级公开信息；德清县人民医院官网；浙江省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101210201.shtml; http://zj.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.zj.gov.cn/; http://www.forestry.gov.cn/; http://lyj.zj.gov.cn/; https://www.nhc.gov.cn/; http://wsjkw.zj.gov.cn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.336864,
+          29.522665
+        ]
+      },
+      "properties": {
+        "name": "峨眉山",
+        "province": "四川省",
+        "city": "峨眉山市",
+        "climate": "亚热带山地气候（垂直立体气候）",
+        "altitude": 550,
+        "average_temperature": "17.2℃（山麓）/ 3.1℃（金顶）",
+        "summer_temperature": "22–32℃（山麓）/ 10–18℃（金顶）",
+        "winter_temperature": "4–12℃（山麓）/ -8–-2℃（金顶）",
+        "air_quality": "优",
+        "air_quality_index": 38,
+        "forest_coverage": "95.8%",
+        "medical_level": "三级乙等",
+        "budget_level": "中等",
+        "monthly_cost_low": 2000,
+        "monthly_cost_high": 5500,
+        "suitable_people": "佛教文化体验、森林康养、温泉疗养、武术养生、中老年避暑、慢性病康复",
+        "features": [
+          "佛教名山",
+          "世界遗产",
+          "森林康养",
+          "温泉疗养",
+          "武术养生",
+          "避暑胜地"
+        ],
+        "best_season": "5–10月（山麓避暑康养最佳）；全年山麓区域宜居",
+        "score": 4.8,
+        "image_source": "Wikipedia (Wikimedia Commons)",
+        "image_license": "CC BY 2.0",
+        "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 四川省气象局 2023年气候公报 / 峨眉山市气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；乐山市生态环境局《2023年乐山市环境状况公报》；四川省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；四川省林业和草原局《2023年四川林业发展统计公报》；峨眉山风景名胜区管理委员会公开数据; 国家卫生健康委员会医院等级公开信息；峨眉山市人民医院官网；四川省卫生健康委员会公开数据",
+        "source_url": "http://www.weather.com.cn/cityintro/101271401.shtml; http://sc.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.sc.gov.cn/; http://www.forestry.gov.cn/; http://lcj.sc.gov.cn/; https://www.nhc.gov.cn/; http://wsjkw.sc.gov.cn/"
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+/* ============================================================
+   AI 康养旅居 — Navigation
+   Apple 风格毛玻璃导航栏
+   初始透明 → 滚动后玻璃模糊
+   ============================================================ */
+
+/* ── 导航容器 ────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    backdrop-filter var(--duration-normal) var(--ease-out),
+    -webkit-backdrop-filter var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+/* 初始状态：完全透明（Hero 上方） */
+.nav {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+}
+
+/* 滚动后状态：毛玻璃 */
+.nav.nav-scrolled {
+  position: relative;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    var(--glass-edge-highlight),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Nav Glass Noise Overlay */
+.nav.nav-scrolled::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.20'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  mix-blend-mode: overlay;
+}
+
+/* Ensure nav content stays above noise layer */
+.nav.nav-scrolled > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 导航内部 ────────────────────────────────────────────── */
+.nav-inner {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── 品牌 Logo ───────────────────────────────────────────── */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+  transition: color var(--duration-normal) var(--ease-out);
+  text-decoration: none;
+}
+
+.nav-scrolled .nav-brand {
+  color: var(--color-gray-900);
+}
+
+/* Logo SVG 图标容器 */
+.nav-brand-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-brand-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── 导航链接（预留未来扩展） ────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.nav-link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--duration-fast) var(--ease-out);
+  letter-spacing: -0.01em;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-scrolled .nav-link {
+  color: var(--color-gray-600);
+}
+
+.nav-scrolled .nav-link:hover {
+  color: var(--color-gray-900);
+}
+
+/* ── 导航 CTA 按钮 ───────────────────────────────────────── */
+.nav-cta {
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  letter-spacing: -0.01em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-cta:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-scrolled .nav-cta {
+  border-color: var(--color-forest-600);
+  color: var(--color-forest-700);
+  background: var(--color-forest-50);
+}
+
+.nav-scrolled .nav-cta:hover {
+  background: var(--color-forest-100);
+  border-color: var(--color-forest-700);
+}
+
+/* ── 移动端菜单按钮（预留） ──────────────────────────────── */
+.nav-menu-btn {
+  display: none;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  color: #fff;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.nav-scrolled .nav-menu-btn {
+  color: var(--color-gray-700);
+}
+
+@media (max-width: 768px) {
+  .nav-menu-btn {
+    display: flex;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+}

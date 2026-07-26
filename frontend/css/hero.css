@@ -1,0 +1,489 @@
+/* ============================================================
+   AI 康养旅居 — Hero
+   全屏主视觉 · 电影感自然背景 · 玻璃数据面板
+   参考: Aman Resorts / Solidroad / Apple HIG
+   关键词: Immersive · Glass · Premium · Minimal · Spatial
+   ============================================================ */
+
+/* ── Hero 容器：全屏 ────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── 背景图层 ────────────────────────────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* 背景图片 — 高质量自然摄影 */
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  /* 微妙 Parallax */
+  will-change: transform;
+  /* 扩大背景以支持 parallax 位移不留白边 */
+  transform: scale(1.06);
+  animation: heroBgReveal 1.6s var(--ease-out-expo) forwards;
+}
+
+@keyframes heroBgReveal {
+  from {
+    transform: scale(1.08);
+    filter: brightness(0.6);
+  }
+  to {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* 暗色渐变叠加层 — 确保白色文字可读 */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 34, 20, 0.45) 0%,
+      rgba(10, 34, 20, 0.30) 40%,
+      rgba(10, 34, 20, 0.50) 100%
+    );
+}
+
+/* 底部渐变 — 平滑过渡到下一区块 */
+.hero-bg-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-bg)
+  );
+  z-index: 1;
+}
+
+/* ── Ambient Light Blobs ─────────────────────────────────── */
+/* 模拟自然光线，增加空间深度感 */
+.hero-bg-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 左上：森林绿光晕 */
+.hero-ambient-top {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at 40% 30%,
+    rgba(31, 117, 68, 0.12) 0%,
+    rgba(31, 117, 68, 0.04) 40%,
+    transparent 70%
+  );
+  filter: blur(200px);
+  animation: ambientBreath 8s ease-in-out infinite;
+}
+
+/* 右下：暖白光晕 */
+.hero-ambient-bottom {
+  position: absolute;
+  bottom: -15%;
+  right: -10%;
+  width: 45%;
+  height: 55%;
+  background: radial-gradient(
+    ellipse at 60% 60%,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(250, 249, 247, 0.03) 40%,
+    transparent 70%
+  );
+  filter: blur(250px);
+  animation: ambientBreath 10s ease-in-out infinite reverse;
+}
+
+@keyframes ambientBreath {
+  0%, 100% { opacity: 0.7; }
+  50%      { opacity: 1; }
+}
+
+/* ── 内容层 ──────────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + var(--space-12)) var(--space-8) var(--space-12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+/* ── 左侧：文字区 ────────────────────────────────────────── */
+.hero-text {
+  max-width: 540px;
+}
+
+/* Parallax 元素 — GPU 加速 */
+.hero-parallax-bg {
+  will-change: transform;
+}
+.hero-parallax-panel {
+  will-change: transform;
+}
+.hero-parallax-title {
+  will-change: transform;
+}
+.hero-parallax-eyebrow {
+  will-change: transform;
+}
+
+/* 顶部标签 */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.70);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out-expo) 0.15s forwards;
+}
+
+.hero-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* 标题 */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: var(--space-5);
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out-expo) 0.25s forwards;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.90);
+  font-weight: 500;
+}
+
+/* 副标题 */
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.70);
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: var(--space-10);
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out-expo) 0.35s forwards;
+}
+
+/* CTA 按钮组 */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out-expo) 0.50s forwards;
+}
+
+/* ── 右侧：Glass 数据面板 ────────────────────────────────── */
+.hero-panel {
+  justify-self: end;
+  width: 100%;
+  max-width: 380px;
+  opacity: 0;
+  animation: heroPanelIn 0.9s var(--ease-out-expo) 0.45s forwards;
+}
+
+.hero-panel-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  /* 5 层 Glass Recipe: shadow + edge highlight + corner reflection + noise */
+  box-shadow:
+    var(--glass-shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  /* Corner radial reflection */
+  background-image:
+    radial-gradient(ellipse 300px 200px at 15% 10%, rgba(255,255,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 200px 150px at 85% 5%,  rgba(255,255,255,0.04) 0%, transparent 55%);
+  overflow: hidden;
+}
+
+/* Glass Noise Overlay — feTurbulence SVG texture */
+.hero-panel-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E");
+  opacity: var(--glass-noise-opacity);
+  mix-blend-mode: overlay;
+}
+
+/* Ensure content stays above noise */
+.hero-panel-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-panel-label {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.50);
+  margin-bottom: var(--space-6);
+}
+
+/* 数据行 */
+.hero-panel-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hero-metric {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+}
+
+.hero-metric + .hero-metric {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 指标图标 */
+.hero-metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* 指标文字 */
+.hero-metric-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-metric-value {
+  font-family: var(--font-numeric);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  transition: all 0.3s ease;
+}
+
+.hero-metric-label {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.50);
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+/* 数据来源说明 */
+.hero-panel-source {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.5;
+}
+
+/* ── 入场动画 Keyframes ─────────────────────────────────── */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroPanelIn {
+  from {
+    opacity: 0;
+    transform: translateX(32px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* ── 滚动指示器（可选，提示下方内容） ──────────────────── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease-out-expo) 1.2s forwards;
+}
+
+.hero-scroll-hint span {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.25);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50%      { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── 响应式 ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    text-align: center;
+    padding-top: calc(var(--nav-height) + var(--space-8));
+  }
+
+  .hero-text {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-panel {
+    justify-self: center;
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: var(--space-24) 0 var(--space-16);
+  }
+
+  .hero-content {
+    padding: calc(var(--nav-height) + var(--space-6)) var(--space-5) var(--space-8);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .hero-panel-card {
+    padding: var(--space-5);
+  }
+
+  .hero-panel {
+    max-width: 100%;
+  }
+
+  .hero-scroll-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: calc(var(--nav-height) + var(--space-4)) var(--space-4) var(--space-10);
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    justify-content: center;
+  }
+
+  .hero-panel-card {
+    padding: var(--space-5) var(--space-4);
+  }
+}

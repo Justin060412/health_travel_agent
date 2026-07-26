@@ -1,0 +1,33 @@
+[
+  {
+    "place_id": 241109915,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 10211952,
+    "lat": "21.9552379",
+    "lon": "100.7621614",
+    "class": "boundary",
+    "type": "administrative",
+    "place_rank": 16,
+    "importance": 0.21080589711721126,
+    "addresstype": "town",
+    "name": "嘎洒街道",
+    "display_name": "嘎洒街道, 景洪市, 西双版纳傣族自治州, 云南省, 666100, 中国",
+    "address": {
+      "town": "嘎洒街道",
+      "city": "景洪市",
+      "region": "西双版纳傣族自治州",
+      "state": "云南省",
+      "ISO3166-2-lvl4": "CN-YN",
+      "postcode": "666100",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "21.7728213",
+      "22.2748561",
+      "100.6311780",
+      "100.8837988"
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 38,
+    "pm25_annual": 18,
+    "pm10_annual": 40,
+    "negative_oxygen": "8,000–40,000 个/cm³（庐山核心景区）",
+    "air_quality_features": [
+      "高海拔山地，大气扩散条件好，无工业污染",
+      "庐山世界地质公园生态环境保护严格",
+      "森林覆盖率极高，负氧离子浓度达康养级别",
+      "全年空气质量优良天数比例 > 97%",
+      "云雾多，空气湿润洁净"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；九江市生态环境局《2023年九江市环境状况公报》；江西省生态环境厅公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjt.jiangxi.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "庐山牯岭镇"
+  }
+}

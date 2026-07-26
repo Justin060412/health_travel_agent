@@ -1,0 +1,37 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "三级乙等",
+    "medical_score": "优",
+    "nearest_hospital": "峨眉山市人民医院",
+    "hospital_grade": "三级乙等综合医院",
+    "hospital_distance_km": 10,
+    "hospital_beds": 1000,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "中医科",
+      "老年病科",
+      "骨科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "峨眉山市人民医院为三级乙等综合医院，医疗服务能力较强",
+      "乐山市人民医院（三级甲等）距约 35 公里",
+      "峨眉山有多家中医药养生机构和武术养生馆",
+      "峨眉武术与少林、武当并称三大流派，具有运动养生特色",
+      "峨眉山温泉（含氡、硫）对关节炎、皮肤病等有辅助疗效"
+    ],
+    "emergency_capability": "峨眉山市 120 急救中心；乐山市人民医院（三级甲等）距约 35 公里（约 40 分钟车程）；成都华西医院（三级特等）距约 150 公里（约 2 小时车程）",
+    "tertiary_hospital_distance_km": 35,
+    "tertiary_hospital": "乐山市人民医院（三级甲等）/ 四川大学华西医院（三级特等，约 150 公里）",
+    "source": "国家卫生健康委员会医院等级公开信息；峨眉山市人民医院官网；四川省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wsjkw.sc.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "峨眉山"
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "place_id": 419656619,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1528394443,
+    "lat": "25.6983209",
+    "lon": "100.1625254",
+    "class": "tourism",
+    "type": "theme_park",
+    "place_rank": 30,
+    "importance": 5.5001907377691576e-05,
+    "addresstype": "tourism",
+    "name": "大理古城",
+    "display_name": "大理古城, 双鹤路, 绿玉社区, 东门村月溪村, 大理镇, 大理市, 大理白族自治州, 云南省, 671003, 中国",
+    "address": {
+      "tourism": "大理古城",
+      "road": "双鹤路",
+      "quarter": "绿玉社区",
+      "hamlet": "东门村月溪村",
+      "town": "大理镇",
+      "city": "大理市",
+      "region": "大理白族自治州",
+      "state": "云南省",
+      "ISO3166-2-lvl4": "CN-YN",
+      "postcode": "671003",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "25.6894313",
+      "25.7068564",
+      "100.1536412",
+      "100.1721156"
+    ]
+  },
+  {
+    "place_id": 241311259,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 767449039,
+    "lat": "25.6982690",
+    "lon": "100.1624850",
+    "class": "historic",
+    "type": "district",
+    "place_rank": 30,
+    "importance": 5.5001907377691576e-05,
+    "addresstype": "historic",
+    "name": "大理古城",
+    "display_name": "大理古城, 双鹤路, 绿玉社区, 东门村月溪村, 大理镇, 大理市, 大理白族自治州, 云南省, 671003, 中国",
+    "address": {
+      "historic": "大理古城",
+      "road": "双鹤路",
+      "quarter": "绿玉社区",
+      "hamlet": "东门村月溪村",
+      "town": "大理镇",
+      "city": "大理市",
+      "region": "大理白族自治州",
+      "state": "云南省",
+      "ISO3166-2-lvl4": "CN-YN",
+      "postcode": "671003",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "25.6895053",
+      "25.7068222",
+      "100.1536944",
+      "100.1719665"
+    ]
+  }
+]

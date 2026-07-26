@@ -1,0 +1,30 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "热带季风气候",
+    "climate_code": "Aw",
+    "average_temperature": "21.5℃",
+    "summer_temperature": "24–34℃",
+    "winter_temperature": "13–28℃",
+    "annual_precipitation": "1200–1500mm",
+    "humidity": "年均相对湿度 82%",
+    "sunshine_hours": "年均 1,800–2,200 小时",
+    "best_season": "11–次年4月（干季凉爽，避寒最佳）",
+    "climate_features": [
+      "全年温暖，干湿季分明（5–10月雨季，11–4月干季）",
+      "冬季暖阳充足，最冷月（1月）均温 16–20℃",
+      "热带雨林气候调节，夏季虽热但有林荫降温",
+      "昼夜温差适中，适合户外活动"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 云南省气象局 2023年气候公报 / 西双版纳州气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101291601.shtml",
+      "http://yn.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "西双版纳嘎洒",
+    "province": "云南省",
+    "city": "西双版纳州景洪市"
+  }
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "place_id": 240754930,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 2774379,
+    "lat": "24.1437442",
+    "lon": "107.2558901",
+    "class": "boundary",
+    "type": "administrative",
+    "place_rank": 12,
+    "importance": 0.4958261216017997,
+    "addresstype": "city",
+    "name": "巴马瑶族自治县",
+    "display_name": "巴马瑶族自治县, 河池市, 广西壮族自治区, 中国",
+    "address": {
+      "city": "巴马瑶族自治县",
+      "region": "河池市",
+      "state": "广西壮族自治区",
+      "ISO3166-2-lvl4": "CN-GX",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "23.8325549",
+      "24.4009045",
+      "106.8558707",
+      "107.5436627"
+    ]
+  }
+]

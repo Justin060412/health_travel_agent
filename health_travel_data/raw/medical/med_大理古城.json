@@ -1,0 +1,38 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "三级甲等",
+    "medical_score": "优",
+    "nearest_hospital": "大理白族自治州人民医院",
+    "hospital_grade": "三级甲等综合医院",
+    "hospital_distance_km": 15,
+    "hospital_beds": 1500,
+    "key_departments": [
+      "内科",
+      "心内科",
+      "呼吸内科",
+      "康复医学科",
+      "中医科（白族医药特色）",
+      "老年病科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "大理州人民医院为三级甲等综合医院，是滇西地区医疗中心",
+      "大理大学第一附属医院（三级甲等）亦在古城附近，医疗资源丰富",
+      "白族传统医药（如'白药'、艾灸、药浴等）与现代化医疗融合发展",
+      "大理古城内有多家中医馆和养生机构，提供针灸、推拿等传统康养服务",
+      "高原气候对慢性呼吸系统和心血管疾病有一定的疗养效果"
+    ],
+    "emergency_capability": "大理州 120 急救中心，大理州人民医院距古城约 15 公里（20 分钟车程）",
+    "tertiary_hospital_distance_km": 15,
+    "tertiary_hospital": "大理白族自治州人民医院（三级甲等）/ 大理大学第一附属医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；大理州人民医院官网；云南省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://ynswsjkw.yn.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "大理古城"
+  }
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "place_id": 239970808,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 3011851595,
+    "lat": "29.5226655",
+    "lon": "103.3368637",
+    "class": "natural",
+    "type": "mountain_range",
+    "place_rank": 18,
+    "importance": 0.5398569755430047,
+    "addresstype": "mountain_range",
+    "name": "峨眉山",
+    "display_name": "峨眉山, 峨眉山市, 乐山市, 四川省, 中国",
+    "address": {
+      "mountain_range": "峨眉山",
+      "city": "峨眉山市",
+      "county": "峨眉山市",
+      "region": "乐山市",
+      "state": "四川省",
+      "ISO3166-2-lvl4": "CN-SC",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5226155",
+      "29.5227155",
+      "103.3368137",
+      "103.3369137"
+    ]
+  },
+  {
+    "place_id": 241587983,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2703828458,
+    "lat": "29.6017300",
+    "lon": "103.4822200",
+    "class": "place",
+    "type": "city",
+    "place_rank": 16,
+    "importance": 0.5180447757846534,
+    "addresstype": "city",
+    "name": "峨眉山市",
+    "display_name": "峨眉山市, 乐山市, 四川省, 614200, 中国",
+    "address": {
+      "city": "峨眉山市",
+      "county": "峨眉山市",
+      "region": "乐山市",
+      "state": "四川省",
+      "ISO3166-2-lvl4": "CN-SC",
+      "postcode": "614200",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.4417300",
+      "29.7617300",
+      "103.3222200",
+      "103.6422200"
+    ]
+  }
+]

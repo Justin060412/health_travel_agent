@@ -1,0 +1,242 @@
+/* ============================================================
+   AI 康养旅居 — Chapter System
+   Sprint 7: 章节式体验 — 按钮驱动的电影感页面切换
+   参考: Apple Product Pages / Google Earth / Aman Resorts
+   关键词: Cinematic · Chapter · Transition · Immersive
+   ============================================================ */
+
+/* ── 章节容器 ────────────────────────────────────────────── */
+.chapters-container {
+  position: relative;
+  width: 100%;
+  /* Container doesn't set its own height;
+     chapters control their own visibility */
+}
+
+/* ── 章节通用 ────────────────────────────────────────────── */
+.chapter {
+  display: none;               /* 默认隐藏 */
+  width: 100%;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 活跃章节 */
+.chapter.active {
+  display: block;
+}
+
+/* ── 章节入场动画 ────────────────────────────────────────── */
+.chapter.entering {
+  display: block;
+  animation: chapterEnter 800ms var(--ease-out-expo) forwards;
+}
+
+@keyframes chapterEnter {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ── 章节退场动画 ────────────────────────────────────────── */
+.chapter.exiting {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  animation: chapterExit 500ms var(--ease-out-expo) forwards;
+}
+
+@keyframes chapterExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.99);
+    filter: blur(2px);
+  }
+}
+
+/* ── 章节过渡遮罩（用于复杂过渡场景） ────────────────────── */
+.chapter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms var(--ease-out-expo);
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.chapter-overlay.active {
+  opacity: 1;
+}
+
+/* ── 章节导航按钮（底部固定的 Continue/Next） ────────────── */
+.chapter-nav {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0;
+  animation: chapterNavIn 600ms var(--ease-out-expo) 500ms forwards;
+}
+
+@keyframes chapterNavIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.chapter-nav-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.chapter-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-8);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-gray-900);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+}
+
+.chapter-nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-forest-300);
+}
+
+.chapter-nav-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* 下拉箭头动画 */
+.chapter-nav-arrow {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.chapter-nav-btn:hover .chapter-nav-arrow {
+  transform: translateY(2px);
+}
+
+/* ── 暗色主题的章节导航按钮（Hero 上使用） ────────────────── */
+.chapter-nav-btn.dark {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.chapter-nav-btn.dark:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ── 章节进度指示器 ────────────────────────────────────────── */
+.chapter-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  animation: chapterNavIn 600ms var(--ease-out-expo) 700ms forwards;
+}
+
+.chapter-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.chapter-progress-dot.active {
+  background: var(--color-forest-500);
+  width: 20px;
+  border-radius: 3px;
+}
+
+.chapter-progress-dot.past {
+  background: var(--color-forest-300);
+}
+
+/* ── 响应式 ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .chapter-nav {
+    bottom: var(--space-6);
+  }
+
+  .chapter-nav-btn {
+    padding: var(--space-2) var(--space-6);
+    font-size: var(--text-sm);
+  }
+}
+
+/* ── reduced-motion 降级 ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .chapter.entering {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .chapter.exiting {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    filter: none;
+  }
+
+  .chapter-nav {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

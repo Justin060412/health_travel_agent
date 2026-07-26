@@ -1,0 +1,31 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带山地气候",
+    "climate_code": "Cfb",
+    "average_temperature": "16.5℃",
+    "summer_temperature": "22–32℃",
+    "winter_temperature": "1–10℃",
+    "annual_precipitation": "1600–2000mm",
+    "humidity": "年均相对湿度 78%",
+    "sunshine_hours": "年均 1,600–1,800 小时",
+    "best_season": "4–6月、9–11月（春秋最佳）；夏季山顶凉爽适合避暑",
+    "climate_features": [
+      "四季分明，春秋温和，景色极佳",
+      "夏季山下较热但山顶（光明顶1860m）仅 15–20℃",
+      "黄山五绝之一'温泉'（朱砂泉），水温常年 42℃",
+      "黄山云海年均 250 天以上，'黄山归来不看岳'",
+      "冬季有雪景、雾凇、云海三绝同框的奇观"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 安徽省气象局 2023年气候公报 / 黄山气象站公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101221001.shtml",
+      "http://ah.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "黄山汤口",
+    "province": "安徽省",
+    "city": "黄山市"
+  }
+}

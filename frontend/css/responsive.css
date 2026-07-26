@@ -1,0 +1,437 @@
+/* ============================================================
+   AI 康养旅居 — Responsive
+   Sprint 6 Phase 4: Brand Experience
+   全断点精细优化 · Safe Area · Touch-friendly
+   Breakpoints: 1440 · 1280 · 1024 · 768 · 430 · 390
+   ============================================================ */
+
+/* ── Global Safe Area ──────────────────────────────────── */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+.nav {
+  padding-top: var(--safe-top);
+  height: calc(var(--nav-height) + var(--safe-top));
+}
+
+/* ── 1440px+（大屏优化） ─────────────────────────────────── */
+@media (min-width: 1440px) {
+  .hero-content {
+    max-width: 1280px;
+  }
+  .showcase-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── 1280px ──────────────────────────────────────────────── */
+@media (max-width: 1280px) {
+  .hero-content {
+    gap: var(--space-10);
+  }
+  .hero-panel {
+    max-width: 340px;
+  }
+}
+
+/* ── 1024px（平板横屏 / 小笔记本） ──────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --max-width-wide: 960px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-subtitle {
+    margin: 0 auto var(--space-10);
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-panel {
+    justify-self: center;
+    max-width: 420px;
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── 768px（iPad 竖屏） ─────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 56px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: calc(var(--nav-height) + var(--space-8)) var(--space-5) var(--space-20);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .hero-panel-card {
+    padding: var(--space-5);
+  }
+
+  .hero-scroll-hint {
+    display: none;
+  }
+
+  /* Sections */
+  .home-section {
+    padding: var(--space-16) 0;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  /* Cards */
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .showcase-card-img-wrap {
+    height: 180px;
+  }
+
+  /* Map */
+  #home-map {
+    height: 300px;
+  }
+
+  /* Nav: show hamburger placeholder, hide links */
+  .nav-menu-btn { display: flex; }
+  .nav-links,
+  .nav-cta { display: none; }
+
+  /* Footer */
+  .footer {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  /* Skeleton grid: 2 cols on tablet */
+  .skeleton-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Results page: stack layout */
+  .result-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .map-sticky {
+    position: relative;
+    top: 0;
+  }
+
+  .map-container {
+    height: 380px;
+    min-height: 300px;
+  }
+
+  .result-right {
+    order: 2;
+  }
+
+  .result-container {
+    padding: 32px 16px 60px;
+  }
+
+  /* AI overlay card on tablet */
+  .ai-overlay-card {
+    width: 90vw;
+    max-width: 440px;
+    padding: 28px 24px;
+  }
+}
+
+/* ── 430px（iPhone Pro Max / Large phones） ──────────────── */
+@media (max-width: 430px) {
+  :root {
+    --nav-height: 52px;
+  }
+
+  /* Hero */
+  .hero-content {
+    padding: calc(var(--nav-height) + var(--space-4)) var(--space-4) var(--space-12);
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-sm);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-panel-card {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  /* Sections */
+  .home-section-header h2 {
+    font-size: var(--text-xl);
+  }
+  .home-section-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .overview-tile {
+    padding: var(--space-4) var(--space-2);
+  }
+
+  .overview-tile-value {
+    font-size: var(--text-xl);
+  }
+
+  /* Cards */
+  .showcase-card-img-wrap {
+    height: 160px;
+  }
+
+  /* Map */
+  #home-map {
+    height: 260px;
+  }
+
+  /* Buttons */
+  .btn-lg {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  /* Map legend */
+  .home-map-legend {
+    gap: var(--space-2);
+    font-size: 0.65rem;
+  }
+
+  .legend-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* AI overlay card on phone */
+  .ai-overlay-card {
+    width: 94vw;
+    padding: 24px 18px;
+  }
+
+  .ai-thinking-step {
+    padding: 8px 10px;
+  }
+
+  .ai-thinking-step .step-text {
+    font-size: 0.8rem;
+  }
+
+  /* Results page on phone */
+  .map-container {
+    height: 320px;
+    min-height: 260px;
+  }
+
+  .ai-summary {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 18px;
+  }
+
+  .rec-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-header h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .rec-card-body {
+    padding: var(--space-4);
+  }
+
+  .feature-card {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  /* Nav size */
+  .nav-brand-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .nav-brand {
+    font-size: var(--text-base);
+  }
+
+  /* Questionnaire */
+  .q-container {
+    padding: 24px 12px 60px;
+  }
+
+  .q-section {
+    padding: 20px 16px;
+  }
+
+  .q-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .q-section-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ── 390px（iPhone standard） ────────────────────────────── */
+@media (max-width: 390px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 7vw, 1.9rem);
+  }
+
+  .overview-tile {
+    padding: var(--space-3) var(--space-1);
+  }
+
+  .overview-tile-value {
+    font-size: var(--text-lg);
+  }
+
+  .btn-lg {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .showcase-card-img-wrap {
+    height: 140px;
+  }
+
+  #home-map {
+    height: 220px;
+  }
+
+  .map-container {
+    height: 280px;
+    min-height: 240px;
+  }
+
+  .hero-panel-card {
+    padding: var(--space-3);
+  }
+}
+
+/* ── Touch-friendly ────────────────────────────────────── */
+@media (pointer: coarse) {
+  /* Enlarge all interactive areas */
+  .btn,
+  .nav-link,
+  .nav-cta,
+  .layer-btn,
+  .showcase-card,
+  .rec-card,
+  .overview-tile {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable hover-reliant effects on touch */
+  .magnetic-btn {
+    will-change: auto;
+  }
+  .magnetic-btn:hover {
+    transform: none !important;
+  }
+
+  /* Larger touch targets for map popup close */
+  .leaflet-popup-close-button {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.4rem !important;
+  }
+}
+
+/* ── prefers-reduced-motion: 全局降级 ──────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  .overview-tile,
+  .showcase-card,
+  .home-map-wrap,
+  .blur-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .magnetic-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .page-progress-fill {
+    transition: none;
+  }
+}
+
+/* ── High contrast / forced colors ──────────────────────── */
+@media (forced-colors: active) {
+  .btn-primary {
+    border: 2px solid ButtonText;
+  }
+  .nav {
+    border-bottom: 1px solid ButtonText;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "三级甲等",
+    "medical_score": "优",
+    "nearest_hospital": "西双版纳州人民医院",
+    "hospital_grade": "三级甲等综合医院",
+    "hospital_distance_km": 10,
+    "hospital_beds": 1000,
+    "key_departments": [
+      "内科",
+      "呼吸内科",
+      "康复医学科",
+      "中医科（傣医特色）",
+      "老年病科",
+      "热带病科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "西双版纳州人民医院为三级甲等综合医院，是滇南区域医疗中心",
+      "傣医药是国家四大民族医药之一（藏蒙维傣），设有傣医特色诊疗中心",
+      "傣医'四塔五蕴'理论体系对慢性病和亚健康调理有独特方案",
+      "景洪市还有西双版纳傣医院等民族医疗机构",
+      "热带病防治经验丰富"
+    ],
+    "emergency_capability": "西双版纳州 120 急救中心，州人民医院距嘎洒约 10 公里（15 分钟车程）；云南省第一人民医院（三级甲等）距约 520 公里（航空 1 小时）",
+    "tertiary_hospital_distance_km": 10,
+    "tertiary_hospital": "西双版纳州人民医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；西双版纳州人民医院官网；云南省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://ynswsjkw.yn.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "西双版纳嘎洒"
+  }
+}

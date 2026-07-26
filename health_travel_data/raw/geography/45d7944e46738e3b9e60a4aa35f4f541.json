@@ -1,0 +1,90 @@
+[
+  {
+    "place_id": 242380500,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 19221492,
+    "lat": "30.8813160",
+    "lon": "103.5887676",
+    "class": "boundary",
+    "type": "administrative",
+    "place_rank": 16,
+    "importance": 0.25876906166717667,
+    "addresstype": "town",
+    "name": "青城山镇",
+    "display_name": "青城山镇, 都江堰市, 成都市, 四川省, 611844, 中国",
+    "address": {
+      "town": "青城山镇",
+      "city": "都江堰市",
+      "state": "四川省",
+      "ISO3166-2-lvl4": "CN-SC",
+      "postcode": "611844",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "30.7662841",
+      "30.9743037",
+      "103.4285981",
+      "103.6712968"
+    ]
+  },
+  {
+    "place_id": 241959678,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 471760326,
+    "lat": "30.9351935",
+    "lon": "103.4765306",
+    "class": "leisure",
+    "type": "nature_reserve",
+    "place_rank": 24,
+    "importance": 0.08006000228885325,
+    "addresstype": "nature_reserve",
+    "name": "青城山(后山)",
+    "display_name": "青城山(后山), 都江堰市, 成都市, 四川省, 中国",
+    "address": {
+      "nature_reserve": "青城山(后山)",
+      "city": "都江堰市",
+      "state": "四川省",
+      "ISO3166-2-lvl4": "CN-SC",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "30.9171875",
+      "30.9519653",
+      "103.4642075",
+      "103.4964039"
+    ]
+  },
+  {
+    "place_id": 241834988,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 410202467,
+    "lat": "30.9073694",
+    "lon": "103.5625250",
+    "class": "leisure",
+    "type": "nature_reserve",
+    "place_rank": 24,
+    "importance": 0.08006000228885325,
+    "addresstype": "nature_reserve",
+    "name": "青城山(前山)",
+    "display_name": "青城山(前山), 都江堰市, 成都市, 四川省, 中国",
+    "address": {
+      "nature_reserve": "青城山(前山)",
+      "city": "都江堰市",
+      "state": "四川省",
+      "ISO3166-2-lvl4": "CN-SC",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "30.8985122",
+      "30.9180034",
+      "103.5523771",
+      "103.5764367"
+    ]
+  }
+]

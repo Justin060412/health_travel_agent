@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "87.3%",
+    "forest_coverage_value": 87.3,
+    "forest_type": "亚热带常绿阔叶林与针阔混交林",
+    "forest_features": [
+      "苏马荡森林公园核心区原始次生林保存完好",
+      "武陵山区生物多样性关键区域",
+      "拥有'天下第一杉'——600余年树龄的水杉王",
+      "高山草场（齐岳山）与森林交错分布，景观丰富"
+    ],
+    "greening_rate": "90.5%",
+    "forest_area_km2": "约 2,100 km²（利川市全域）",
+    "national_forest_park": "苏马荡森林公园",
+    "forest_conservation_level": "国家级生态功能区（武陵山区）",
+    "source": "国家林业和草原局《中国森林资源报告》；湖北省林业局《2023年湖北林业发展统计公报》；恩施州林业局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.hubei.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "苏马荡"
+  }
+}

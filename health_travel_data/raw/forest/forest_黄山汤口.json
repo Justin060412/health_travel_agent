@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "91.5%",
+    "forest_coverage_value": 91.5,
+    "forest_type": "亚热带常绿阔叶林与山地针叶林",
+    "forest_features": [
+      "黄山风景区森林覆盖率极高，华东地区最佳森林康养基地",
+      "拥有黄山松、华东黄杉等特有珍稀树种",
+      "垂直植被带完整：常绿阔叶林→落叶阔叶林→针叶林→高山草甸",
+      "黄山松（迎客松为代表）是中国的文化象征之一"
+    ],
+    "greening_rate": "95.0%",
+    "forest_area_km2": "约 1,200 km²（黄山风景区及周边）",
+    "national_forest_park": "黄山国家森林公园",
+    "forest_conservation_level": "世界文化与自然双重遗产 / 世界地质公园 / 国家级风景名胜区",
+    "source": "国家林业和草原局《中国森林资源报告》；安徽省林业局《2023年安徽林业发展统计公报》；黄山风景区管理委员会公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.ah.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "黄山汤口"
+  }
+}

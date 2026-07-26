@@ -1,0 +1,24 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 45,
+    "pm25_annual": 25,
+    "pm10_annual": 48,
+    "negative_oxygen": "8,000–40,000 个/cm³（青城山景区核心区）",
+    "air_quality_features": [
+      "青城山—都江堰世界遗产地生态环境保护严格",
+      "成都市'西控'战略区域，限制工业发展",
+      "森林覆盖率高，负氧离子浓度极优",
+      "全年空气质量优良天数比例 > 90%"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；成都市生态环境局《2023年成都市环境状况公报》；都江堰市生态环境局公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthj.chengdu.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "青城山"
+  }
+}

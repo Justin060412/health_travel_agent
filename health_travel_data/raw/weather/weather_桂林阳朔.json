@@ -1,0 +1,30 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带季风气候",
+    "climate_code": "Cfa",
+    "average_temperature": "19.5℃",
+    "summer_temperature": "24–33℃",
+    "winter_temperature": "6–14℃",
+    "annual_precipitation": "1600–1900mm",
+    "humidity": "年均相对湿度 76%",
+    "sunshine_hours": "年均 1,400–1,600 小时",
+    "best_season": "4–6月、9–11月（春秋温和，景色最佳）",
+    "climate_features": [
+      "四季分明，春秋温和宜人",
+      "夏季较热但漓江水域调节湿度，早晚凉爽",
+      "冬季温和少严寒，最冷月（1月）均温 8–10℃",
+      "喀斯特地貌形成独特的山水小气候"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 广西气象局 2023年气候公报 / 桂林市气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101300501.shtml",
+      "http://gx.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "桂林阳朔",
+    "province": "广西壮族自治区",
+    "city": "桂林市"
+  }
+}

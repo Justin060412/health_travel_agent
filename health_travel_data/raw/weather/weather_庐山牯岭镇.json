@@ -1,0 +1,31 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带山地气候",
+    "climate_code": "Cfb",
+    "average_temperature": "11.6℃",
+    "summer_temperature": "18–26℃",
+    "winter_temperature": "-2–6℃",
+    "annual_precipitation": "1800–2200mm",
+    "humidity": "年均相对湿度 80%",
+    "sunshine_hours": "年均 1,500–1,700 小时",
+    "best_season": "6–9月（夏季凉爽，避暑最佳）；冬季可观雾凇雪景",
+    "climate_features": [
+      "夏季凉爽，最热月（7月）均温仅 22.6℃，比山下低约 10℃",
+      "中国近代'四大避暑胜地'之一",
+      "云雾日年均 190 天以上，'不识庐山真面目'的云海奇观",
+      "冬季有雾凇和降雪，虽冷但景观独特",
+      "年降水量充沛，空气湿润，植被终年青翠"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 江西省气象局 2023年气候公报 / 庐山气象站公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101240201.shtml",
+      "http://jx.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "庐山牯岭镇",
+    "province": "江西省",
+    "city": "九江市"
+  }
+}

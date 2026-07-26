@@ -1,0 +1,35 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "二级甲等",
+    "medical_score": "良",
+    "nearest_hospital": "武夷山市立医院",
+    "hospital_grade": "二级甲等综合医院",
+    "hospital_distance_km": 8,
+    "hospital_beds": 600,
+    "key_departments": [
+      "内科",
+      "康复医学科",
+      "中医科",
+      "老年病科",
+      "急诊科"
+    ],
+    "medical_features": [
+      "武夷山市立医院为二级甲等综合医院，可满足常见病和多发病诊疗",
+      "南平市第一医院（三级甲等）距约 120 公里",
+      "武夷山市中医院提供中医药和茶疗康养服务",
+      "武夷山'茶疗'文化特色鲜明，茶多酚等生物活性成分有抗氧化康养价值"
+    ],
+    "emergency_capability": "武夷山市 120 急救中心；南平市第一医院（三级甲等）距约 120 公里（约 1.5 小时车程）",
+    "tertiary_hospital_distance_km": 120,
+    "tertiary_hospital": "南平市第一医院（三级甲等）/ 福建省立医院（三级特等，距约 300 公里）",
+    "source": "国家卫生健康委员会医院等级公开信息；武夷山市立医院官网；福建省卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wjw.fujian.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "武夷山"
+  }
+}

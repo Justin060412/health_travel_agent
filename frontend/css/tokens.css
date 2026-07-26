@@ -1,0 +1,232 @@
+/* ============================================================
+   AI 康养旅居 — Design Tokens
+   Sprint 6: 产品化设计系统基础
+   设计参考: Apple · Airbnb · Solidroad · Linear
+   关键词: Minimal · Nature · Glass · Premium · Spatial
+   ============================================================ */
+
+:root {
+  /* ── 主色系：森林绿（克制、高级、不荧光） ────────────── */
+  --color-forest-50:  #f0f7f3;
+  --color-forest-100: #dceee3;
+  --color-forest-200: #b5dcc5;
+  --color-forest-300: #84c6a0;
+  --color-forest-400: #52ad7a;
+  --color-forest-500: #33915d;
+  --color-forest-600: #1f7544;
+  --color-forest-700: #1a5e37;
+  --color-forest-800: #164b2d;
+  --color-forest-900: #123d25;
+  --color-forest-950: #0a2214;
+
+  /* 自然绿（辅助色，更明亮但不荧光） */
+  --color-nature-50:  #f4f9f5;
+  --color-nature-100: #e3f1e7;
+  --color-nature-200: #c1e2cb;
+  --color-nature-300: #92cba4;
+  --color-nature-400: #5faf78;
+  --color-nature-500: #3d9357;
+  --color-nature-600: #2d7743;
+  --color-nature-700: #255f37;
+
+  /* ── 中性色：暖灰（暖白底 + 灰阶文字） ──────────────── */
+  --color-warm-white:    #faf9f7;
+  --color-warm-white-50: #f7f6f3;
+  --color-warm-white-100:#f0eeea;
+  --color-warm-white-200:#e6e3dd;
+
+  --color-gray-50:  #f8f8f7;
+  --color-gray-100: #f0f0ee;
+  --color-gray-200: #e4e4e1;
+  --color-gray-300: #cececa;
+  --color-gray-400: #a3a39e;
+  --color-gray-500: #73736f;
+  --color-gray-600: #52524f;
+  --color-gray-700: #40403d;
+  --color-gray-800: #262624;
+  --color-gray-900: #171716;
+
+  /* ── 语义别名（兼容旧代码） ──────────────────────────── */
+  --green-50:  var(--color-forest-50);
+  --green-100: var(--color-forest-100);
+  --green-200: var(--color-forest-200);
+  --green-300: var(--color-forest-300);
+  --green-400: var(--color-forest-400);
+  --green-500: var(--color-forest-500);
+  --green-600: var(--color-forest-600);
+  --green-700: var(--color-forest-700);
+  --green-800: var(--color-forest-800);
+  --green-900: var(--color-forest-900);
+
+  --color-primary:       var(--color-forest-600);
+  --color-primary-hover: var(--color-forest-700);
+  --color-primary-light: var(--color-forest-50);
+  --color-accent:        var(--color-forest-500);
+  --color-bg:            var(--color-warm-white);
+  --color-surface:       #ffffff;
+  --color-text:          var(--color-gray-800);
+  --color-text-secondary:var(--color-gray-500);
+  --color-text-muted:    var(--color-gray-400);
+  --color-border:        var(--color-gray-200);
+  --color-border-light:  var(--color-warm-white-100);
+
+  /* ── 玻璃材质（Glassmorphism 核心） ──────────────────── */
+  --glass-bg:            rgba(255, 255, 255, 0.12);
+  --glass-bg-strong:     rgba(255, 255, 255, 0.18);
+  --glass-bg-light:      rgba(255, 255, 255, 0.06);
+  --glass-border:        rgba(255, 255, 255, 0.20);
+  --glass-border-strong: rgba(255, 255, 255, 0.28);
+  --glass-blur:          24px;
+  --glass-blur-strong:   40px;
+  --glass-blur-light:    12px;
+  --glass-saturate:      1.8;
+
+  /* Glass 高级质感（Sprint 6 Phase 3） */
+  --glass-edge-highlight:  inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --glass-edge-highlight-strong: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --glass-corner-reflection:
+    radial-gradient(ellipse 300px 200px at 15% 10%, rgba(255,255,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 200px 150px at 85% 5%,  rgba(255,255,255,0.04) 0%, transparent 55%);
+  --glass-noise-opacity: 0.028;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), var(--glass-edge-highlight);
+  --glass-shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.16), var(--glass-edge-highlight-strong);
+
+  /* 暗色玻璃（用于深色背景上的玻璃面板） */
+  --glass-dark-bg:       rgba(0, 0, 0, 0.12);
+  --glass-dark-border:   rgba(255, 255, 255, 0.08);
+
+  /* ── 排版：字体族 ────────────────────────────────────── */
+  --font-sans: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei",
+               "Hiragino Sans GB", "MiSans", "Noto Sans SC",
+               -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-display: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont,
+                  var(--font-sans);
+  --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code",
+               ui-monospace, "SFMono-Regular", Menlo, Monaco, monospace;
+
+  /* 数字等宽（防止 count-up 抖动） */
+  --font-numeric: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+                  "Helvetica Neue", Arial, sans-serif;
+  --font-feature-tnums: "tnum" 1;  /* tabular-nums via font-feature-settings */
+
+  /* ── 排版：流体字阶（clamp 自适应） ──────────────────── */
+  --text-xs:   clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem);    /* 11-12px */
+  --text-sm:   clamp(0.75rem,   0.7rem + 0.2vw,  0.875rem);    /* 12-14px */
+  --text-base: clamp(0.875rem,  0.8rem + 0.3vw,  1rem);        /* 14-16px */
+  --text-lg:   clamp(0.9375rem, 0.88rem + 0.25vw, 1.125rem);   /* 15-18px */
+  --text-xl:   clamp(1.125rem,  1.05rem + 0.3vw,  1.375rem);   /* 18-22px */
+  --text-2xl:  clamp(1.375rem,  1.25rem + 0.5vw,  1.75rem);    /* 22-28px */
+  --text-3xl:  clamp(1.75rem,   1.5rem + 1vw,    2.5rem);      /* 28-40px */
+  --text-4xl:  clamp(2.25rem,   1.8rem + 1.8vw,  3.5rem);      /* 36-56px */
+  --text-5xl:  clamp(3rem,      2.4rem + 2.4vw,  5rem);        /* 48-80px */
+
+  /* ── 间距系统（4px 网格） ────────────────────────────── */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-28: 112px;
+  --space-32: 128px;
+
+  /* ── 圆角系统 ────────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-2xl:  36px;
+  --radius-full: 9999px;
+
+  /* ── 阴影系统（Apple 风格多层柔和阴影） ──────────────── */
+  --shadow-none: none;
+
+  /* 微妙 — 卡片/面板默认 */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+
+  /* 小 — 轻微浮起 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04),
+               0 1px 2px rgba(0, 0, 0, 0.02);
+
+  /* 中 — 卡片 hover */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06),
+               0 1px 4px rgba(0, 0, 0, 0.03);
+
+  /* 大 — 模态框/弹出层 */
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08),
+               0 2px 8px rgba(0, 0, 0, 0.04);
+
+  /* 特大 — Hero 面板 */
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10),
+               0 4px 16px rgba(0, 0, 0, 0.04);
+
+  /* 2XL — 最大浮层 */
+  --shadow-2xl: 0 24px 64px rgba(0, 0, 0, 0.14),
+                0 8px 24px rgba(0, 0, 0, 0.06);
+
+  /* 玻璃面板专用阴影 */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.12),
+                  0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+
+  /* 发光 — 绿色微光 */
+  --shadow-glow: 0 0 0 1px rgba(31, 117, 68, 0.08),
+                 0 0 60px rgba(31, 117, 68, 0.06);
+
+  /* ── 缓动函数 ────────────────────────────────────────── */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);        /* 标准缓出 */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);       /* 指数缓出（高级感） */
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);       /* 对称缓动 */
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);    /* 弹性 */
+  --ease-smooth:   cubic-bezier(0.25, 0.1, 0.25, 1);     /* 平滑 */
+
+  /* ── 动画时长 ────────────────────────────────────────── */
+  --duration-instant: 100ms;
+  --duration-fast:    200ms;
+  --duration-normal:  400ms;
+  --duration-medium:  600ms;
+  --duration-slow:    800ms;
+  --duration-slower:  1000ms;
+  --duration-slowest: 1200ms;
+
+  /* ── 过渡预设 ────────────────────────────────────────── */
+  --transition-fast:   var(--duration-fast) var(--ease-out);
+  --transition-normal: var(--duration-normal) var(--ease-out);
+  --transition-medium: var(--duration-medium) var(--ease-out-expo);
+  --transition-slow:   var(--duration-slow) var(--ease-out-expo);
+
+  /* ── 布局 ────────────────────────────────────────────── */
+  --max-width:        1200px;
+  --max-width-wide:   1400px;
+  --max-width-narrow: 720px;
+  --nav-height:       64px;
+
+  /* ── Z-Index 层级 ────────────────────────────────────── */
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  500;
+  --z-modal:    1000;
+  --z-toast:    1100;
+}
+
+/* ── SVG Icon 尺寸（全局可用） ────────────────────────────── */
+.icon-xs { width: 12px; height: 12px; color: var(--color-text-secondary); }
+.icon-sm { width: 14px; height: 14px; color: var(--color-text-secondary); }
+.icon-md { width: 16px; height: 16px; color: var(--color-text-secondary); }
+.icon-lg { width: 20px; height: 20px; color: var(--color-text-secondary); }
+
+/* ── 暗色模式预留（未来扩展） ────────────────────────────── */
+/* @media (prefers-color-scheme: dark) { ... } */

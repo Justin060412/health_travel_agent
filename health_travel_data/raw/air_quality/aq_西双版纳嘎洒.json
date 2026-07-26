@@ -1,0 +1,24 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 36,
+    "pm25_annual": 16,
+    "pm10_annual": 35,
+    "negative_oxygen": "10,000–50,000 个/cm³（热带雨林区域）",
+    "air_quality_features": [
+      "热带雨林植被茂密，空气自净能力强",
+      "景洪市无重工业污染源",
+      "热带雨林区域负氧离子浓度极高，居全国前列",
+      "全年空气质量优良天数比例 > 96%"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；西双版纳州生态环境局《2023年西双版纳州环境状况公报》；云南省生态环境厅公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjt.yn.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "西双版纳嘎洒"
+  }
+}

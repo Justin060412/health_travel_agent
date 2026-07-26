@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "71.2%",
+    "forest_coverage_value": 71.2,
+    "forest_type": "亚热带常绿阔叶林与喀斯特石山灌丛",
+    "forest_features": [
+      "喀斯特峰林峰丛与森林植被的独特景观组合",
+      "漓江两岸竹林和风水林保存完好",
+      "石山植被具有独特的喀斯特适应性",
+      "阳朔县为国家级生态示范区"
+    ],
+    "greening_rate": "76.0%",
+    "forest_area_km2": "约 1,400 km²（阳朔县全域）",
+    "national_forest_park": "桂林国家森林公园（邻近）",
+    "forest_conservation_level": "国家级风景名胜区（漓江）/ 世界自然遗产（中国南方喀斯特）",
+    "source": "国家林业和草原局《中国森林资源报告》；广西壮族自治区林业局《2023年广西林业发展统计公报》；桂林市林业和园林局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.gxzf.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "桂林阳朔"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带山地气候（垂直立体气候）",
+    "climate_code": "Cfb (山麓) / ET (金顶)",
+    "average_temperature": "17.2℃（山麓）/ 3.1℃（金顶）",
+    "summer_temperature": "22–32℃（山麓）/ 10–18℃（金顶）",
+    "winter_temperature": "4–12℃（山麓）/ -8–-2℃（金顶）",
+    "annual_precipitation": "1500–2000mm",
+    "humidity": "年均相对湿度 85%",
+    "sunshine_hours": "年均 1,200–1,400 小时",
+    "best_season": "5–10月（山麓避暑康养最佳）；全年山麓区域宜居",
+    "climate_features": [
+      "一山有四季，十里不同天：垂直高差 2600m 造就立体气候",
+      "山麓（500–1000m）夏季凉爽，冬季温和，最适合康养",
+      "峨眉山市年均气温 17.2℃，冬暖夏凉",
+      "雨量充沛，'峨眉天下秀'：空气湿润，皮肤保湿效果好",
+      "金顶（3079m）可观日出、云海、佛光、圣灯四大奇观"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 四川省气象局 2023年气候公报 / 峨眉山市气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101271401.shtml",
+      "http://sc.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "峨眉山",
+    "province": "四川省",
+    "city": "乐山市峨眉山市"
+  }
+}

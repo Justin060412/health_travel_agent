@@ -1,0 +1,31 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "高原季风气候",
+    "climate_code": "Cwb",
+    "average_temperature": "15.1℃",
+    "summer_temperature": "18–26℃",
+    "winter_temperature": "4–16℃",
+    "annual_precipitation": "1000–1100mm",
+    "humidity": "年均相对湿度 66%",
+    "sunshine_hours": "年均 2,200–2,500 小时",
+    "best_season": "全年宜居，3–5月、9–11月气候最佳",
+    "climate_features": [
+      "四季如春，年温差小（仅 10–12℃），但日温差大",
+      "冬季白天温暖（15–18℃），适合避寒",
+      "夏季凉爽干燥，无闷热感",
+      "日照充足，'阳光之城'，有利于维生素D合成和情绪调节",
+      "雨季集中在 6–8 月，多为阵雨"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 云南省气象局 2023年气候公报 / 大理州气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101290201.shtml",
+      "http://yn.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "大理古城",
+    "province": "云南省",
+    "city": "大理白族自治州"
+  }
+}

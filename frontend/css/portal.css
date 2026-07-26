@@ -1,0 +1,252 @@
+/**
+ * AI 康养旅居 — Portal System
+ * Sprint 7 Act 2: 轨道入口
+ *
+ * 设计语言：
+ *   - 不是卡片，是悬浮入口
+ *   - 每个 Portal 通过 absolute 定位在 explore-portals 容器内
+ *   - JS 负责计算精确位置（orbit layout）
+ *   - CSS 只负责视觉表现
+ *
+ * 参考：Apple TV 悬浮卡片、Nothing 极简、Portal 概念
+ */
+
+/* ═══════════════════════════════════════════════════════
+   Portal Container
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  border-radius: var(--radius-xl, 20px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  min-width: 180px;
+  max-width: 220px;
+
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Glass reflection line */
+.explore-portal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.06) 70%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Portal Dot (golden breathing light)
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(210, 170, 110, 0.7);
+  box-shadow:
+    0 0 6px 2px rgba(200, 160, 100, 0.3),
+    0 0 12px 4px rgba(200, 160, 100, 0.1);
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Breathing */
+.explore-portal-dot.portal-breathing {
+  animation: portalDotBreathe 3s ease-in-out infinite;
+}
+
+@keyframes portalDotBreathe {
+  0%, 100% {
+    opacity: 0.5;
+    box-shadow: 0 0 4px 1px rgba(200, 160, 100, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 0 8px 3px rgba(200, 160, 100, 0.4),
+      0 0 16px 5px rgba(200, 160, 100, 0.15);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Portal Content
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.explore-portal-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.4s ease;
+  white-space: nowrap;
+}
+
+.explore-portal-desc {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs, 0.75rem);
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.4s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Hover State
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.explore-portal:hover::before {
+  opacity: 1;
+}
+
+.explore-portal:hover .explore-portal-dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(230, 190, 130, 0.9);
+  box-shadow:
+    0 0 10px 4px rgba(210, 170, 110, 0.5),
+    0 0 20px 7px rgba(210, 170, 110, 0.2);
+}
+
+.explore-portal:hover .explore-portal-title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.explore-portal:hover .explore-portal-desc {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Magnetic Proximity (JS: .portal-near and .portal-close)
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal.portal-near {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.explore-portal.portal-near .explore-portal-dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(230, 190, 130, 0.9);
+  box-shadow:
+    0 0 10px 4px rgba(210, 170, 110, 0.5),
+    0 0 20px 7px rgba(210, 170, 110, 0.2);
+}
+
+.explore-portal.portal-near .explore-portal-title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.explore-portal.portal-close {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(180, 150, 100, 0.06);
+}
+
+.explore-portal.portal-close .explore-portal-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(245, 205, 145, 1);
+  box-shadow:
+    0 0 14px 5px rgba(220, 180, 120, 0.55),
+    0 0 28px 10px rgba(220, 180, 120, 0.25);
+}
+
+.explore-portal.portal-close .explore-portal-title {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Focus & Accessibility
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal:focus-visible {
+  outline: 2px solid rgba(180, 200, 160, 0.4);
+  outline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Ripple (energy wave on click)
+   ═══════════════════════════════════════════════════════ */
+
+.explore-portal .portal-ripple {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 1px solid rgba(200, 170, 130, 0.3);
+  animation: rippleOut 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes rippleOut {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive: Portals stack on mobile
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .explore-portal {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    min-width: 0;
+    max-width: 100%;
+    width: 260px;
+  }
+}

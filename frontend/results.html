@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>康养旅居 · AI 分析报告</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 新增组件样式（Source 折叠 / 卡片增强） -->
+  <style>
+    .rec-card-source {
+      margin-top: 12px; padding: 10px 12px;
+      background: #f9fafb; border: 1px solid #e5e7eb;
+      border-radius: 8px; font-size: .8rem; color: #6b7280;
+    }
+    .rec-card-source summary {
+      cursor: pointer; font-weight: 600; color: #374151;
+      user-select: none; outline: none;
+    }
+    .rec-card-source summary:hover { color: #111827; }
+    .source-content { margin-top: 8px; line-height: 1.6; }
+    .source-content p { margin: 4px 0; word-break: break-all; }
+    .source-urls a {
+      display: block; font-size: .75rem; color: #3b82f6;
+      word-break: break-all; margin: 2px 0;
+    }
+    .source-urls a:hover { text-decoration: underline; }
+
+    .rec-card-image img[src^="data:image/svg"] {
+      object-fit: cover;
+    }
+
+    /* Phase 4: Marker Pulse */
+    @keyframes markerPulse {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+
+    /* Phase 4: Marker Hover Glow */
+    .phase4-marker {
+      cursor: pointer;
+      will-change: transform, box-shadow;
+    }
+  </style>
+</head>
+<body class="results-page">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <span class="nav-brand-icon">
+          <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 4L28 22H20L24 30H10L14 22H6L17 4Z" fill="currentColor" opacity="0.9"/>
+            <circle cx="17" cy="10" r="3" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </span>
+        <span>康养旅居</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── 加载状态 ────────────────────────────────────────── -->
+  <div id="loading" class="result-loading">
+    <div class="loading-spinner"></div>
+    <p>AI 正在分析您的数据…</p>
+  </div>
+
+  <!-- ── 结果主体（初始隐藏）─────────────────────────────── -->
+  <div id="result-content" class="result-container entrance-hidden">
+
+    <!-- 页面标题（全宽） -->
+    <div class="result-header">
+      <div class="ai-badge">🤖 AI 智能分析</div>
+      <h1>AI 康养分析报告<span class="ai-dot"></span></h1>
+      <p>根据您的健康状况、预算、气候偏好等信息，AI 为您生成了以下个性化推荐。</p>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════ -->
+    <!-- 分栏布局：左栏（摘要+卡片） | 右栏（地图）            -->
+    <!-- ════════════════════════════════════════════════════ -->
+    <div class="result-layout">
+
+      <!-- ── 左栏：摘要 + 卡片 ──────────────────────────── -->
+      <div class="result-left">
+
+        <!-- AI 分析摘要 — 打字机动画目标 -->
+        <div id="ai-summary-card" class="ai-summary">
+          <div class="ai-summary-icon">
+            <div class="icon-circle">✨</div>
+            <span>AI 综合分析</span>
+          </div>
+          <blockquote id="summary-text">
+            <span class="typewriter-cursor">|</span>
+          </blockquote>
+        </div>
+
+        <!-- AI 来源标识 -->
+        <div id="ai-attribution" class="ai-attribution" style="display:none;"></div>
+
+        <!-- 推荐目的地卡片列表 -->
+        <div id="rec-cards" class="rec-cards"></div>
+
+        <!-- 底部按钮 -->
+        <div class="result-actions">
+          <a class="btn btn-primary btn-lg" href="questionnaire.html">🔄 重新填写问卷</a>
+          <a class="btn btn-outline btn-lg" href="index.html">🏠 返回首页</a>
+        </div>
+
+      </div><!-- /result-left -->
+
+      <!-- ── 右栏：地图 ────────────────────────────────── -->
+      <div class="result-right">
+        <div class="map-sticky">
+
+          <!-- 图层切换器 -->
+          <div class="layer-switch" id="layer-switch">
+            <span class="layer-label">🗺️ 可视化图层</span>
+            <button class="layer-btn active" data-layer="recommendation">🤖 AI 推荐</button>
+            <button class="layer-btn disabled" data-layer="altitude" disabled>🏔️ 海拔</button>
+            <button class="layer-btn disabled" data-layer="climate" disabled>🌤️ 气候</button>
+            <button class="layer-btn disabled" data-layer="medical" disabled>🏥 医疗资源</button>
+            <button class="layer-btn disabled" data-layer="forest" disabled>🌲 森林覆盖</button>
+          </div>
+
+          <!-- Leaflet 地图容器 -->
+          <div id="map" class="map-container"></div>
+
+        </div>
+      </div><!-- /result-right -->
+
+    </div><!-- /result-layout -->
+
+  </div><!-- /result-content -->
+
+  <!-- ── 空状态（无数据时显示）─────────────────────────────── -->
+  <div id="empty-state" class="result-empty" style="display:none;">
+    <div class="empty-icon">📭</div>
+    <h3>暂无推荐数据</h3>
+    <p>请先完成康养旅居偏好问卷，让 AI 为您生成个性化的推荐报告。</p>
+    <a class="btn btn-primary btn-lg" href="questionnaire.html">📋 填写问卷</a>
+  </div>
+
+  <!-- ── 底部 ────────────────────────────────────────────── -->
+  <footer class="footer">
+    上海师范大学 环境与地理科学学院 · 苏马荡山地候鸟式康养旅居供需匹配研究
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+
+  <!-- UX Engine -->
+  <script src="js/ux.js"></script>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 主渲染脚本                                            -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ── 常量配置 ──────────────────────────────────────────
+      const API_BASE = 'http://127.0.0.1:8000';
+
+      const MATCH_LEVEL_MAP = {
+        '高':   { label: '强烈推荐', icon: '✨', cssClass: 'high' },
+        '较高': { label: '推荐',     icon: '👍', cssClass: 'medium' },
+        '一般': { label: '可考虑',   icon: '💡', cssClass: 'normal' },
+      };
+
+      const FALLBACK_MARKER = 'AI 推荐服务暂时不可用';
+
+      // 排名标记颜色（Top1→绿, Top2→蓝, Top3→橙, Top4→紫, Top5→灰）
+      const RANK_COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#8b5cf6', '#6b7280'];
+
+      const TYPEWRITER_SPEED = 40;
+      const CARD_STAGGER_DELAY = 150;
+
+      // 地图初始视角（中国中心）
+      const CHINA_CENTER = [35.86, 104.19];
+      const CHINA_ZOOM = 5;
+
+      // ── 缓存键 ──────────────────────────────────────────
+      const CACHE_KEY_RESULTS = 'ht_recommend_results';
+      const CACHE_KEY_DESTS  = 'ht_destinations';
+
+      // ── 运行时状态 ────────────────────────────────────────
+      let leafletMap = null;                // Leaflet 地图实例
+      const markerRegistry = new Map();     // dest_id → Leaflet marker
+      const cardRegistry = new Map();       // dest_id → DOM card element
+      let allRecommendations = [];          // 推荐结果缓存
+      let currentLayer = 'recommendation';  // 当前活跃图层
+      let isAI = true;                      // 是否 AI 生成模式
+
+      // ── 辅助工具 ──────────────────────────────────────────
+      const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      /** 从 API 目的地数据构建坐标索引（替代内联 JSON） */
+      function loadDestCoords(destMap) {
+        var coords = {};
+        Object.values(destMap).forEach(function(d) {
+          var tags = [];
+          try { tags = typeof d.features === 'string' ? JSON.parse(d.features) : (d.features || []); } catch(e) { tags = []; }
+          coords[d.id] = {
+            lat: d.latitude,
+            lng: d.longitude,
+            name: d.name,
+            province: d.province,
+            city: d.city || '',
+            altitude: d.altitude,
+            temperature_summer: d.temperature_summer,
+            temperature_winter: d.temperature_winter,
+            average_temperature: d.average_temperature,
+            air_quality: d.air_quality,
+            forest_coverage: d.forest_coverage,
+            medical_level: d.medical_level,
+            budget_level: d.budget_level,
+            monthly_cost_low: d.monthly_cost_low,
+            monthly_cost_high: d.monthly_cost_high,
+            suitable_for: d.suitable_for,
+            tags: tags,
+            image_url: d.image_url,
+            source: d.source,
+            source_url: d.source_url,
+          };
+        });
+        return coords;
+      }
+
+      /** 生成 SVG 渐变占位头图 */
+      function imageGradient(index, name) {
+        const hue = (index * 47 + 160) % 360;
+        const colors = [`hsl(${hue}, 55%, 45%)`, `hsl(${(hue + 30) % 360}, 60%, 35%)`];
+        const initial = name ? name.charAt(0) : '?';
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+          <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:${colors[0]}"/>
+            <stop offset="100%" style="stop-color:${colors[1]}"/>
+          </linearGradient></defs>
+          <rect width="400" height="200" fill="url(#g)"/>
+          <text x="200" y="115" text-anchor="middle" fill="rgba(255,255,255,.85)"
+                font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="64" font-weight="700">${escapeHtml(initial)}</text>
+        </svg>`;
+        return 'data:image/svg+xml,' + encodeURIComponent(svg);
+      }
+
+      // ── DOM 控制 ────────────────────────────────────────
+      function hideLoading() {
+        document.getElementById('loading').style.display = 'none';
+      }
+      function showContent() {
+        const el = document.getElementById('result-content');
+        el.style.display = 'block';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.classList.add('entrance-visible');
+          });
+        });
+      }
+      function showEmpty() {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('empty-state').style.display = 'block';
+      }
+
+      // ── 打字机动画 ──────────────────────────────────────
+      async function typewriter(element, text) {
+        element.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        cursor.textContent = '|';
+        element.parentElement.appendChild(cursor);
+
+        for (let i = 0; i < text.length; i++) {
+          element.textContent += text[i];
+          const delay = /[，。！？；：、\n]/.test(text[i])
+            ? TYPEWRITER_SPEED * 2.5 : TYPEWRITER_SPEED;
+          await sleep(delay);
+        }
+        cursor.remove();
+      }
+
+      // ══════════════════════════════════════════════════════
+      // 地图模块
+      // ══════════════════════════════════════════════════════
+
+      /** 初始化 Leaflet 地图 */
+      function initMap() {
+        if (leafletMap) return; // 防止重复初始化
+
+        leafletMap = L.map('map', {
+          center: CHINA_CENTER,
+          zoom: CHINA_ZOOM,
+          zoomControl: true,
+          scrollWheelZoom: true,
+          doubleClickZoom: true,
+          attributionControl: true,
+        });
+
+        // OpenStreetMap 瓦片
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 18,
+        }).addTo(leafletMap);
+
+        // 地图加载完成后刷新尺寸
+        setTimeout(() => { leafletMap.invalidateSize(); }, 300);
+      }
+
+      /** 构建弹出窗口 HTML（数据全部来自 API） */
+      function buildPopup(destCoord, rec) {
+        var parts = [];
+        parts.push('<div class="map-popup">');
+
+        // 真实图片缩略图
+        if (destCoord.image_url) {
+          parts.push('<img src="' + escapeHtml(destCoord.image_url) + '" alt="' + escapeHtml(rec.name) + '"');
+          parts.push(' style="width:100%;height:100px;object-fit:cover;border-radius:8px 8px 0 0;margin:-12px -12px 8px -12px;display:block;"');
+          parts.push(' loading="lazy" onerror="this.style.display=\'none\'">');
+        }
+
+        parts.push('<h4>' + escapeHtml(rec.name) + '</h4>');
+        if (destCoord.city) {
+          parts.push('<p style="color:#6b7280;font-size:.8rem;margin:-4px 0 6px 0;">📍 ' + escapeHtml(destCoord.city) + '</p>');
+        }
+        parts.push('<p class="popup-reason">💬 ' + escapeHtml(rec.reason || '该目的地综合条件与您的需求高度契合。') + '</p>');
+        parts.push('<div class="popup-info">');
+        parts.push('<span>🏔️ 海拔 ' + destCoord.altitude + ' 米</span>');
+        if (destCoord.average_temperature) { parts.push('<span>🌡️ 年均 ' + escapeHtml(destCoord.average_temperature) + '</span>'); }
+        parts.push('<span>☀️ 夏季 ' + escapeHtml(destCoord.temperature_summer || '—') + '</span>');
+        if (destCoord.forest_coverage) { parts.push('<span>🌲 森林覆盖 ' + escapeHtml(destCoord.forest_coverage) + '</span>'); }
+        if (destCoord.air_quality) { parts.push('<span>🌬️ 空气质量 ' + escapeHtml(destCoord.air_quality) + '</span>'); }
+        if (destCoord.medical_level) { parts.push('<span>🏥 ' + escapeHtml(destCoord.medical_level) + '</span>'); }
+        if (destCoord.budget_level) { parts.push('<span>💰 ' + escapeHtml(destCoord.budget_level) + '</span>'); }
+        parts.push('<span>💵 ¥' + destCoord.monthly_cost_low.toLocaleString() + ' – ¥' + destCoord.monthly_cost_high.toLocaleString() + '/月</span>');
+        parts.push('</div></div>');
+        return parts.join('');
+      }
+
+      /** 创建排名标记（divIcon — Phase 4 enhanced with glow） */
+      function createRankMarker(rank, lat, lng) {
+        var color = RANK_COLORS[rank] || '#6b7280';
+        var size = rank === 0 ? 38 : 32;
+        var fontSize = rank === 0 ? '.95rem' : '.85rem';
+
+        var icon = L.divIcon({
+          className: 'custom-marker',
+          html: '<div class="marker-circle phase4-marker" style="' +
+            'background:' + color + ';' +
+            'width:' + size + 'px; height:' + size + 'px;' +
+            'font-size:' + fontSize + ';' +
+            'box-shadow:0 3px 10px ' + color + '66, inset 0 1px 0 rgba(255,255,255,0.3);' +
+            'transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;' +
+            '" data-rank="' + (rank + 1) + '">' +
+            (rank + 1) +
+          '</div>',
+          iconSize: [size, size],
+          iconAnchor: [size / 2, size / 2],
+          popupAnchor: [0, -(size / 2 + 2)],
+        });
+
+        return L.marker([lat, lng], { icon });
+      }
+
+      /** 在地图上放置推荐标记 */
+      function placeMarkers(recommendations, destCoords) {
+        const bounds = [];
+
+        recommendations.forEach((rec, idx) => {
+          const coord = destCoords[rec.destination_id];
+          if (!coord) return;
+
+          const marker = createRankMarker(idx, coord.lat, coord.lng);
+          const popupContent = buildPopup(coord, rec);
+          marker.bindPopup(popupContent, { maxWidth: 300, closeButton: true });
+
+          marker.addTo(leafletMap);
+          markerRegistry.set(rec.destination_id, marker);
+          bounds.push([coord.lat, coord.lng]);
+
+          // Hover: marker glow
+          marker.on('mouseover', function () {
+            var el = this.getElement();
+            if (el) {
+              var circle = el.querySelector('.phase4-marker');
+              if (circle) {
+                circle.style.transform = 'scale(1.25)';
+                circle.style.boxShadow = '0 0 0 6px ' + RANK_COLORS[idx] + '33, 0 6px 20px ' + RANK_COLORS[idx] + '66, inset 0 1px 0 rgba(255,255,255,0.35)';
+              }
+            }
+          });
+          marker.on('mouseout', function () {
+            var el = this.getElement();
+            if (el) {
+              var circle = el.querySelector('.phase4-marker');
+              if (circle) {
+                circle.style.transform = '';
+                circle.style.boxShadow = '0 3px 10px ' + RANK_COLORS[idx] + '66, inset 0 1px 0 rgba(255,255,255,0.3)';
+              }
+            }
+          });
+
+          // 点击标记 → 高亮对应卡片
+          marker.on('click', function () {
+            highlightCard(rec.destination_id);
+          });
+        });
+
+        // 自动缩放至所有推荐目的地
+        if (bounds.length > 0) {
+          const fitBounds = bounds.length === 1
+            ? L.latLng(bounds[0][0], bounds[0][1]).toBounds(80000)
+            : L.latLngBounds(bounds);
+          leafletMap.fitBounds(fitBounds, { padding: [40, 40], maxZoom: 10, animate: true });
+        }
+      }
+
+      // ══════════════════════════════════════════════════════
+      // 图层管理
+      // ══════════════════════════════════════════════════════
+
+      /** 切换可视化图层 */
+      function switchLayer(layerId) {
+        if (layerId === currentLayer) return;
+        if (layerId !== 'recommendation') return; // 其他图层占位，暂未实现
+
+        currentLayer = layerId;
+
+        // 更新按钮状态
+        document.querySelectorAll('.layer-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.layer === layerId);
+        });
+
+        // 不同图层的可视化逻辑（扩展点）
+        switch (layerId) {
+          case 'recommendation':
+            markerRegistry.forEach(m => { m.addTo(leafletMap); });
+            break;
+          // 未来图层在此添加 case
+        }
+      }
+
+      /** 初始化图层切换器事件 */
+      function initLayerSwitch() {
+        document.querySelectorAll('#layer-switch .layer-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (btn.disabled || btn.classList.contains('disabled')) return;
+            switchLayer(btn.dataset.layer);
+          });
+        });
+      }
+
+      // ══════════════════════════════════════════════════════
+      // 卡片 ↔ 标记 联动
+      // ══════════════════════════════════════════════════════
+
+      /** 点击卡片 → 地图飞到对应标记 → pulse 动画 → 打开弹窗 */
+      function flyToDestination(destId) {
+        var marker = markerRegistry.get(destId);
+        if (!marker || !leafletMap) return;
+
+        var latlng = marker.getLatLng();
+        leafletMap.flyTo(latlng, Math.max(leafletMap.getZoom(), 10), {
+          duration: 1.0,
+          easeLinearity: 0.2,
+        });
+
+        // 飞行结束后：pulse marker + open popup
+        leafletMap.once('moveend', function () {
+          // Pulse animation on marker
+          var el = marker.getElement();
+          if (el) {
+            var circle = el.querySelector('.phase4-marker');
+            if (circle) {
+              circle.style.animation = 'markerPulse 0.6s cubic-bezier(0.34,1.56,0.64,1)';
+              setTimeout(function () {
+                circle.style.animation = '';
+              }, 600);
+            }
+          }
+          setTimeout(function () {
+            marker.openPopup();
+          }, 200);
+        });
+      }
+
+      /** 点击标记 → 滚动到对应卡片并高亮 */
+      function highlightCard(destId) {
+        const card = cardRegistry.get(destId);
+        if (!card) return;
+
+        // 移除所有高亮
+        cardRegistry.forEach(c => c.classList.remove('card-highlight'));
+
+        // 滚动到卡片
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // 触发脉冲动画
+        setTimeout(() => {
+          card.classList.add('card-highlight');
+          setTimeout(() => card.classList.remove('card-highlight'), 1300);
+        }, 400);
+      }
+
+      // ══════════════════════════════════════════════════════
+      // 数据加载
+      // ══════════════════════════════════════════════════════
+
+      function buildDestMap(list) {
+        const map = {};
+        list.forEach(d => { map[d.id] = d; });
+        return map;
+      }
+
+      async function loadData() {
+        const cached = sessionStorage.getItem(CACHE_KEY_RESULTS);
+        if (!cached) { showEmpty(); return; }
+
+        let results;
+        try { results = JSON.parse(cached); } catch { showEmpty(); return; }
+
+        if (!results.recommendations || !results.recommendations.length) {
+          showEmpty(); return;
+        }
+
+        allRecommendations = results.recommendations;
+
+        let destMap = {};
+        const cachedDests = sessionStorage.getItem(CACHE_KEY_DESTS);
+        if (cachedDests) {
+          try { destMap = buildDestMap(JSON.parse(cachedDests)); } catch { /* ignore */ }
+        }
+
+        if (!Object.keys(destMap).length) {
+          try {
+            const ctrl = new AbortController();
+            const tid = setTimeout(() => ctrl.abort(), 5000);
+            const resp = await fetch(`${API_BASE}/api/destinations`, { signal: ctrl.signal });
+            clearTimeout(tid);
+            if (resp.ok) {
+              const data = await resp.json();
+              const list = data.results || [];
+              sessionStorage.setItem(CACHE_KEY_DESTS, JSON.stringify(list));
+              destMap = buildDestMap(list);
+            }
+          } catch { /* 降级 */ }
+        }
+
+        try {
+          await render(results, destMap);
+        } catch (err) {
+          console.error('渲染结果失败：', err);
+          showEmpty();
+        }
+      }
+
+      // ══════════════════════════════════════════════════════
+      // 渲染主函数
+      // ══════════════════════════════════════════════════════
+
+      async function render(results, destMap) {
+        hideLoading();
+        showContent();
+
+        const { recommendations, summary } = results;
+        const destCoords = loadDestCoords(destMap);
+
+        // 判断是否为 AI 生成
+        isAI = !(summary && summary.includes(FALLBACK_MARKER));
+
+        // ── 1. 初始化地图 ──────────────────────────────────
+        initMap();
+        initLayerSwitch();
+
+        // ── 2. 放置标记 ────────────────────────────────────
+        placeMarkers(recommendations, destCoords);
+
+        // ── 3. 打字机输出 AI 摘要 ──────────────────────────
+        const summaryEl = document.getElementById('summary-text');
+        const summaryText = summary || 'AI 已根据您的偏好完成分析，详见下方推荐。';
+        summaryEl.innerHTML = '';
+        await typewriter(summaryEl, summaryText);
+
+        // ── 4. AI 来源标识 ──────────────────────────────────
+        const attrEl = document.getElementById('ai-attribution');
+        const now = new Date().toLocaleString('zh-CN', {
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit',
+        });
+
+        if (!isAI) {
+          attrEl.className = 'ai-attribution fallback';
+          attrEl.innerHTML = '<span>⚠️ AI 服务暂时不可用，当前为<strong>规则匹配</strong>结果，仅供参考。</span>';
+        } else {
+          attrEl.className = 'ai-attribution';
+          attrEl.innerHTML = `
+            <span class="attr-left">🤖 由 <strong>DeepSeek-V3</strong> 大语言模型生成</span>
+            <span class="attr-divider">·</span>
+            <span class="attr-right">分析时间：${now}</span>`;
+        }
+        attrEl.style.display = 'flex';
+
+        // ── 5. 构建推荐卡片 ────────────────────────────────
+        const container = document.getElementById('rec-cards');
+        container.innerHTML = '';
+
+        recommendations.forEach((rec, idx) => {
+          const dest = destMap[rec.destination_id] || {};
+          const coord = destCoords[rec.destination_id] || {};
+          const isFirst = idx === 0;
+          const matchInfo = MATCH_LEVEL_MAP[rec.match_level] || MATCH_LEVEL_MAP['一般'];
+
+          let tags = [];
+          try {
+            tags = typeof dest.features === 'string'
+              ? JSON.parse(dest.features)
+              : (dest.features || []);
+          } catch { tags = []; }
+
+          const rankEmoji = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'][idx] || `${idx + 1}`;
+          const rankLabel = ['最佳匹配', '第二推荐', '第三推荐', '第四推荐', '第五推荐'][idx] || `第${idx + 1}名`;
+          const imgSrc = dest.image_url || imageGradient(idx, rec.name);
+          const hasRealImg = !!dest.image_url;
+          const markerColor = RANK_COLORS[idx] || '#6b7280';
+
+          // 构建卡片 DOM
+          const card = document.createElement('div');
+          card.className = 'rec-card card-reveal' + (isFirst ? ' featured' : '');
+          card.setAttribute('data-dest-id', rec.destination_id);
+
+          // SVG 占位图（图片加载失败时 fallback）
+          const fallbackImg = imageGradient(idx, rec.name);
+
+          card.innerHTML = `
+            <div class="rec-card-image">
+              <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(rec.name)}"
+                   loading="lazy" class="rec-card-img"
+                   onerror="if(this.src!=='${escapeHtml(fallbackImg)}'){this.src='${escapeHtml(fallbackImg)}';}">
+              ${isFirst ? '<div class="rec-card-image-badge">🏆 首选推荐</div>' : ''}
+            </div>
+
+            <div class="rec-card-body">
+              <div class="rec-card-top">
+                <div class="rec-card-rank">
+                  <span class="rank-emoji">${rankEmoji}</span>
+                  <div class="rank-info">
+                    <span class="rank-label">${rankLabel}</span>
+                    <span class="rank-detail">
+                      <span class="rank-dot" style="background:${markerColor}"></span>
+                      匹配度：<strong>${matchInfo.label}</strong>
+                    </span>
+                  </div>
+                </div>
+                <div class="match-level ${matchInfo.cssClass}">
+                  <span>${matchInfo.icon}</span>
+                  <span>${matchInfo.label}</span>
+                </div>
+              </div>
+
+              <h3 class="rec-card-name">${escapeHtml(rec.name)}</h3>
+              <div class="rec-card-province">📍 ${escapeHtml(rec.province)}${dest.city ? ' · ' + escapeHtml(dest.city) : ''}</div>
+
+              <div class="rec-card-reason">
+                <span class="reason-icon">💬</span>
+                <span>${escapeHtml(rec.reason || '该目的地综合条件与您的需求高度契合。')}</span>
+              </div>
+
+              <div class="rec-info-grid">
+                ${dest.climate ? '<div class="rec-info-item"><span class="info-icon">🌤️</span><div class="info-text"><span class="info-label">气候特点</span><span class="info-value">' + escapeHtml(dest.climate) + '</span></div></div>' : ''}
+                ${dest.altitude != null ? '<div class="rec-info-item"><span class="info-icon">🏔️</span><div class="info-text"><span class="info-label">海拔高度</span><span class="info-value">' + dest.altitude + ' 米</span></div></div>' : ''}
+                ${dest.average_temperature ? '<div class="rec-info-item"><span class="info-icon">🌡️</span><div class="info-text"><span class="info-label">年均气温</span><span class="info-value">' + escapeHtml(dest.average_temperature) + '</span></div></div>' : ''}
+                ${dest.temperature_summer ? '<div class="rec-info-item"><span class="info-icon">☀️</span><div class="info-text"><span class="info-label">夏季气温</span><span class="info-value">' + escapeHtml(dest.temperature_summer) + '</span></div></div>' : ''}
+                ${dest.temperature_winter ? '<div class="rec-info-item"><span class="info-icon">❄️</span><div class="info-text"><span class="info-label">冬季气温</span><span class="info-value">' + escapeHtml(dest.temperature_winter) + '</span></div></div>' : ''}
+                ${dest.air_quality ? '<div class="rec-info-item"><span class="info-icon">🌬️</span><div class="info-text"><span class="info-label">空气质量</span><span class="info-value">' + escapeHtml(dest.air_quality) + '</span></div></div>' : ''}
+                ${dest.forest_coverage ? '<div class="rec-info-item"><span class="info-icon">🌲</span><div class="info-text"><span class="info-label">森林覆盖</span><span class="info-value">' + escapeHtml(dest.forest_coverage) + '</span></div></div>' : ''}
+                ${dest.medical_level ? '<div class="rec-info-item"><span class="info-icon">🏥</span><div class="info-text"><span class="info-label">医疗等级</span><span class="info-value">' + escapeHtml(dest.medical_level) + '</span></div></div>' : ''}
+                ${dest.monthly_cost_low != null ? '<div class="rec-info-item"><span class="info-icon">💰</span><div class="info-text"><span class="info-label">预算参考</span><span class="info-value">¥' + dest.monthly_cost_low.toLocaleString() + ' – ¥' + dest.monthly_cost_high.toLocaleString() + '/月</span></div></div>' : ''}
+                ${dest.budget_level ? '<div class="rec-info-item"><span class="info-icon">💵</span><div class="info-text"><span class="info-label">消费水平</span><span class="info-value">' + escapeHtml(dest.budget_level) + '</span></div></div>' : ''}
+                ${dest.best_season ? '<div class="rec-info-item"><span class="info-icon">📅</span><div class="info-text"><span class="info-label">最佳季节</span><span class="info-value">' + escapeHtml(dest.best_season) + '</span></div></div>' : ''}
+              </div>
+
+              ${dest.suitable_for ? '<div class="rec-card-suitable"><span class="suitable-label">👥 适合人群</span><span class="suitable-value">' + escapeHtml(dest.suitable_for) + '</span></div>' : ''}
+
+              ${tags.length ? '<div class="rec-card-tags">' + tags.map(function(t){ return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('') + '</div>' : ''}
+
+              ${dest.source ? '<details class="rec-card-source"><summary>📚 数据来源与依据</summary><div class="source-content"><p>' + escapeHtml(dest.source) + '</p>' + (dest.source_url ? '<p class="source-urls">' + dest.source_url.split(';').map(function(u){ return '<a href="' + escapeHtml(u.trim()) + '" target="_blank" rel="noopener">' + escapeHtml(u.trim()) + '</a>'; }).join('<br>') + '</p>' : '') + '</div></details>' : ''}
+
+              <div class="rec-card-cta">
+                <span class="cta-hint">🤖 AI 基于${isAI ? 'DeepSeek 深度分析' : '偏好匹配'}推荐</span>
+                <span class="cta-map" data-dest-id="${rec.destination_id}">📍 查看地图</span>
+              </div>
+            </div>
+          `;
+
+          // 绑定卡片点击 → 地图联动
+          card.addEventListener('click', (e) => {
+            // 如果用户点的是 CTA 中的"查看地图"，优先飞地图
+            if (e.target.classList.contains('cta-map')) {
+              e.stopPropagation();
+            }
+            flyToDestination(rec.destination_id);
+            highlightCard(rec.destination_id);
+          });
+
+          container.appendChild(card);
+          cardRegistry.set(rec.destination_id, card);
+        });
+
+        // ── 6. 卡片依次入场 ─────────────────────────────────
+        const cards = container.querySelectorAll('.card-reveal');
+        requestAnimationFrame(() => {
+          cards.forEach((card, i) => {
+            setTimeout(() => {
+              card.classList.add('card-reveal-visible');
+            }, i * CARD_STAGGER_DELAY + 200);
+          });
+        });
+
+        // ── 7. 刷新地图尺寸（布局变化后）─────────────────────
+        setTimeout(() => {
+          if (leafletMap) leafletMap.invalidateSize();
+        }, 600);
+      }
+
+      // ── 启动 ────────────────────────────────────────────
+      loadData().catch(err => {
+        console.error('结果页加载失败：', err);
+        hideLoading();
+        showEmpty();
+      });
+    })();
+  </script>
+
+  <!-- Navigation script -->
+  <script src="js/nav.js"></script>
+
+</body>
+</html>

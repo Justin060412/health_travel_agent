@@ -1,0 +1,64 @@
+[
+  {
+    "place_id": 241024247,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1155794495,
+    "lat": "30.4750371",
+    "lon": "108.7135675",
+    "class": "highway",
+    "type": "secondary",
+    "place_rank": 26,
+    "importance": 0.05337333409628439,
+    "addresstype": "road",
+    "name": "苏马荡大道",
+    "display_name": "苏马荡大道, 谋道镇, 利川市, 恩施土家族苗族自治州, 湖北省, 中国",
+    "address": {
+      "road": "苏马荡大道",
+      "town": "谋道镇",
+      "county": "利川市",
+      "region": "恩施土家族苗族自治州",
+      "state": "湖北省",
+      "ISO3166-2-lvl4": "CN-HB",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "30.4590463",
+      "30.4927994",
+      "108.6939672",
+      "108.7301280"
+    ]
+  },
+  {
+    "place_id": 242015423,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 622665120,
+    "lat": "30.4770944",
+    "lon": "108.7072299",
+    "class": "highway",
+    "type": "tertiary",
+    "place_rank": 26,
+    "importance": 0.05337333409628439,
+    "addresstype": "road",
+    "name": "苏马荡环线",
+    "display_name": "苏马荡环线, 谋道镇, 利川市, 恩施土家族苗族自治州, 湖北省, 中国",
+    "address": {
+      "road": "苏马荡环线",
+      "town": "谋道镇",
+      "county": "利川市",
+      "region": "恩施土家族苗族自治州",
+      "state": "湖北省",
+      "ISO3166-2-lvl4": "CN-HB",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "30.4680271",
+      "30.4826488",
+      "108.6961816",
+      "108.7201835"
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "95.8%",
+    "forest_coverage_value": 95.8,
+    "forest_type": "亚热带常绿阔叶林（垂直带谱完整）",
+    "forest_features": [
+      "峨眉山植被垂直带谱完整，从常绿阔叶林到亚高山针叶林",
+      "高等植物 3,200 余种，其中药用植物 1,600 余种（天然'植物药库'）",
+      "拥有珙桐、桫椤、峨眉含笑等珍稀植物",
+      "被称为'古老的植物王国'，第三纪孑遗植物众多"
+    ],
+    "greening_rate": "97.5%",
+    "forest_area_km2": "约 620 km²（峨眉山风景区）",
+    "national_forest_park": "峨眉山国家森林公园",
+    "forest_conservation_level": "世界文化与自然双重遗产 / 国家级风景名胜区 / 国家 5A 级景区",
+    "source": "国家林业和草原局《中国森林资源报告》；四川省林业和草原局《2023年四川林业发展统计公报》；峨眉山风景名胜区管理委员会公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lcj.sc.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "峨眉山"
+  }
+}

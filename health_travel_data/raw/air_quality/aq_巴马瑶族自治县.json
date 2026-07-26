@@ -1,0 +1,24 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "air_quality": "优",
+    "air_quality_index": 35,
+    "pm25_annual": 18,
+    "pm10_annual": 40,
+    "negative_oxygen": "10,000–50,000 个/cm³（盘阳河流域）",
+    "air_quality_features": [
+      "森林覆盖率高，空气自净能力强",
+      "无大型工业污染源",
+      "盘阳河流域负氧离子浓度极高，具有康养价值",
+      "全年空气质量优良天数比例 > 95%"
+    ],
+    "source": "中国环境监测总站《2023中国生态环境状况公报》；河池市生态环境局《2023年河池市环境状况公报》；广西壮族自治区生态环境厅公开数据",
+    "source_urls": [
+      "https://www.mee.gov.cn/",
+      "http://sthjt.gxzf.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "巴马瑶族自治县"
+  }
+}

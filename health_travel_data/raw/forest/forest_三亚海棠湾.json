@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "68.5%",
+    "forest_coverage_value": 68.5,
+    "forest_type": "热带常绿季雨林与海岸防护林",
+    "forest_features": [
+      "海棠湾滨海热带森林生态系统保存完好",
+      "拥有热带特有的红树林湿地生态系统",
+      "海岸防护林（木麻黄、椰子树等）与滨海森林结合",
+      "三亚市森林覆盖率连续多年保持上升趋势"
+    ],
+    "greening_rate": "72.0%",
+    "forest_area_km2": "约 1,300 km²（三亚市全域）",
+    "national_forest_park": "三亚热带海滨国家森林公园（邻近）",
+    "forest_conservation_level": "国家级海洋生态文明建设示范区",
+    "source": "国家林业和草原局《中国森林资源报告》；海南省林业局《2023年海南林业发展统计公报》；三亚市林业局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lyj.hainan.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "三亚海棠湾"
+  }
+}

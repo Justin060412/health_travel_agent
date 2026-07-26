@@ -1,0 +1,26 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "forest_coverage": "58.2%",
+    "forest_coverage_value": 58.2,
+    "forest_type": "高原常绿阔叶林与云南松林",
+    "forest_features": [
+      "苍山十九峰垂直植被带谱完整（2400–4100m）",
+      "苍山洱海国家级自然保护区森林生态系统",
+      "拥有云南松、华山松、冷杉等多种针叶林",
+      "森林与高原湖泊（洱海）相结合的独特生态景观"
+    ],
+    "greening_rate": "65.0%",
+    "forest_area_km2": "约 1,800 km²（大理州全域）",
+    "national_forest_park": "苍山国家地质公园",
+    "forest_conservation_level": "国家级自然保护区（苍山洱海）/ 国家级风景名胜区",
+    "source": "国家林业和草原局《中国森林资源报告》；云南省林业和草原局《2023年云南林业发展统计公报》；大理州林业和草原局公开数据",
+    "source_urls": [
+      "http://www.forestry.gov.cn/",
+      "http://lcj.yn.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "大理古城"
+  }
+}

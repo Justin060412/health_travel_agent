@@ -1,0 +1,30 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "climate": "亚热带湿润季风气候",
+    "climate_code": "Cfa",
+    "average_temperature": "15.2℃",
+    "summer_temperature": "22–30℃",
+    "winter_temperature": "4–10℃",
+    "annual_precipitation": "1200–1600mm",
+    "humidity": "年均相对湿度 80%",
+    "sunshine_hours": "年均 1,100–1,300 小时",
+    "best_season": "4–10月（春秋温和宜人，避暑消夏最佳）",
+    "climate_features": [
+      "四季分明，冬无严寒夏无酷暑",
+      "夏季比成都市区低 3–5℃，是成都人的传统后花园",
+      "雨量充沛，空气湿润，植被终年青翠",
+      "'巴山夜雨'特征明显，夜间多雨白天多云"
+    ],
+    "source": "中国天气网 (weather.com.cn) / 四川省气象局 2023年气候公报 / 都江堰市气象局公开数据",
+    "source_urls": [
+      "http://www.weather.com.cn/cityintro/101270101.shtml",
+      "http://sc.cma.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "青城山",
+    "province": "四川省",
+    "city": "成都市都江堰市"
+  }
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "place_id": 224438004,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 17143660,
+    "lat": "30.6003213",
+    "lon": "119.8951119",
+    "class": "boundary",
+    "type": "administrative",
+    "place_rank": 16,
+    "importance": 0.3151525238377993,
+    "addresstype": "town",
+    "name": "莫干山镇",
+    "display_name": "莫干山镇, 德清县, 湖州市, 浙江省, 中国",
+    "address": {
+      "town": "莫干山镇",
+      "city": "德清县",
+      "state": "浙江省",
+      "ISO3166-2-lvl4": "CN-ZJ",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "30.5065601",
+      "30.6976081",
+      "119.7565797",
+      "119.9346291"
+    ]
+  }
+]

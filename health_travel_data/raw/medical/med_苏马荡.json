@@ -1,0 +1,36 @@
+{
+  "collected_at": "2023",
+  "data": {
+    "medical_level": "二级甲等",
+    "medical_score": "良",
+    "nearest_hospital": "利川市人民医院",
+    "hospital_grade": "二级甲等综合医院",
+    "hospital_distance_km": 25,
+    "hospital_beds": 800,
+    "key_departments": [
+      "内科",
+      "呼吸内科",
+      "康复医学科",
+      "中医科（土家族医药特色）",
+      "急诊科"
+    ],
+    "medical_features": [
+      "利川市人民医院为二级甲等综合医院，可满足常见病诊疗需求",
+      "苏马荡度假区内设有社区卫生服务中心和多个康养医务室",
+      "'候鸟'人群高峰期（6–9月）有利川市人民医院派驻的巡回医疗队",
+      "与恩施州中心医院（三级甲等）建立远程会诊协作",
+      "土家族传统医药（如'三百棒'、'土人参'等草药）有一定康养应用"
+    ],
+    "emergency_capability": "利川市 120 急救中心，恩施州中心医院（三级甲等）距约 80 公里（1.5 小时车程）",
+    "tertiary_hospital_distance_km": 80,
+    "tertiary_hospital": "恩施州中心医院（三级甲等）",
+    "source": "国家卫生健康委员会医院等级公开信息；利川市人民医院官网；恩施州卫生健康委员会公开数据",
+    "source_urls": [
+      "https://www.nhc.gov.cn/",
+      "http://wjw.hubei.gov.cn/"
+    ],
+    "data_year": "2023",
+    "confidence": "high",
+    "name": "苏马荡"
+  }
+}

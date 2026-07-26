@@ -1,0 +1,300 @@
+/**
+ * AI 康养旅居 — Destination Info Card v2.2
+ * 沉浸式目的地介绍：风景图 · 层级地点 · 环境数据 · AI 入口
+ *
+ * 设计参考：Apple Vision Pro · National Geographic · Aman Resorts
+ */
+
+/* ═══════════════════════════════════════════════════════
+   Right Panel
+   ═══════════════════════════════════════════════════════ */
+
+.explore-right {
+  position: absolute;
+  right: clamp(28px, 6vw, 72px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 320px;
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Info Card Shell
+   ═══════════════════════════════════════════════════════ */
+
+.explore-info-card {
+  position: relative;
+  border-radius: 20px;
+  background: rgba(10, 15, 13, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  overflow: hidden;
+  transition: border-color 0.45s ease, box-shadow 0.45s ease, background 0.45s ease, transform 0.45s ease, opacity 0.35s ease;
+}
+
+/* Subtle glass reflection line */
+.explore-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.05) 60%, transparent);
+  z-index: 3; pointer-events: none;
+}
+
+.explore-info-card.has-data {
+  border-color: rgba(210, 180, 112, 0.28);
+  box-shadow:
+    0 0 60px rgba(145, 111, 51, 0.12),
+    0 18px 48px rgba(0, 0, 0, 0.36);
+  animation: none;
+}
+
+@keyframes infoCardFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Empty State
+   ═══════════════════════════════════════════════════════ */
+
+.info-card-state {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 28px;
+}
+
+.info-card-empty .info-empty-icon { margin-bottom: 20px; opacity: 0.25; }
+.info-card-empty .info-empty-icon svg { width: 44px; height: 44px; stroke: rgba(255,255,255,0.45); }
+
+.info-empty-text {
+  font-size: 12px; line-height: 1.7;
+  color: rgba(255, 255, 255, 0.22);
+  margin: 0;
+}
+
+.info-card-empty::after {
+  content: '拖拽浏览 · 点击光点查看档案';
+  margin-top: 14px;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: rgba(218, 189, 122, .55);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Data State — Immersive Destination
+   ═══════════════════════════════════════════════════════ */
+
+.info-card-data {
+  padding: 0; display: none; flex-direction: column;
+}
+
+/* ── Hero Image ─────────────────────────────────────── */
+
+.info-dest-hero {
+  width: 100%; height: 150px; position: relative; overflow: hidden;
+  background-image: linear-gradient(180deg, rgba(5, 15, 12, 0) 35%, rgba(10,15,13,.9) 100%), var(--destination-image, none);
+  background-position: center;
+  background-size: cover;
+  transition: background-image .35s ease;
+}
+
+.info-dest-hero-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(160deg, rgba(26,53,40,.48) 0%, rgba(15,37,32,.22) 65%, rgba(10,15,13,.05) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+
+.info-dest-hero-placeholder span {
+  font-size: 56px; opacity: 0.2; font-weight: 700;
+  font-family: var(--font-display, 'HarmonyOS Sans SC', serif);
+  color: rgba(255, 242, 207, 0.45);
+  text-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+
+/* Gradient overlay at bottom */
+.info-dest-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+  background: linear-gradient(to top, rgba(10,15,13,0.95), transparent);
+  z-index: 1;
+}
+
+/* ── Header — Name + Place Hierarchy ────────────────── */
+
+.info-dest-header {
+  padding: 0 24px; margin-top: -28px; position: relative; z-index: 2;
+}
+
+.info-dest-header::before {
+  content: 'DESTINATION FILE';
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(229, 199, 129, .82);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .16em;
+}
+
+.info-dest-name {
+  font-family: var(--font-display, 'HarmonyOS Sans SC', 'Inter', system-ui, sans-serif);
+  font-size: 22px; font-weight: 700; letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.93); margin: 0 0 6px;
+}
+
+.info-dest-location {
+  font-size: 11px; line-height: 1.6; color: rgba(255, 255, 255, 0.28); margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── Climate Tag ────────────────────────────────────── */
+
+.info-climate-tag {
+  display: inline-flex; align-items: center;
+  padding: 3px 10px; border-radius: 20px;
+  background: rgba(80, 150, 120, 0.1);
+  border: 1px solid rgba(100, 170, 140, 0.15);
+  font-size: 10px; color: rgba(140, 190, 160, 0.85);
+  margin: 8px 24px 0; width: fit-content; letter-spacing: 0.03em;
+}
+
+/* ── Description ────────────────────────────────────── */
+
+.info-dest-desc {
+  font-size: 11px; line-height: 1.7; color: rgba(255, 255, 255, 0.35);
+  margin: 10px 24px 0;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* ── Stats Grid (3×2) ──────────────────────────────── */
+
+.info-dest-stats {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+  padding: 16px 20px 12px;
+}
+
+.info-stat {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 4px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.info-stat:hover { background: rgba(255,255,255,0.02); }
+
+.info-stat-value {
+  font-family: 'SF Pro Display', 'Inter', var(--font-sans, system-ui, sans-serif);
+  font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, 0.82);
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+}
+
+.info-stat-label {
+  font-size: 9px; font-weight: 400; letter-spacing: 0.04em;
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.22);
+}
+
+/* ── CTA Button ─────────────────────────────────────── */
+
+.info-dest-cta {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin: 4px 20px 18px; padding: 11px 0;
+  border: none; border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.info-dest-cta:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-dest-cta svg { opacity: 0.5; transition: opacity 0.25s ease; }
+.info-dest-cta:hover svg { opacity: 0.8; }
+
+/* ═══════════════════════════════════════════════════════
+   Entrance — Delayed reveal after focus
+   ═══════════════════════════════════════════════════════ */
+
+.info-card-data.revealed {
+  display: flex;
+  animation: infoCardReveal 500ms cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes infoCardReveal {
+  from { opacity: 0; transform: translate3d(22px, 8px, 0) scale(.97); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .explore-right { right: 24px; width: 270px; }
+  .info-dest-name { font-size: 19px; }
+  .info-dest-hero { height: 120px; }
+}
+
+@media (max-width: 768px) {
+  .explore-right {
+    position: relative; right: auto; top: auto; transform: none;
+    width: 100%; max-width: 380px; margin: 0 auto; padding: 0 20px 20px;
+  }
+  .info-dest-stats { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media (max-width: 430px) {
+  .explore-right { max-width: 100%; padding: 0 16px 16px; }
+  .info-card-state { padding: 32px 20px; min-height: auto; }
+  .info-dest-stats { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .info-card-data.revealed { animation: none; opacity: 1; transform: none; }
+}
+
+/* Act 2 — destination window, deliberately not a dashboard card */
+.explore-right { width: min(390px, 25vw); right: clamp(28px, 5.5vw, 88px); z-index: 6; }
+.explore-info-card {
+  border-radius: 28px 6px 28px 6px;
+  background: linear-gradient(145deg, rgba(7, 30, 38, .77), rgba(3, 13, 21, .88));
+  border: 1px solid rgba(170, 235, 210, .16);
+  box-shadow: 0 26px 80px rgba(0,0,0,.34), inset 0 1px 0 rgba(236,255,248,.12);
+}
+.explore-info-card.has-data { border-color: rgba(174, 242, 208, .34); box-shadow: 0 28px 90px rgba(0,0,0,.45), 0 0 72px rgba(54,170,128,.13); }
+.info-card-state { min-height: 260px; }
+.info-card-empty { background: radial-gradient(circle at 50% 20%, rgba(88,180,144,.11), transparent 45%); }
+.info-card-empty::after { color: rgba(191, 245, 217, .75); }
+
+.info-dest-hero { height: 230px; background-position:center 52%; }
+.info-dest-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(110deg, rgba(113,222,174,.18), transparent 42%); z-index:1; }
+.info-dest-hero-placeholder { align-items:flex-end; justify-content:flex-start; padding: 0 26px 24px; }
+.info-dest-hero-placeholder span { font-size: 82px; opacity:.52; position:relative; z-index:2; }
+.info-dest-header { padding: 0 26px; margin-top: -42px; }
+.info-dest-header::before { color: rgba(211,255,232,.8); }
+.info-dest-name { font-size: 30px; text-shadow:0 3px 16px rgba(0,0,0,.5); }
+.info-dest-location { color: rgba(228,247,242,.58); font-size: 11px; }
+.info-climate-tag { margin: 12px 26px 0; background: rgba(116,224,167,.13); border-color:rgba(154,242,193,.28); color:rgba(206,255,225,.92); }
+.info-dest-desc { margin: 12px 26px 2px; color:rgba(226,243,239,.65); font-size:12px; line-height:1.75; }
+.info-dest-stats { margin: 14px 20px 8px; padding: 10px 6px; border-top:1px solid rgba(190,245,224,.12); border-bottom:1px solid rgba(190,245,224,.08); }
+.info-stat { padding:9px 4px; }
+.info-stat-value { color:#effff7; font-size:15px; }
+.info-stat-label { color:rgba(205,237,225,.44); }
+.info-dest-cta { margin: 8px 20px 20px; background: linear-gradient(100deg, rgba(116,225,169,.18), rgba(87,155,210,.18)); border:1px solid rgba(181,247,214,.2); color:#e3fff1; }
+.info-dest-cta:hover { background: linear-gradient(100deg, rgba(116,225,169,.32), rgba(87,155,210,.28)); }
+.info-card-data.revealed { animation: destinationWindowIn 900ms cubic-bezier(.16,1,.3,1) both; }
+@keyframes destinationWindowIn { from { opacity:0; transform:translate3d(45px, 0, 0); filter:blur(8px); } to { opacity:1; transform:translate3d(0,0,0); filter:blur(0); } }
+
+@media (max-width: 1200px) { .explore-right { width: 330px; right:24px; } .info-dest-hero { height:180px; } }
