@@ -114,7 +114,7 @@
 
 状态：M11.0 开发中。
 
-GitHub 静态展示：已准备只发布 `frontend/` 的 Pages 工作流、静态模式说明与本地目的地数据 fallback；尚未推送或运行工作流，在线 URL 尚未验收。私有仓库是否可发布取决于 GitHub 套餐。该展示不托管 FastAPI，不提供 AI、在线 POI/道路服务、个性化结果、路线保存或 RAG。
+GitHub 静态展示：只发布 `frontend/` 的 Pages 工作流、静态模式说明与本地目的地数据 fallback 已推送到 `main`。Actions 两次尝试均在 Pages 配置阶段失败：Pages 站点尚未由仓库设置启用，且仓库 `GITHUB_TOKEN` 无权创建 Pages 站点（`Resource not accessible by integration`）。需仓库管理员在 Settings → Pages 启用并选择 GitHub Actions，再重跑工作流。在线 URL 尚未验收；私有仓库能否公开 Pages 取决于账号套餐。该展示不托管 FastAPI，不提供 AI、在线 POI/道路服务、个性化结果、路线保存或 RAG。
 
 - 采用 SwiftUI 原生主应用，不做纯 WebView 套壳
 - 原生接入目的地列表、详情、MapKit 地图、本机收藏和服务状态

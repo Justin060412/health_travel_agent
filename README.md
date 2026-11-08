@@ -8,7 +8,7 @@
 
 启用 GitHub Pages 后，访客可通过下面的链接直接浏览前端页面：
 
-**[打开网页预览](https://justin060412.github.io/health_travel_agent/)**
+**[网页预览地址（需先在仓库 Settings 启用 Pages）](https://justin060412.github.io/health_travel_agent/)**
 
 这是一份 GitHub Pages 静态预览：Act1/Act2 的首页与目的地探索、静态目的地资料和页面视觉可浏览；FastAPI、AI 分析、个性化结果、在线 POI/道路服务和路线保存需要后端，**不会在 GitHub Pages 上运行**。页面会显示静态预览提示。GitHub Pages 不支持运行 Python/FastAPI 服务。
 
