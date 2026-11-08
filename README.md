@@ -43,6 +43,58 @@ GitHub Pages 已启用，访客可通过下面的链接直接浏览前端页面�
 - POI/道路、AI 规划与版本化保存依赖 FastAPI 和配置好的服务
 - 价格或高程资料缺失时保持空缺，不由 AI 猜测
 
+## 功能截图
+
+> 以下截图在本地完整版本（FastAPI 后端 + DeepSeek AI + 目的地/POI 服务）下截取，展示各核心模块的实际界面。静态预览页的结构一致，但 AI 结果、在线地图与保存需要后端。
+
+### 1. 首页 · AI 康养旅居智能规划平台
+
+平台入口，展示目的地数据概览与「开始探索 / AI 健康分析」两条主路径。
+
+<p align="center">
+  <img src="docs/screenshots/01-home.png" alt="首页 · AI 康养旅居智能规划平台" width="720" />
+</p>
+
+### 2. 数字地球 · 目的地探索
+
+Three.js 数字地球与 12 个康养目的地，自动探索、地点选择与目的地故事卡片。
+
+<p align="center">
+  <img src="docs/screenshots/02-explore.png" alt="数字地球 · 目的地探索" width="720" />
+</p>
+
+### 3. 目的地深度体验（大理样板）
+
+季节、生活节奏、环境、医疗与预算的深度资料，事实与证据按来源与核验状态组织。
+
+<p align="center">
+  <img src="docs/screenshots/03-destination.png" alt="目的地深度体验" width="720" />
+</p>
+
+### 4. AI 康养决策问卷
+
+多步健康与旅居偏好问卷：年龄、预算、健康状况、气候与自然环境偏好。
+
+<p align="center">
+  <img src="docs/screenshots/04-questionnaire.png" alt="AI 康养决策问卷" width="720" />
+</p>
+
+### 5. AI 目的地推荐报告
+
+PPT 式连续推荐报告，首屏展示匹配度最高的目的地，含匹配理由、证据入口与 OpenLayers 地图。
+
+<p align="center">
+  <img src="docs/screenshots/05-recommendation.png" alt="AI 目的地推荐报告" width="720" />
+</p>
+
+### 6. 康养线路工作台
+
+二维路线编辑与真实 POI 节点、AI 引导规划，可与三维空间概览同步。
+
+<p align="center">
+  <img src="docs/screenshots/06-route-planner.png" alt="康养线路工作台" width="720" />
+</p>
+
 ## 浏览路径
 
 1. 打开网页预览，选择“开始探索”进入 Act2。
