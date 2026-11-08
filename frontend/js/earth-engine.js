@@ -3,41 +3,16 @@
  * 精修：精致标记 · 精准定位 · 粒子扩散 · 聚焦动画序列
  *
  * 交互状态机：idle | dragging | inertia | focusing
- * 依赖：Three.js CDN → window.THREE
+ * 依赖：Three.js 本地 vendor（index.html 提供 CDN 回退加载）→ window.THREE
+ * 地球纹理：本地优先，超时或失败时降级为程序化纹理（canvas 生成）
  */
 
 (function () {
   'use strict';
 
-  /* ═══════════════════════════════════════════════════════
-     3 个康养目的地（精确坐标）
-     ═══════════════════════════════════════════════════════ */
-  var DESTINATIONS = [
-    {
-      id: 1, name: '巴马瑶族自治县',
-      city: '巴马', prefecture: '河池市', province: '广西壮族自治区', country: '中国',
-      lat: 24.14, lng: 107.25,
-      temp: 21, aqi: 35, humidity: 78, forest: 72, medical: 'C', altitude: 600,
-      climate: '亚热带湿润季风',
-      desc: '世界长寿之乡，百岁老人比例全球最高。独特的地磁环境、弱碱性水源与高负氧离子空气，共同造就了巴马独一无二的康养生态。'
-    },
-    {
-      id: 2, name: '峨眉山',
-      city: '峨眉山市', prefecture: '乐山市', province: '四川省', country: '中国',
-      lat: 29.52, lng: 103.33,
-      temp: 14, aqi: 38, humidity: 82, forest: 90, medical: 'C', altitude: 3099,
-      climate: '山地垂直气候',
-      desc: '中国四大佛教名山之一，世界文化与自然双遗产。森林覆盖率高达90%，负氧离子浓度峰值可达每立方厘米8万个，是修身养性的绝佳之地。'
-    },
-    {
-      id: 3, name: '大理古城',
-      city: '大理市', prefecture: '大理白族自治州', province: '云南省', country: '中国',
-      lat: 25.60, lng: 100.24,
-      temp: 16, aqi: 32, humidity: 62, forest: 65, medical: 'B', altitude: 1970,
-      climate: '高原季风气候',
-      desc: '苍山洱海之间，四季如春。年均气温16°C，冬无严寒夏无酷暑，低紫外线高舒适度，是避暑避寒的理想长居旅居地。'
-    }
-  ];
+  /* 目的地数据由 HealthTravelAPI 在初始化时注入。 */
+  var DESTINATIONS = [];
+  var FEATURED_ORDER = ['大理古城', '巴马瑶族自治县', '苏马荡'];
 
   /* ═══════════════════════════════════════════════════════
      Three.js 对象
@@ -80,6 +55,8 @@
   var focusProgress = 1;
   var focusedMarkerIdx = -1;
   var FOCUS_DURATION = 1.6;        // 聚焦动画时长（秒）
+  var activeFocusDuration = FOCUS_DURATION;
+  var focusMode = 'destination';
 
   var mouseOnScreen = { x: 0.5, y: 0.5 };
   var smoothMouseX = 0.5, smoothMouseY = 0.5;
@@ -90,7 +67,9 @@
   var entrancePhase = -1;
   var elapsedTotal = 0;
 
-  var earthTextureURL = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
+  /* 地球纹理本地优先；加载失败或超时降级为程序化纹理，保证地球始终可见 */
+  var earthTextureURL = 'assets/textures/earth-blue-marble.jpg';
+  var TEXTURE_TIMEOUT_MS = 8000;
   var textureLoaded = false;
 
   /* ═══════════════════════════════════════════════════════
@@ -108,6 +87,7 @@
 
   function init(containerId, opts) {
     opts = opts || {};
+    setDestinations(opts.destinations || []);
     if (opts.onMarkerHover) onMarkerHover = opts.onMarkerHover;
     if (opts.onMarkerSelect) onMarkerSelect = opts.onMarkerSelect;
     if (opts.onMarkerFocusDone) onMarkerFocusDone = opts.onMarkerFocusDone;
@@ -115,8 +95,9 @@
     if (opts.onStateChange) onStateChange = opts.onStateChange;
 
     container = document.getElementById(containerId);
-    if (!container) return console.warn('EarthEngine: container not found');
-    if (typeof THREE === 'undefined') { showFallback(); return; }
+    if (!container) { console.warn('EarthEngine: container not found'); return false; }
+    if (typeof THREE === 'undefined') { showFallback(); return false; }
+    if (!DESTINATIONS.length) { console.warn('EarthEngine: destinations not found'); showFallback(); return false; }
 
     viewW = container.clientWidth;
     viewH = container.clientHeight;
@@ -135,6 +116,38 @@
     renderer.render(scene, camera);
     lastTime = performance.now();
     animate(lastTime);
+    return true;
+  }
+
+  function setDestinations(destinations) {
+    var next = Array.isArray(destinations) ? destinations.filter(isValidDestination) : [];
+    DESTINATIONS = orderDestinations(next);
+    focusedMarkerIdx = -1;
+    hoveredMarkerIdx = -1;
+
+    if (earthGroup) {
+      clearMarkers();
+      createMarkers();
+      createMarkerLabels();
+    }
+    return DESTINATIONS.slice();
+  }
+
+  function isValidDestination(destination) {
+    return destination && destination.id !== undefined && destination.name &&
+      Number.isFinite(Number(destination.latitude)) && Number.isFinite(Number(destination.longitude));
+  }
+
+  function orderDestinations(destinations) {
+    return destinations.map(function (destination, sourceIndex) {
+      return { destination: destination, sourceIndex: sourceIndex };
+    }).sort(function (a, b) {
+      var aFeatured = FEATURED_ORDER.indexOf(a.destination.name);
+      var bFeatured = FEATURED_ORDER.indexOf(b.destination.name);
+      aFeatured = aFeatured < 0 ? FEATURED_ORDER.length : aFeatured;
+      bFeatured = bFeatured < 0 ? FEATURED_ORDER.length : bFeatured;
+      return aFeatured === bFeatured ? a.sourceIndex - b.sourceIndex : aFeatured - bFeatured;
+    }).map(function (item) { return item.destination; });
   }
 
   /* ═══════════════════════════════════════════════════════
@@ -235,8 +248,19 @@
   }
 
   function loadEarthTexture() {
+    var textureSettled = false;
+    var timeoutId = setTimeout(function () {
+      if (textureSettled) return;
+      textureSettled = true;
+      console.warn('[EarthEngine] 地球纹理加载超时，使用程序化纹理');
+      applyProceduralTexture();
+    }, TEXTURE_TIMEOUT_MS);
+
     new THREE.TextureLoader().load(earthTextureURL,
       function (t) {
+        if (textureSettled) return;
+        textureSettled = true;
+        clearTimeout(timeoutId);
         t.colorSpace = THREE.SRGBColorSpace;
         earthMesh.material.map = t;
         earthMesh.material.color.set('#ffffff');
@@ -246,7 +270,12 @@
         textureLoaded = true;
       },
       undefined,
-      function () { applyProceduralTexture(); }
+      function () {
+        if (textureSettled) return;
+        textureSettled = true;
+        clearTimeout(timeoutId);
+        applyProceduralTexture();
+      }
     );
   }
 
@@ -274,7 +303,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════
-     Markers — 精致金色光点（Google Earth 风格）
+     Markers — restrained warm map points
      ═══════════════════════════════════════════════════════ */
 
   function createMarkers() {
@@ -283,7 +312,7 @@
 
     for (var i = 0; i < DESTINATIONS.length; i++) {
       var dest = DESTINATIONS[i];
-      var pos = latLngToVec3(dest.lat, dest.lng, globeRadius * 1.005);
+      var pos = latLngToVec3(dest.latitude, dest.longitude, globeRadius * 1.005);
 
       var group = new THREE.Group();
       group.name = 'marker-' + dest.id;
@@ -291,50 +320,45 @@
       group.lookAt(pos.clone().multiplyScalar(2));
       group.userData = { destId: dest.id, destIndex: i, glowPhase: Math.random() * Math.PI * 2 };
 
-      // A soft mapped area, rather than a pin: destinations feel like regions to discover.
+      // A thin selection ring. It stays invisible until the point is selected.
       var areaHalo = new THREE.Mesh(
-        new THREE.RingGeometry(0.13, 0.34, 48),
-        new THREE.MeshBasicMaterial({ color: 0x8ee8b8, transparent: true, opacity: 0.42, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending })
+        new THREE.RingGeometry(0.07, 0.082, 40),
+        new THREE.MeshBasicMaterial({ color: 0xe7c98d, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false })
       );
       areaHalo.name = 'areaHalo';
       group.add(areaHalo);
       var areaPulse = new THREE.Mesh(
-        new THREE.RingGeometry(0.37, 0.385, 48),
-        new THREE.MeshBasicMaterial({ color: 0xd8f3d2, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending })
+        new THREE.RingGeometry(0.105, 0.11, 40),
+        new THREE.MeshBasicMaterial({ color: 0xd8b979, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false })
       );
       areaPulse.name = 'areaPulse';
       group.add(areaPulse);
 
-      // 微小核心金点
+      // Warm locator dot: visible without becoming a graphic overlay.
       var core = new THREE.Mesh(
-        new THREE.SphereGeometry(0.025, 12, 12),
-        new THREE.MeshBasicMaterial({ color: 0xe8fff0, transparent: true, opacity: 0.45 })
+        new THREE.SphereGeometry(0.04, 14, 14),
+        new THREE.MeshBasicMaterial({ color: 0xf4d89d, transparent: true, opacity: 0.92 })
       );
       core.name = 'core';
       group.add(core);
 
-      // 柔和光晕（AdditiveBlending）
+      // Small local glow, never a filled region.
       var glow = new THREE.Mesh(
-        new THREE.SphereGeometry(0.10, 16, 16),
-        new THREE.MeshBasicMaterial({ color: 0xd4a855, transparent: true, opacity: 0.28, depthWrite: false, blending: THREE.AdditiveBlending })
+        new THREE.SphereGeometry(0.07, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0xd6ad62, transparent: true, opacity: 0.13, depthWrite: false, blending: THREE.AdditiveBlending })
       );
       glow.name = 'glow';
       group.add(glow);
 
-      // 扩散粒子环（围绕标记的微粒子）
-      var particleCount = 0;
-      for (var j = 0; j < particleCount; j++) {
-        var angle = (j / particleCount) * Math.PI * 2 + Math.random() * 0.3;
-        var dist = 0.12 + Math.random() * 0.08;
-        var p = new THREE.Mesh(
-          new THREE.SphereGeometry(0.012, 4, 4),
-          new THREE.MeshBasicMaterial({ color: 0xe8c878, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending })
-        );
-        p.position.set(Math.cos(angle) * dist, Math.sin(angle) * dist, 0);
-        p.userData = { baseDist: dist, angle: angle, speed: 0.3 + Math.random() * 0.5, phase: Math.random() * Math.PI * 2 };
-        p.name = 'particle';
-        group.add(p);
-      }
+      var leaderGeometry = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0, 0, 0.05),
+        new THREE.Vector3(0, 0, 0.22),
+      ]);
+      var leaderLine = new THREE.Line(leaderGeometry, new THREE.LineBasicMaterial({
+        color: 0xe7c98d, transparent: true, opacity: 0, depthWrite: false,
+      }));
+      leaderLine.name = 'leaderLine';
+      group.add(leaderLine);
 
       group.visible = false;
       group.scale.set(0.01, 0.01, 0.01);
@@ -352,14 +376,32 @@
     labelContainer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:3;';
     container.appendChild(labelContainer);
 
+    createMarkerLabels();
+  }
+
+  function createMarkerLabels() {
+    if (!labelContainer) return;
+    labelContainer.innerHTML = '';
     markerLabels = DESTINATIONS.map(function (dest) {
       var el = document.createElement('div');
-      el.innerHTML = '<span style="font-size:12px;font-weight:600;color:rgba(255,230,180,0.95);text-shadow:0 0 10px rgba(180,140,80,0.5),0 0 20px rgba(160,120,60,0.25),0 1px 3px rgba(0,0,0,0.9);white-space:nowrap;letter-spacing:0.03em;">' + dest.city + '</span>' +
-        '<span style="display:block;font-size:9px;color:rgba(255,255,255,0.4);text-shadow:0 1px 2px rgba(0,0,0,0.8);margin-top:1px;">' + dest.province + '</span>';
+      var title = document.createElement('span');
+      var region = document.createElement('span');
+      title.textContent = dest.name;
+      title.style.cssText = 'font-size:12px;font-weight:600;color:rgba(255,230,180,0.95);text-shadow:0 0 10px rgba(180,140,80,0.5),0 0 20px rgba(160,120,60,0.25),0 1px 3px rgba(0,0,0,0.9);white-space:nowrap;letter-spacing:0.03em;';
+      region.textContent = destinationRegion(dest);
+      region.style.cssText = 'display:block;font-size:9px;color:rgba(255,255,255,0.5);text-shadow:0 1px 2px rgba(0,0,0,0.8);margin-top:2px;white-space:nowrap;';
+      el.appendChild(title);
+      el.appendChild(region);
       el.style.cssText = 'position:absolute;transform:translate(-50%,-130%);opacity:0;transition:opacity 0.25s ease;pointer-events:none;text-align:center;';
       labelContainer.appendChild(el);
       return el;
     });
+  }
+
+  function destinationRegion(destination) {
+    return [destination.city, destination.province].filter(function (part, index, parts) {
+      return part && parts.indexOf(part) === index;
+    }).join(' · ');
   }
 
   function updateLabels() {
@@ -382,7 +424,10 @@
     var cv = renderer.domElement;
     cv.addEventListener('pointermove', onPointerMove, { passive: true });
     cv.addEventListener('pointerenter', function(){ pointerInside = true; });
-    cv.addEventListener('pointerleave', function(){ pointerInside = false; });
+    cv.addEventListener('pointerleave', function(){
+      pointerInside = false;
+      setHoveredMarker(-1);
+    });
     cv.addEventListener('wheel', onWheel, { passive: false });
     cv.addEventListener('click', onClick);
     window.addEventListener('resize', onResize);
@@ -419,7 +464,7 @@
     if (entrancePhase < 5) updateEntrance(elapsedTotal * 1000);
     if (entrancePhase >= 0) updateRotation(dt);
     updateMarkers(dt, time);
-    if (state === 'focusing') updateFocus(dt);
+    if (state === 'focusing' || state === 'journey') updateFocus(dt);
     if (entrancePhase >= 5 && state !== 'focusing') updateHoverDetection();
     if (entrancePhase >= 5) updateLabels();
     updateAtmosphere(time);
@@ -455,7 +500,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════
-     Markers — 呼吸 + 粒子扩散 + 悬停增强
+     Markers — quiet default, one selected pulse
      ═══════════════════════════════════════════════════════ */
 
   function updateMarkers(dt, time) {
@@ -465,41 +510,33 @@
       if (!m.visible) continue;
       if (entrancePhase < 5) continue;
 
-      var isActive2 = (i === hoveredMarkerIdx || i === focusedMarkerIdx);
-      var breathe = 1 + Math.sin(time * 0.0018 + m.userData.glowPhase) * 0.15;
-      var targetScale = isActive2 ? 1.5 : 1.0;
-      targetScale *= breathe;
-      m.scale.setScalar(m.scale.x + (targetScale - m.scale.x) * 0.06);
+      var isSelected = i === focusedMarkerIdx;
+      var isHovered = i === hoveredMarkerIdx;
+      var targetScale = isSelected ? 1.12 : (isHovered ? 1.02 : 0.82);
+      m.scale.setScalar(m.scale.x + (targetScale - m.scale.x) * 0.1);
 
       // 光晕
       var glow = m.getObjectByName('glow');
       if (glow) {
-        var baseOp = isActive2 ? 0.55 : 0.28;
-        glow.material.opacity += (baseOp - glow.material.opacity) * 0.08;
+        var baseOp = isSelected ? 0.32 : (isHovered ? 0.22 : 0.1);
+        glow.material.opacity += (baseOp - glow.material.opacity) * 0.12;
       }
 
       var halo = m.getObjectByName('areaHalo');
       var pulse = m.getObjectByName('areaPulse');
+      var leaderLine = m.getObjectByName('leaderLine');
       if (halo) {
-        var haloScale = (isActive2 ? 1.38 : 1) + Math.sin(time * 0.0015 + m.userData.glowPhase) * 0.06;
-        halo.scale.setScalar(haloScale);
-        halo.material.opacity = isActive2 ? 0.82 : 0.42;
+        halo.scale.setScalar(isSelected ? 1 : 0.9);
+        halo.material.opacity = isSelected ? 0.68 : (isHovered ? 0.32 : 0);
       }
       if (pulse) {
-        var pulseScale = 1.1 + ((Math.sin(time * 0.002 + m.userData.glowPhase) + 1) * 0.22);
-        pulse.scale.setScalar(pulseScale);
-        pulse.material.opacity = isActive2 ? 0.42 : 0.18;
+        var pulsePhase = (Math.sin(time * 0.0016 + m.userData.glowPhase) + 1) * 0.5;
+        pulse.scale.setScalar(1 + pulsePhase * 0.28);
+        pulse.material.opacity = isSelected ? 0.18 * (1 - pulsePhase * 0.55) : 0;
       }
-
-      // 扩散粒子
-      var particles = m.children.filter(function(c){return c.name==='particle';});
-      for (var j = 0; j < particles.length; j++) {
-        var p = particles[j];
-        var ud = p.userData;
-        ud.angle += ud.speed * dt;
-        var distOsc = ud.baseDist + Math.sin(time * 0.003 + ud.phase) * 0.04;
-        p.position.set(Math.cos(ud.angle) * distOsc, Math.sin(ud.angle) * distOsc, 0);
-        p.material.opacity = isActive2 ? 0.65 : 0.3;
+      if (leaderLine) {
+        var leaderOpacity = isSelected ? 0.58 : (isHovered ? 0.22 : 0);
+        leaderLine.material.opacity += (leaderOpacity - leaderLine.material.opacity) * 0.12;
       }
     }
   }
@@ -509,19 +546,35 @@
      ═══════════════════════════════════════════════════════ */
 
   function updateHoverDetection() {
-    var best = -1, bestD = Infinity, thr = 0.15;
+    if (!pointerInside) {
+      setHoveredMarker(-1);
+      return;
+    }
+    var best = -1, bestD = Infinity;
+    var hitRadius = Math.max(24, Math.min(34, Math.min(viewW, viewH) * 0.035));
     for (var i = 0; i < markers.length; i++) {
       if (!markers[i].visible) continue;
       var wp = new THREE.Vector3(); markers[i].getWorldPosition(wp);
+      var toCamera = camera.position.clone().sub(wp).normalize();
+      if (wp.clone().normalize().dot(toCamera) <= 0) continue;
       var sp = wp.clone().project(camera); if (sp.z > 1) continue;
-      var d = Math.sqrt(((sp.x+1)/2-mouseOnScreen.x)**2 + ((-sp.y+1)/2-mouseOnScreen.y)**2);
-      if (d < thr && d < bestD) { bestD = d; best = i; }
+      var markerX = (sp.x + 1) * 0.5 * viewW;
+      var markerY = (-sp.y + 1) * 0.5 * viewH;
+      var pointerX = mouseOnScreen.x * viewW;
+      var pointerY = mouseOnScreen.y * viewH;
+      var d = Math.sqrt(Math.pow(markerX - pointerX, 2) + Math.pow(markerY - pointerY, 2));
+      if (d < hitRadius && d < bestD) { bestD = d; best = i; }
     }
-    if (best !== hoveredMarkerIdx) {
-      hoveredMarkerIdx = best;
-      renderer.domElement.style.cursor = best >= 0 ? 'pointer' : (state==='idle'?'grab':renderer.domElement.style.cursor);
-      if (onMarkerHover) onMarkerHover(best >= 0 ? DESTINATIONS[best] : null, best);
+    setHoveredMarker(best);
+  }
+
+  function setHoveredMarker(index) {
+    if (index === hoveredMarkerIdx) return;
+    hoveredMarkerIdx = index;
+    if (renderer && renderer.domElement) {
+      renderer.domElement.style.cursor = index >= 0 ? 'pointer' : (state === 'idle' ? 'grab' : renderer.domElement.style.cursor);
     }
+    if (onMarkerHover) onMarkerHover(index >= 0 ? DESTINATIONS[index] : null, index);
   }
 
   /* ═══════════════════════════════════════════════════════
@@ -532,27 +585,35 @@
     var dest = DESTINATIONS[idx]; if (!dest) return;
     focusedMarkerIdx = idx;
     state = 'focusing';
+    focusMode = 'destination';
+    activeFocusDuration = 1.45;
     focusProgress = 0;
     focusStartQuat = earthGroup.quaternion.clone();
     focusTargetQuat = new THREE.Quaternion().setFromUnitVectors(
-      latLngToVec3(dest.lat, dest.lng, globeRadius).normalize(),
+      latLngToVec3(dest.latitude, dest.longitude, globeRadius).normalize(),
       new THREE.Vector3(0, 0, 1)
     );
     focusStartCamZ = camera.position.z;
-    focusTargetCamZ = Math.max(10, focusStartCamZ - 5);
+    focusTargetCamZ = 12.6;
     renderer.domElement.style.cursor = 'default';
     if (onMarkerSelect) onMarkerSelect(dest, idx);
     if (onStateChange) onStateChange('focusing', { dest: dest, index: idx });
   }
 
   function updateFocus(dt) {
-    focusProgress = Math.min(1, focusProgress + dt / FOCUS_DURATION);
+    focusProgress = Math.min(1, focusProgress + dt / activeFocusDuration);
     var t = easeInOutCubic(focusProgress);
-    THREE.Quaternion.slerp(focusStartQuat, focusTargetQuat, earthGroup.quaternion, t);
+    earthGroup.quaternion.copy(focusStartQuat).slerp(focusTargetQuat, t);
     camera.position.z = focusStartCamZ + (focusTargetCamZ - focusStartCamZ) * t;
 
     if (focusProgress >= 1) {
-      state = 'idle';
+      if (focusMode === 'journey') {
+        state = 'idle';
+        autoRotateY = extractY(earthGroup.quaternion);
+        if (onStateChange) onStateChange('journey-complete');
+        return;
+      }
+      state = 'focused';
       autoRotateY = extractY(earthGroup.quaternion);
       renderer.domElement.style.cursor = 'grab';
       if (onStateChange) onStateChange('focused', { dest: DESTINATIONS[focusedMarkerIdx], index: focusedMarkerIdx });
@@ -589,6 +650,23 @@
   function setJourneyStage(stage) {
     var targets = { global: 18, country: 16.4, city: 14.8 };
     journeyCameraZ = targets[stage] || 18;
+    if (stage === 'country') orientToCoordinates(35, 105, targets.country, 1.25);
+  }
+
+  function orientToCoordinates(lat, lng, targetCameraZ, duration) {
+    if (!earthGroup || !camera) return;
+    state = 'journey';
+    focusMode = 'journey';
+    activeFocusDuration = duration || 1.25;
+    focusProgress = 0;
+    focusStartQuat = earthGroup.quaternion.clone();
+    focusTargetQuat = new THREE.Quaternion().setFromUnitVectors(
+      latLngToVec3(lat, lng, globeRadius).normalize(),
+      new THREE.Vector3(0, 0, 1)
+    );
+    focusStartCamZ = camera.position.z;
+    focusTargetCamZ = targetCameraZ || 16.4;
+    if (onStateChange) onStateChange('journey', { lat: lat, lng: lng });
   }
   function updateEntrance(ms) {
     if (ms>=0&&entrancePhase===0) { if(starField)starField.material.opacity=Math.min(1,ms/500); if(ms>=500)entrancePhase=1; }
@@ -610,6 +688,22 @@
   function extractY(q) { return new THREE.Euler().setFromQuaternion(q,'YXZ').y; }
   function extractX(q) { return new THREE.Euler().setFromQuaternion(q,'YXZ').x; }
   function easeInOutCubic(t) { return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+  function clearMarkers() {
+    markers.forEach(function (marker) {
+      if (earthGroup) earthGroup.remove(marker);
+      marker.traverse(function (object) {
+        if (object.geometry) object.geometry.dispose();
+        if (object.material) {
+          if (Array.isArray(object.material)) object.material.forEach(function (material) { material.dispose(); });
+          else object.material.dispose();
+        }
+      });
+    });
+    markers = [];
+    markerParticles = [];
+    markerLabels = [];
+    if (labelContainer) labelContainer.innerHTML = '';
+  }
   function setCallbacks(o) { if(o.onMarkerHover!==undefined)onMarkerHover=o.onMarkerHover;if(o.onMarkerSelect!==undefined)onMarkerSelect=o.onMarkerSelect;if(o.onMarkerFocusDone!==undefined)onMarkerFocusDone=o.onMarkerFocusDone;if(o.onMarkerDeselect!==undefined)onMarkerDeselect=o.onMarkerDeselect;if(o.onStateChange!==undefined)onStateChange=o.onStateChange; }
   function showFallback() { if(container)container.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;pointer-events:none;"><div style="width:45vmin;height:45vmin;border-radius:50%;background:radial-gradient(circle,rgba(30,90,70,0.15),rgba(15,50,40,0.08) 50%,transparent 70%);box-shadow:0 0 80px rgba(30,80,60,0.1);"></div></div>'; }
   function destroy() { isActive=false;if(animId){cancelAnimationFrame(animId);animId=null;}window.removeEventListener('resize',onResize);if(renderer){renderer.dispose();renderer=null;}if(container)container.innerHTML='';scene=null;camera=null;earthGroup=null;earthMesh=null;markers=[];markerLabels=[];starField=null; }
@@ -628,8 +722,10 @@
 
   window.EarthEngine = {
     init: init, startEntrance: startEntrance, setCallbacks: setCallbacks,
+    setDestinations: setDestinations,
+    focusOnMarker: focusOnMarker,
     deselectMarker: deselectMarker,
-    getDestinations: function(){return DESTINATIONS;},
+    getDestinations: function(){return DESTINATIONS.slice();},
     getSelectedIndex: function(){return focusedMarkerIdx;},
     setJourneyStage: setJourneyStage,
     getState: function(){return state;},

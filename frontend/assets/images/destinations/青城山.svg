@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#123026"/>
+      <stop offset="1" stop-color="#1d4a38"/>
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a6b50"/>
+      <stop offset="1" stop-color="#16402f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1240" cy="230" r="90" fill="#e8e0c8" opacity="0.16"/>
+  <path d="M0 640 L360 380 L640 600 L920 320 L1280 640 L1600 420 L1600 1000 L0 1000 Z" fill="url(#mountain)" opacity="0.9"/>
+  <path d="M0 760 L420 560 L760 760 L1120 540 L1600 780 L1600 1000 L0 1000 Z" fill="#123327" opacity="0.85"/>
+  <rect x="620" y="880" width="360" height="52" rx="26" fill="#0d241c" opacity="0.55"/>
+  <text x="800" y="918" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="36" fill="#dceade" opacity="0.92">青城山</text>
+  <text x="800" y="120" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="30" fill="#9fc3b0" opacity="0.8">目的地风景图待加载</text>
+</svg>

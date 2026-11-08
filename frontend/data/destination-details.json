@@ -1,0 +1,4745 @@
+{
+  "version": "2.0.0",
+  "updated_at": "2026-08-19",
+  "destinations": [
+    {
+      "id": 4,
+      "name": "大理古城",
+      "hero": {
+        "eyebrow": "大理 · 深度旅居体验",
+        "title": "在苍山与洱海之间，试着生活一段时间",
+        "summary": "先放慢旅行速度，看看古城的步行尺度、四季气候与周边生活资源，是否适合你的康养旅居方式。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/大理古城南门-2064560.jpg?width=1600",
+        "image_attribution": "Pixabay user 4537668 / Wikimedia Commons",
+        "image_license": "CC0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:大理古城南门-2064560.jpg"
+      },
+      "quick_facts": [
+        {
+          "label": "年均气温",
+          "value": "15.2°C",
+          "description": "长期气候背景值；具体月份仍应查询实时天气。",
+          "source_ids": [
+            "src-dali-resort"
+          ],
+          "status": "verified"
+        },
+        {
+          "label": "空气环境",
+          "value": "2024年优良天数99.9%",
+          "description": "这是大理州12县市年度平均口径，不是古城实时AQI。",
+          "source_ids": [
+            "src-dali-air-2024"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗资源",
+          "value": "多层级可选",
+          "description": "医院等级与位置已有来源；车程、科室和急诊状态需按住址核验。",
+          "source_ids": [
+            "src-dali-prefecture-hospital",
+            "src-dali-city-second-hospital"
+          ],
+          "status": "verified_with_gaps"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "在古城步行尺度里开始一天",
+          "description": "避开高峰时段，以步行感受街巷、日照与日常补给距离，判断这里是否符合你的活动习惯。"
+        },
+        {
+          "period": "午后",
+          "title": "把文化体验放进日常",
+          "description": "从古城公共文化空间或周边村落选择一处停留，不追求密集打卡，观察旅游热度对日常节奏的影响。"
+        },
+        {
+          "period": "傍晚",
+          "title": "沿慢行路径感受苍洱环境",
+          "description": "选择适合自己的步行或骑行强度；高原紫外线与温差需要根据季节和身体状态调整。"
+        },
+        {
+          "period": "夜晚",
+          "title": "用真实生活问题做一天复盘",
+          "description": "记录睡眠体感、出行便利与消费节奏，为是否延长停留提供比风景更可靠的依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "spring",
+          "label": "春季",
+          "title": "适合用慢节奏建立第一印象",
+          "description": "气候体验相对温和，适合步行与轻量户外。出发前仍需核对具体月份的降水、紫外线与昼夜温差。",
+          "focus": "适合第一次试住、偏好温和体感与日常散步的人群。"
+        },
+        {
+          "id": "summer",
+          "label": "夏季",
+          "title": "关注雨季节奏与户外安排",
+          "description": "夏季体验要结合实时降水与出行条件，不宜只依据年均气温判断；安排应保留室内与弹性时段。",
+          "focus": "适合能接受天气变化、愿意灵活调整活动的人群。"
+        },
+        {
+          "id": "autumn",
+          "label": "秋季",
+          "title": "更容易兼顾户外与长期观察",
+          "description": "适合作为古城与苍洱周边的慢行体验期，同时需要关注旅游热度、住宿价格与早晚温差。",
+          "focus": "适合考察长住条件、希望增加户外活动的人群。"
+        },
+        {
+          "id": "winter",
+          "label": "冬季",
+          "title": "阳光与温差要一起考虑",
+          "description": "不能用“全年宜居”替代个人体感判断；住宿保温、早晚温差和紫外线都应在试住时验证。",
+          "focus": "适合希望避开部分旅游高峰、能适应高原冬季体感的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "步行与慢行",
+          "value": "先用身体丈量",
+          "description": "古城适合步行观察，度假区资料也提到观光车等游览方式；长期出行仍需结合住址逐项核验。"
+        },
+        {
+          "title": "文化与公共空间",
+          "value": "日常体验丰富",
+          "description": "大理市拥有多类文化与旅游资源。选择长住区域时，重点判断它们是否能转化为你的日常生活内容。"
+        },
+        {
+          "title": "生活配套",
+          "value": "区域差异明显",
+          "description": "已建立首批住宿、餐饮、活动和医疗POI候选；营业状态、价格与无障碍条件仍需出发前复核。"
+        },
+        {
+          "title": "环境适应",
+          "value": "海拔约1970米，先短住观察",
+          "description": "海拔、强紫外线与昼夜温差可能影响个人体感；本页不把环境特征表达为医疗效果。"
+        }
+      ],
+      "medical_access": {
+        "status": "有综合医疗资源，仍需核验距离与科室",
+        "items": [
+          {
+            "name": "大理市第二人民医院",
+            "level": "二级甲等综合医院",
+            "description": "官方信息列有旅游急救、健康体检与康复等功能；就诊前请核实对应院区、科室与开放情况。",
+            "source_ids": [
+              "src-dali-city-second-hospital"
+            ],
+            "poi_id": "poi-dali-medical-second-hospital"
+          },
+          {
+            "name": "大理白族自治州人民医院",
+            "level": "三级甲等综合医院",
+            "description": "州级综合医院与急诊救援资源之一；实际交通时间和专科能力应按居住位置与个人需求确认。",
+            "source_ids": [
+              "src-dali-prefecture-hospital"
+            ],
+            "poi_id": null
+          }
+        ],
+        "disclaimer": "本页不构成医疗建议。急重症保障、常用药获取、医保结算和专科连续治疗条件，必须在确定长住前单独核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "优先控制住宿与日常餐饮，适合先用短周期判断身体与生活节奏。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "在基础生活之外，为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件与出行便利，但旺季与房型仍会显著影响实际费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "希望以步行、轻户外和文化体验组成日常的人",
+        "愿意先试住，再决定是否延长旅居周期的人",
+        "重视气候舒适度，也愿意关注实时天气变化的人"
+      ],
+      "caution_notes": [
+        "对海拔、强紫外线或昼夜温差敏感时，应先短住观察",
+        "旅游旺季的住宿、交通与生活节奏需要实时核验",
+        "有专科就医或连续用药需求时，必须先确认院区与服务能力"
+      ],
+      "sources": [
+        {
+          "title": "大理古城国家级旅游度假区",
+          "publisher": "大理市人民政府",
+          "url": "https://www.yndali.gov.cn/dlsrmzf/c106716/pc/content/1983786663283888128/content_1983786663283888128.html",
+          "scope": "区位、气候、游览与度假区医疗资源",
+          "source_id": "src-dali-resort",
+          "source_level": "government",
+          "published_at": null,
+          "collected_at": "2026-08-10",
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "verification_status": "verified",
+          "license_scope": "public_reference"
+        },
+        {
+          "title": "大理白族自治州人民医院基本信息",
+          "publisher": "大理白族自治州人民政府",
+          "url": "https://www.dali.gov.cn/dlzrmzf/c108419/pc/content/1971430531546583040/content_1971430531546583040.html",
+          "scope": "医院等级与综合服务能力",
+          "source_id": "src-dali-prefecture-hospital",
+          "source_level": "government",
+          "published_at": null,
+          "collected_at": "2026-08-10",
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "verification_status": "verified",
+          "license_scope": "public_reference"
+        },
+        {
+          "title": "大理市第二人民医院基本信息",
+          "publisher": "大理市人民政府",
+          "url": "https://www.yndali.gov.cn/dlsrmzf/c108646/pc/content/1981553310019194880/content_1981553310019194880.html",
+          "scope": "医院等级与服务功能",
+          "source_id": "src-dali-city-second-hospital",
+          "source_level": "government",
+          "published_at": null,
+          "collected_at": "2026-08-10",
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "verification_status": "verified",
+          "license_scope": "public_reference"
+        },
+        {
+          "title": "大理古城南片区控制性详细规划",
+          "publisher": "大理市人民政府",
+          "url": "https://www.yndali.gov.cn/dlsrmzf/c106753/pc/content/1983796641411469312/content_1983796641411469312.html",
+          "scope": "居住配套、康养度假与公共服务规划",
+          "source_id": "src-dali-south-plan",
+          "source_level": "government",
+          "published_at": null,
+          "collected_at": "2026-08-10",
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "verification_status": "verified",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-dali-air-2024",
+          "title": "大理白族自治州2024年生态环境状况公报",
+          "publisher": "大理白族自治州生态环境局 / 大理日报",
+          "source_level": "government",
+          "url": "https://dalidaily.dlzrm.cn/202506/05/e4e195aa-97e6-47f5-93c1-75e295edbccd.pdf",
+          "scope": "2024年大理州12县（市）环境空气质量年度口径",
+          "published_at": "2025-06-05",
+          "collected_at": "2026-08-17",
+          "verified_at": "2026-08-17",
+          "valid_until": "2026-12-31",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-dali-forest-city",
+          "title": "林业和草原资源",
+          "publisher": "大理市人民政府",
+          "source_level": "government",
+          "url": "https://www.yndali.gov.cn/dlsrmzf/c103380/pc/content/1985989284174336000/content_1985989284174336000.html",
+          "scope": "大理市森林面积、森林覆盖率和自然保护地",
+          "published_at": null,
+          "collected_at": "2026-08-17",
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "verification_status": "verified",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-cangshan-erhai-reserve",
+          "title": "云南苍山洱海国家级自然保护区",
+          "publisher": "云南省林业和草原局",
+          "source_level": "government",
+          "url": "https://lcj.yn.gov.cn/special/2025/0313/6396.html",
+          "scope": "保护区生态系统、气候背景与生物多样性",
+          "published_at": "2025-03-13",
+          "collected_at": "2026-08-17",
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "verification_status": "verified",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-osm-dali-20260817",
+          "title": "OpenStreetMap 大理古城周边 POI 快照",
+          "publisher": "OpenStreetMap contributors",
+          "source_level": "map_provider",
+          "url": "https://www.openstreetmap.org/copyright",
+          "scope": "大理古城周边住宿、餐饮、活动与医疗候选点名称和WGS84位置",
+          "published_at": null,
+          "collected_at": "2026-08-17",
+          "verified_at": "2026-08-17",
+          "valid_until": "2026-11-17",
+          "verification_status": "reference_only",
+          "license_scope": "ODbL-1.0; publication review required"
+        },
+        {
+          "source_id": "src-amap-dali-20260818",
+          "title": "高德 Web 服务 POI 搜索与路径规划 2.0",
+          "publisher": "高德开放平台",
+          "source_level": "map_provider",
+          "url": "https://lbs.amap.com/api/webservice/guide/api-advanced/newpoisearch",
+          "scope": "大理样板POI名称、地址、GCJ-02坐标和步行道路路线快照",
+          "published_at": null,
+          "collected_at": "2026-08-18",
+          "verified_at": "2026-08-18",
+          "valid_until": "2026-09-17",
+          "verification_status": "verified_with_gaps",
+          "license_scope": "Amap Web Service API; use subject to current provider terms"
+        }
+      ],
+      "destination_key": "cn-yunnan-dali-ancient-city",
+      "aliases": [
+        "大理古城国家级旅游度假区"
+      ],
+      "verification": {
+        "status": "verified_with_gaps",
+        "verified_at": "2026-08-17",
+        "valid_until": "2027-02-17",
+        "missing_fields": [
+          "live_aqi",
+          "merchant_price_snapshots",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "facts": {
+        "average_temperature": {
+          "value": 15.2,
+          "unit": "°C",
+          "scope": "大理古城国家级旅游度假区长期气候背景",
+          "status": "verified",
+          "source_ids": [
+            "src-dali-resort"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "notes": "长期背景值，不代表具体月份或实时天气。"
+        },
+        "air_quality": {
+          "value": 99.9,
+          "unit": "%优良天数",
+          "scope": "2024年大理州12县（市）平均值",
+          "status": "reference_only",
+          "source_ids": [
+            "src-dali-air-2024"
+          ],
+          "observed_at": "2024",
+          "verified_at": "2026-08-17",
+          "valid_until": "2026-12-31",
+          "notes": "非实时年度区域口径，不是大理古城当前AQI；出行时仍需查询实时监测。"
+        },
+        "forest_coverage": {
+          "value": 38.72,
+          "unit": "%",
+          "scope": "大理市行政区",
+          "status": "verified",
+          "source_ids": [
+            "src-dali-forest-city"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "notes": "行政区统计值，不代表古城建成区绿化率，也不代表医疗效果。"
+        },
+        "altitude": {
+          "value": 1970,
+          "unit": "m",
+          "scope": "大理古城平台基础空间资料",
+          "status": "reference_only",
+          "source_ids": [
+            "src-osm-dali-20260817"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-08-17",
+          "notes": "用于行前适应性提醒；个体健康影响需咨询专业医生。"
+        },
+        "medical_access": {
+          "value": "古城内有二级甲等综合医院，市区另有三级甲等综合医院资源",
+          "unit": null,
+          "scope": "大理古城及大理市区",
+          "status": "verified_with_gaps",
+          "source_ids": [
+            "src-dali-prefecture-hospital",
+            "src-dali-city-second-hospital",
+            "src-osm-dali-20260817"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-17",
+          "valid_until": "2027-02-17",
+          "notes": "医院等级与位置已记录；科室排班、急诊状态和从具体住宿点出发的车程需实时核验。"
+        },
+        "monthly_budget": {
+          "value_low": 2500,
+          "value_high": 7000,
+          "unit": "CNY/month",
+          "scope": "平台现有大理旅居预算参考区间",
+          "status": "reference_only",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": null,
+          "valid_until": "2026-09-30",
+          "notes": "没有接入商家或授权预订价格源；仅用于问卷预算分层，不是报价。"
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-dali-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "长期气候背景温和，但具体季节仍需结合实时天气和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level"
+          ],
+          "source_ids": [
+            "src-dali-resort"
+          ],
+          "verified_at": "2026-08-17",
+          "confidence": "medium",
+          "missing_data": [
+            "用户出行日期",
+            "实时天气",
+            "个人高原适应情况"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-dali-air-001",
+          "dimension": "air_quality",
+          "conclusion": "大理州2024年环境空气总体良好，但不能据此替代古城当前AQI。",
+          "destination_fields": [
+            "facts.air_quality"
+          ],
+          "profile_fields": [
+            "health_status"
+          ],
+          "source_ids": [
+            "src-dali-air-2024"
+          ],
+          "verified_at": "2026-08-17",
+          "confidence": "medium",
+          "missing_data": [
+            "当前AQI",
+            "最近监测站",
+            "用户出行日期"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-dali-ecology-001",
+          "dimension": "nature_access",
+          "conclusion": "大理市具备较高自然资源可达性，但行政区森林覆盖率不等于古城绿化率。",
+          "destination_fields": [
+            "facts.forest_coverage",
+            "living_conditions"
+          ],
+          "profile_fields": [
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-dali-forest-city",
+            "src-cangshan-erhai-reserve"
+          ],
+          "verified_at": "2026-08-17",
+          "confidence": "medium",
+          "missing_data": [
+            "住宿点到自然空间的道路时间",
+            "现场无障碍条件"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-dali-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "古城及大理市区有多层级综合医疗资源，但不能推断具体住址的即时就医时间。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-dali-prefecture-hospital",
+            "src-dali-city-second-hospital",
+            "src-osm-dali-20260817"
+          ],
+          "verified_at": "2026-08-17",
+          "confidence": "medium",
+          "missing_data": [
+            "住宿点道路时间",
+            "目标科室排班",
+            "急诊实时状态",
+            "医保结算条件"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-dali-budget-001",
+          "dimension": "budget_fit",
+          "conclusion": "当前月预算区间只能用于初步筛选，不能作为住宿或餐饮报价。",
+          "destination_fields": [
+            "facts.monthly_budget",
+            "budget_scenarios"
+          ],
+          "profile_fields": [
+            "monthly_budget"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-17",
+          "confidence": "low",
+          "missing_data": [
+            "住宿价格快照",
+            "餐饮人均价格",
+            "旺淡季系数"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "poi_dataset": "data/dali-poi.json",
+      "route_readiness": {
+        "status": "road_route_verified",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": "2026-08-18",
+        "valid_until": "2026-09-17",
+        "supports": [
+          "poi_filtering",
+          "manual_node_selection",
+          "amap_walking_road_route",
+          "distance_and_duration_estimate",
+          "route_geometry_preview"
+        ],
+        "blocked": [
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "route_dataset": "data/dali-route.json"
+    },
+    {
+      "id": 1,
+      "name": "巴马瑶族自治县",
+      "destination_key": "cn-guangxi-bama",
+      "aliases": [],
+      "location": {
+        "latitude": 24.143744,
+        "longitude": 107.25589,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-guangxi-bama-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "巴马瑶族自治县 · 深度旅居体验",
+        "title": "沿盘阳河与喀斯特群山，读懂长寿之乡的生活节奏。",
+        "summary": "巴马以长寿文化、瑶族风情和喀斯特山水形成鲜明的康养旅居辨识度。比起匆忙打卡，这里更适合沿盘阳河、赐福湖与村落慢慢停留，体验当地饮食、民族文化和社区生活。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/河池市巴马县赐福湖.jpg?width=1600",
+        "image_local": "assets/images/destinations/巴马瑶族自治县.svg",
+        "image_attribution": "Hereisluwu / Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:河池市巴马县赐福湖.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-guangxi-bama-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "南亚热带季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥1,500–¥4,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从冬季避寒开始一天",
+          "description": "巴马以长寿文化、瑶族风情和喀斯特山水形成鲜明的康养旅居辨识度。"
+        },
+        {
+          "period": "午后",
+          "title": "把长寿文化放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "10月–次年4月，气候相对温暖干燥",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "冬季避寒",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "长寿文化",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "希望冬季温暖旅居的人群",
+        "关注慢节奏社区生活的人群",
+        "对长寿文化与瑶族文化感兴趣的人群"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "巴马瑶族自治县平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "20.5℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "巴马瑶族自治县平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 35
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "巴马瑶族自治县所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "78.4%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "巴马瑶族自治县WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 600
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "巴马瑶族自治县及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 1500,
+          "value_high": 4000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-guangxi-bama-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "沿盘阳河与喀斯特群山，读懂长寿之乡的生活节奏。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-guangxi-bama-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-guangxi-bama-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-guangxi-bama-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-guangxi-bama-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-guangxi-bama-official-1",
+          "title": "巴马长寿文化与乡村旅游资料",
+          "publisher": "中华人民共和国文化和旅游部",
+          "source_level": "government",
+          "url": "https://www.mct.gov.cn/wlbphone/wlbydd/xxfb/qglb/gx/202311/t20231114_949695.html",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-guangxi-bama-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-guangxi-bama-image",
+          "title": "巴马瑶族自治县目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:河池市巴马县赐福湖.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 4.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "苏马荡",
+      "destination_key": "cn-hubei-lichuan-sumadang",
+      "aliases": [],
+      "location": {
+        "latitude": 30.475037,
+        "longitude": 108.713567,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-hubei-lichuan-sumadang-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "苏马荡 · 深度旅居体验",
+        "title": "在武陵山的清凉夏季，加入一场候鸟式山居。",
+        "summary": "苏马荡位于湖北利川谋道镇，是以夏季清凉和候鸟式旅居形成规模的山地社区。这里的重点不是密集观光，而是在较长停留中体验买菜、散步、邻里活动与周边森林山地生活。",
+        "image": "",
+        "image_local": "assets/images/destinations/苏马荡.svg",
+        "image_attribution": "待补充：仅接受精确对应苏马荡且许可证明确的图片",
+        "image_license": "pending",
+        "image_source_url": "",
+        "asset_status": "pending_exact_licensed_image",
+        "source_ids": []
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带山地季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥1,500–¥3,500/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从夏季避暑开始一天",
+          "description": "苏马荡位于湖北利川谋道镇，是以夏季清凉和候鸟式旅居形成规模的山地社区。"
+        },
+        {
+          "period": "午后",
+          "title": "把候鸟旅居放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "6–9月，适合夏季避暑",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "夏季避暑",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "候鸟旅居",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "夏季避暑旅居人群",
+        "偏好山地社区生活的人群",
+        "希望中长期停留的人群"
+      ],
+      "caution_notes": [
+        "目的地海拔较高，存在慢病或心肺顾虑时建议先短住并咨询专业医生。",
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "苏马荡平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "13.5℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "苏马荡平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 38
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "苏马荡所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "87.3%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "苏马荡WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 1500
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "苏马荡及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 1500,
+          "value_high": 3500
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-hubei-lichuan-sumadang-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "在武陵山的清凉夏季，加入一场候鸟式山居。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-hubei-lichuan-sumadang-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-hubei-lichuan-sumadang-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-hubei-lichuan-sumadang-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-hubei-lichuan-sumadang-official-1",
+          "title": "苏马荡候鸟式旅居报道",
+          "publisher": "湖北省文化和旅游厅",
+          "source_level": "government",
+          "url": "https://wlt.hubei.gov.cn/bmdt/mtjj/202406/t20240624_5246241.shtml",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-hubei-lichuan-sumadang-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "三亚海棠湾",
+      "destination_key": "cn-hainan-sanya-haitang-bay",
+      "aliases": [],
+      "location": {
+        "latitude": 18.409058,
+        "longitude": 109.756566,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-hainan-sanya-haitang-bay-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "三亚海棠湾 · 深度旅居体验",
+        "title": "把冬日交给海风、日光与绵长的热带海岸。",
+        "summary": "海棠湾位于三亚东部，拥有连续海岸、热带景观与成熟的度假服务。它更适合把滨海散步、日光休闲和完善的住宿配套组合成冬季停留方案，而不是只安排一次海边打卡。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Haitang Bay in Sanya.jpg?width=1600",
+        "image_local": "assets/images/destinations/三亚海棠湾.svg",
+        "image_attribution": "Charlie fong / Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Haitang_Bay_in_Sanya.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-hainan-sanya-haitang-bay-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "热带海洋性季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥3,500–¥8,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从冬季避寒开始一天",
+          "description": "海棠湾位于三亚东部，拥有连续海岸、热带景观与成熟的度假服务。"
+        },
+        {
+          "period": "午后",
+          "title": "把热带滨海放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "10月–次年4月，温暖少雨",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "冬季避寒",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "热带滨海",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "冬季避寒人群",
+        "偏好滨海度假环境的人群",
+        "重视成熟住宿配套的人群"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "三亚海棠湾平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "25.7℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "三亚海棠湾平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 32
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "三亚海棠湾所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "68.5%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "三亚海棠湾WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 10
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "三亚海棠湾及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 3500,
+          "value_high": 8000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-hainan-sanya-haitang-bay-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "把冬日交给海风、日光与绵长的热带海岸。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-hainan-sanya-haitang-bay-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-hainan-sanya-haitang-bay-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-hainan-sanya-haitang-bay-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-hainan-sanya-haitang-bay-official-1",
+          "title": "三亚市海棠区区情资料",
+          "publisher": "三亚市海棠区人民政府",
+          "source_level": "government",
+          "url": "https://ht.sanya.gov.cn/htqsite/quqing/202603/a242509256864e8f84be07ee684c1429.shtml",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-hainan-sanya-haitang-bay-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-hainan-sanya-haitang-bay-image",
+          "title": "三亚海棠湾目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Haitang_Bay_in_Sanya.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 4.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "西双版纳嘎洒",
+      "destination_key": "cn-yunnan-xishuangbanna-gasa",
+      "aliases": [],
+      "location": {
+        "latitude": 21.955238,
+        "longitude": 100.762161,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-yunnan-xishuangbanna-gasa-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "西双版纳嘎洒 · 深度旅居体验",
+        "title": "从嘎洒出发，让热带雨林与傣乡烟火进入日常。",
+        "summary": "嘎洒连接景洪生活区、机场与西双版纳的雨林旅居资源。停留期间可以在温暖干季探索热带雨林、古茶山和民族村寨，也能回到城市生活圈感受傣族饮食与节庆。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/20251225 Tropical rainforest in the Xishuangbanna Tropical Botanical Garden, Chinese Academy of Sciences.jpg?width=1600",
+        "image_local": "assets/images/destinations/西双版纳嘎洒.svg",
+        "image_attribution": "Yumeto / Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:20251225_Tropical_rainforest_in_the_Xishuangbanna_Tropical_Botanical_Garden,_Chinese_Academy_of_Sciences.jpg",
+        "asset_status": "remote_verified_region",
+        "source_ids": [
+          "src-yunnan-xishuangbanna-gasa-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "热带季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥5,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从冬季温养开始一天",
+          "description": "嘎洒连接景洪生活区、机场与西双版纳的雨林旅居资源。"
+        },
+        {
+          "period": "午后",
+          "title": "把热带雨林放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "11月–次年4月，干季相对凉爽",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "冬季温养",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "热带雨林",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "冬季旅居人群",
+        "热带生态体验者",
+        "对民族文化和茶文化感兴趣的人群"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "西双版纳嘎洒平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "21.5℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "西双版纳嘎洒平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 36
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "西双版纳嘎洒所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "80.5%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "西双版纳嘎洒WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 550
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "西双版纳嘎洒及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 5000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-yunnan-xishuangbanna-gasa-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "从嘎洒出发，让热带雨林与傣乡烟火进入日常。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-yunnan-xishuangbanna-gasa-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-yunnan-xishuangbanna-gasa-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-yunnan-xishuangbanna-gasa-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-yunnan-xishuangbanna-gasa-official-1",
+          "title": "西双版纳文旅与乡村振兴资料",
+          "publisher": "云南省乡村振兴局相关公开平台",
+          "source_level": "government",
+          "url": "https://www.ynxc.gov.cn/html/2025/whxdfocus_0327/3021914.html",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-yunnan-xishuangbanna-gasa-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-yunnan-xishuangbanna-gasa-image",
+          "title": "西双版纳嘎洒目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:20251225_Tropical_rainforest_in_the_Xishuangbanna_Tropical_Botanical_Garden,_Chinese_Academy_of_Sciences.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 4.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "桂林阳朔",
+      "destination_key": "cn-guangxi-guilin-yangshuo",
+      "aliases": [],
+      "location": {
+        "latitude": 24.863029,
+        "longitude": 110.487183,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-guangxi-guilin-yangshuo-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "桂林阳朔 · 深度旅居体验",
+        "title": "在漓江与峰林之间，用骑行和散步读一幅山水长卷。",
+        "summary": "阳朔以漓江、遇龙河和喀斯特峰林构成独特的山水田园。适合把竹筏、骑行、轻徒步和村落停留组合起来，在自然节奏中体验比观光更从容的旅居方式。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/YangshuoFromTvTower.jpg?width=1600",
+        "image_local": "assets/images/destinations/桂林阳朔.svg",
+        "image_attribution": "Ericbolz / Wikimedia Commons",
+        "image_license": "Public Domain",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:YangshuoFromTvTower.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-guangxi-guilin-yangshuo-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥5,500/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从山水田园开始一天",
+          "description": "阳朔以漓江、遇龙河和喀斯特峰林构成独特的山水田园。"
+        },
+        {
+          "period": "午后",
+          "title": "把骑行徒步放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "4–6月、9–11月，气候较温和",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "山水田园",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "骑行徒步",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "喜欢山水田园的人群",
+        "骑行和轻户外爱好者",
+        "摄影与艺术旅居者"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "桂林阳朔平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "19.5℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "桂林阳朔平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 42
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "桂林阳朔所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "71.2%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "桂林阳朔WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 150
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "桂林阳朔及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 5500
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-guangxi-guilin-yangshuo-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "在漓江与峰林之间，用骑行和散步读一幅山水长卷。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-guangxi-guilin-yangshuo-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-guangxi-guilin-yangshuo-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-guangxi-guilin-yangshuo-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-guangxi-guilin-yangshuo-official-1",
+          "title": "阳朔山水与乡村旅游资料",
+          "publisher": "中华人民共和国文化和旅游部",
+          "source_level": "government",
+          "url": "https://zhuanti.mct.gov.cn/xcss2024_shjlzzxc/guangxi/detail/6871.html",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-guangxi-guilin-yangshuo-official-2",
+          "title": "阳朔山水与乡村旅游资料",
+          "publisher": "广西壮族自治区自然资源厅",
+          "source_level": "government",
+          "url": "https://dnr.gxzf.gov.cn/xwzx/zrzx/t16042301.shtml",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-guangxi-guilin-yangshuo-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-guangxi-guilin-yangshuo-image",
+          "title": "桂林阳朔目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:YangshuoFromTvTower.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "Public Domain"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "庐山牯岭镇",
+      "destination_key": "cn-jiangxi-lushan-guling",
+      "aliases": [],
+      "location": {
+        "latitude": 29.571633,
+        "longitude": 115.976601,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-jiangxi-lushan-guling-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "庐山牯岭镇 · 深度旅居体验",
+        "title": "住进云雾里的山城，在街巷与森林间度过清凉夏日。",
+        "summary": "牯岭镇坐落于庐山文化景观之中，山城街道、历史建筑与周边森林共同形成独特的避暑生活。这里适合放慢速度，在云雾、散步线路和人文遗迹之间安排一段夏季长住。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Guling Street, Lushan.jpg?width=1600",
+        "image_local": "assets/images/destinations/庐山牯岭镇.svg",
+        "image_attribution": "钉钉 / Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Guling_Street,_Lushan.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-jiangxi-lushan-guling-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带山地气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥5,500/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从夏季避暑开始一天",
+          "description": "牯岭镇坐落于庐山文化景观之中，山城街道、历史建筑与周边森林共同形成独特的避暑生活。"
+        },
+        {
+          "period": "午后",
+          "title": "把山城慢居放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "6–9月适合避暑，冬季可体验雪景",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "夏季避暑",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "山城慢居",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "夏季避暑人群",
+        "喜欢山城步行生活的人群",
+        "文化景观与摄影爱好者"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "庐山牯岭镇平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "11.6℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "庐山牯岭镇平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 38
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "庐山牯岭镇所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "90.2%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "庐山牯岭镇WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 1164
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "庐山牯岭镇及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 5500
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-jiangxi-lushan-guling-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "住进云雾里的山城，在街巷与森林间度过清凉夏日。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-jiangxi-lushan-guling-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-jiangxi-lushan-guling-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-jiangxi-lushan-guling-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-jiangxi-lushan-guling-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-jiangxi-lushan-guling-official-1",
+          "title": "庐山国家公园文化景观",
+          "publisher": "UNESCO World Heritage Centre",
+          "source_level": "institution",
+          "url": "https://whc.unesco.org/en/list/778/",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-jiangxi-lushan-guling-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-jiangxi-lushan-guling-image",
+          "title": "庐山牯岭镇目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Guling_Street,_Lushan.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 4.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "黄山汤口",
+      "destination_key": "cn-anhui-huangshan-tangkou",
+      "aliases": [],
+      "location": {
+        "latitude": 30.084519,
+        "longitude": 118.186817,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-anhui-huangshan-tangkou-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "黄山汤口 · 深度旅居体验",
+        "title": "从山脚住下，循着奇松、云海与温泉进入黄山。",
+        "summary": "汤口是进入黄山南大门的重要旅居节点。以这里为落脚点，可以把山岳徒步、云海观景、徽州文化和山脚休整拆成更从容的节奏，减少一次性登山带来的匆忙。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Panorama - HuangShan.jpg?width=1600",
+        "image_local": "assets/images/destinations/黄山汤口.svg",
+        "image_attribution": "Stephane.janel / Wikimedia Commons",
+        "image_license": "CC BY-SA 3.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Panorama_-_HuangShan.jpg",
+        "asset_status": "remote_verified_region",
+        "source_ids": [
+          "src-anhui-huangshan-tangkou-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带山地气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥6,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从山岳旅居开始一天",
+          "description": "汤口是进入黄山南大门的重要旅居节点。"
+        },
+        {
+          "period": "午后",
+          "title": "把森林步道放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "4–6月、9–11月，夏季山上较凉爽",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "山岳旅居",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "森林步道",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "山岳与摄影爱好者",
+        "希望分段安排徒步的人群",
+        "对徽州文化感兴趣的人群"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "黄山汤口平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "16.5℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "黄山汤口平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 35
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "黄山汤口所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "91.5%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "黄山汤口WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 500
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "黄山汤口及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 6000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-anhui-huangshan-tangkou-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "从山脚住下，循着奇松、云海与温泉进入黄山。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-anhui-huangshan-tangkou-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-anhui-huangshan-tangkou-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-anhui-huangshan-tangkou-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-anhui-huangshan-tangkou-official-1",
+          "title": "黄山世界遗产资料",
+          "publisher": "UNESCO World Heritage Centre",
+          "source_level": "institution",
+          "url": "https://whc.unesco.org/en/list/547/",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-anhui-huangshan-tangkou-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-anhui-huangshan-tangkou-image",
+          "title": "黄山汤口目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Panorama_-_HuangShan.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 3.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "武夷山",
+      "destination_key": "cn-fujian-wuyishan",
+      "aliases": [],
+      "location": {
+        "latitude": 27.759045,
+        "longitude": 118.029769,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-fujian-wuyishan-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "武夷山 · 深度旅居体验",
+        "title": "沿九曲溪与茶山慢行，在山水之间感受岩骨花香。",
+        "summary": "武夷山以九曲溪、丹霞峰林、亚热带森林与茶文化相互交织。旅居可以围绕竹筏、茶园、古迹和轻徒步展开，把自然观察与一杯武夷岩茶连接起来。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jiuqu Brook in Wuyi Mountains.jpg?width=1600",
+        "image_local": "assets/images/destinations/武夷山.svg",
+        "image_attribution": "John Lian / Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Jiuqu_Brook_in_Wuyi_Mountains.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-fujian-wuyishan-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥5,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从森林慢游开始一天",
+          "description": "武夷山以九曲溪、丹霞峰林、亚热带森林与茶文化相互交织。"
+        },
+        {
+          "period": "午后",
+          "title": "把九曲溪放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "4–6月、9–11月，适合山水与茶旅体验",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "森林慢游",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "九曲溪",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "茶文化爱好者",
+        "森林与山水旅居者",
+        "喜欢轻徒步和自然观察的人群"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "武夷山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "17.9℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "武夷山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 33
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "武夷山所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "96.7%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "武夷山WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 300
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "武夷山及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 5000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-fujian-wuyishan-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "沿九曲溪与茶山慢行，在山水之间感受岩骨花香。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-fujian-wuyishan-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-fujian-wuyishan-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-fujian-wuyishan-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-fujian-wuyishan-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-fujian-wuyishan-official-1",
+          "title": "武夷山世界遗产资料",
+          "publisher": "UNESCO World Heritage Centre",
+          "source_level": "institution",
+          "url": "https://whc.unesco.org/en/list/911/",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-fujian-wuyishan-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-fujian-wuyishan-image",
+          "title": "武夷山目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Jiuqu_Brook_in_Wuyi_Mountains.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 4.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "name": "青城山",
+      "destination_key": "cn-sichuan-qingchengshan",
+      "aliases": [],
+      "location": {
+        "latitude": 30.881316,
+        "longitude": 103.588768,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-sichuan-qingchengshan-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "青城山 · 深度旅居体验",
+        "title": "走进青城的幽静林径，让道家文化陪伴山居日常。",
+        "summary": "青城山是道教文化的重要发源地，也是青城山—都江堰世界遗产的一部分。古寺、林径和山麓生活适合被安排成节奏舒缓的文化旅居，而不只是一次登山行程。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount Qingcheng (54530907107).jpg?width=1600",
+        "image_local": "assets/images/destinations/青城山.svg",
+        "image_attribution": "Xiquinho Silva / Wikimedia Commons",
+        "image_license": "CC BY 2.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Mount_Qingcheng_(54530907107).jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-sichuan-qingchengshan-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带湿润季风气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥5,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从道家文化开始一天",
+          "description": "青城山是道教文化的重要发源地，也是青城山—都江堰世界遗产的一部分。"
+        },
+        {
+          "period": "午后",
+          "title": "把幽静森林放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "4–10月，春秋温和、夏季适合山林活动",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "道家文化",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "幽静森林",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "偏好安静山林的人群",
+        "道家文化体验者",
+        "喜欢缓坡步行和慢节奏停留的人群"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "青城山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "15.2℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "青城山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 45
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "青城山所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "76.5%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "青城山WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 900
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "青城山及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 5000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-sichuan-qingchengshan-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "走进青城的幽静林径，让道家文化陪伴山居日常。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-sichuan-qingchengshan-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-sichuan-qingchengshan-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-sichuan-qingchengshan-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-sichuan-qingchengshan-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-sichuan-qingchengshan-official-1",
+          "title": "青城山—都江堰世界遗产资料",
+          "publisher": "UNESCO World Heritage Centre",
+          "source_level": "institution",
+          "url": "https://whc.unesco.org/en/list/1001/",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-sichuan-qingchengshan-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-sichuan-qingchengshan-image",
+          "title": "青城山目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_Qingcheng_(54530907107).jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY 2.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "name": "莫干山",
+      "destination_key": "cn-zhejiang-deqing-moganshan",
+      "aliases": [],
+      "location": {
+        "latitude": 30.600321,
+        "longitude": 119.895112,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-zhejiang-deqing-moganshan-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "莫干山 · 深度旅居体验",
+        "title": "在竹海与民宿之间，寻找长三角近郊的山居松弛感。",
+        "summary": "莫干山以竹林、茶园、历史别墅和成熟民宿形成鲜明的度假方式。除了短暂停留，也适合把步道、阅读、茶饮和小型户外活动编入几天到数周的山居生活。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount Mogan bamboo forest.jpg?width=1600",
+        "image_local": "assets/images/destinations/莫干山.svg",
+        "image_attribution": "Walter Grassroot / Wikimedia Commons",
+        "image_license": "CC BY-SA 4.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Mount_Mogan_bamboo_forest.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-zhejiang-deqing-moganshan-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带山地气候",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥3,500–¥9,000/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从竹海山居开始一天",
+          "description": "莫干山以竹林、茶园、历史别墅和成熟民宿形成鲜明的度假方式。"
+        },
+        {
+          "period": "午后",
+          "title": "把夏季避暑放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "4–5月体验春日竹茶，6–9月适合避暑",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "竹海山居",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "夏季避暑",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "偏好精品山居的人群",
+        "长三角短中期旅居者",
+        "徒步、骑行与瑜伽爱好者"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "莫干山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "13.5℃"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "莫干山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 40
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "莫干山所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "92.3%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "莫干山WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 700
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "莫干山及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 3500,
+          "value_high": 9000
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-zhejiang-deqing-moganshan-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "在竹海与民宿之间，寻找长三角近郊的山居松弛感。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-zhejiang-deqing-moganshan-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-zhejiang-deqing-moganshan-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-zhejiang-deqing-moganshan-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-zhejiang-deqing-moganshan-official-1",
+          "title": "莫干山山居与文旅资料",
+          "publisher": "浙江省商务厅公开平台",
+          "source_level": "government",
+          "url": "https://zcom.zj.gov.cn/art/2021/2/5/art_1384592_58928877.html",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-zhejiang-deqing-moganshan-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-zhejiang-deqing-moganshan-image",
+          "title": "莫干山目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_Mogan_bamboo_forest.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY-SA 4.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "name": "峨眉山",
+      "destination_key": "cn-sichuan-emeishan",
+      "aliases": [],
+      "location": {
+        "latitude": 29.522665,
+        "longitude": 103.336864,
+        "coordinate_system": "WGS84/EPSG:4326",
+        "source_ids": [
+          "src-sichuan-emeishan-platform-geo"
+        ],
+        "status": "reference_only"
+      },
+      "verification": {
+        "status": "reference_only",
+        "verified_at": "2026-08-19",
+        "valid_until": "2027-02-19",
+        "missing_fields": [
+          "official_climate_series",
+          "live_aqi",
+          "verified_medical_facilities",
+          "merchant_price_snapshots",
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "on_site_accessibility_audit"
+        ]
+      },
+      "hero": {
+        "eyebrow": "峨眉山 · 深度旅居体验",
+        "title": "从山麓到金顶，在层层森林与古寺之间转换身心节奏。",
+        "summary": "峨眉山拥有显著的海拔梯度、丰富植被与深厚佛教文化。更适合依据体力和天气分段探索：山麓温泉与古寺、林间步道和高处景观可以组成不同强度的旅居体验。",
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount emei.jpg?width=1600",
+        "image_local": "assets/images/destinations/峨眉山.svg",
+        "image_attribution": "Tomasz Dunn / Wikimedia Commons",
+        "image_license": "CC BY 2.0",
+        "image_source_url": "https://commons.wikimedia.org/wiki/File:Mount_emei.jpg",
+        "asset_status": "remote_verified",
+        "source_ids": [
+          "src-sichuan-emeishan-image"
+        ]
+      },
+      "quick_facts": [
+        {
+          "label": "气候背景",
+          "value": "亚热带山地气候（垂直立体气候）",
+          "description": "平台历史参考，具体月份需查询气象资料与实时天气。",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "旅居预算",
+          "value": "¥2,000–¥5,500/月",
+          "description": "仅用于初筛，不是住宿或餐饮报价。",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "status": "reference_only"
+        },
+        {
+          "label": "医疗可达",
+          "value": "待逐院核验",
+          "description": "医院名称、科室、急诊与道路时间尚未形成正式数据。",
+          "source_ids": [],
+          "status": "unknown"
+        }
+      ],
+      "day_in_life": [
+        {
+          "period": "清晨",
+          "title": "从森林康养开始一天",
+          "description": "峨眉山拥有显著的海拔梯度、丰富植被与深厚佛教文化。"
+        },
+        {
+          "period": "午后",
+          "title": "把佛教文化放进日常",
+          "description": "选择一项轻量体验并保留休息时间，观察它是否适合连续停留，而不是追求密集打卡。"
+        },
+        {
+          "period": "傍晚",
+          "title": "用慢行理解生活尺度",
+          "description": "围绕住宿、餐饮、公共空间和交通做一次真实日常观察，并记录活动强度。"
+        },
+        {
+          "period": "夜晚",
+          "title": "复盘身体体感与实际费用",
+          "description": "记录睡眠、温湿度、出行便利和当日支出，为是否延长旅居提供依据。"
+        }
+      ],
+      "seasons": [
+        {
+          "id": "recommended",
+          "label": "推荐季",
+          "title": "5–10月适合山林活动，山麓可全年体验",
+          "description": "该时段来自现有内容资料的编辑性总结，出发前仍需核对逐月天气、客流和价格。",
+          "focus": "适合作为第一次试住的优先时间窗口。"
+        },
+        {
+          "id": "flexible",
+          "label": "弹性季",
+          "title": "用短住验证个人体感",
+          "description": "非推荐季并不等于不能停留，但需要为天气、交通和室内活动预留更多弹性。",
+          "focus": "适合愿意降低活动密度、重视真实生活观察的人群。"
+        }
+      ],
+      "living_conditions": [
+        {
+          "title": "生活节奏",
+          "value": "森林康养",
+          "description": "现阶段由目的地叙事与标签提供方向，需通过试住核验日常便利。"
+        },
+        {
+          "title": "自然与文化",
+          "value": "佛教文化",
+          "description": "相关身份有政府或机构资料支持，但不表达为医疗或康养效果。"
+        },
+        {
+          "title": "医疗与公共服务",
+          "value": "待逐院核验",
+          "description": "有就医、用药或行动限制需求时，应在确定住宿前单独确认。"
+        },
+        {
+          "title": "预算与价格",
+          "value": "历史区间仅供初筛",
+          "description": "真实费用需要带日期的商家或授权价格快照。"
+        }
+      ],
+      "medical_access": {
+        "status": "待逐院核验",
+        "items": [],
+        "disclaimer": "本页不构成医疗建议。医院等级、目标科室、急诊能力、医保结算和实际道路时间均需在长住前核验。"
+      },
+      "budget_scenarios": [
+        {
+          "id": "essential",
+          "label": "基础试住",
+          "value_mode": "base_low",
+          "description": "以历史区间低位做初筛，实际价格必须另行核验。"
+        },
+        {
+          "id": "balanced",
+          "label": "舒适长住",
+          "value_mode": "base_range",
+          "description": "为交通、文化体验和弹性安排预留空间。"
+        },
+        {
+          "id": "flexible",
+          "label": "从容体验",
+          "value_mode": "base_high",
+          "description": "更重视居住条件，但旺季与房型会显著影响费用。"
+        }
+      ],
+      "suitable_conditions": [
+        "森林与文化旅居者",
+        "希望分级安排活动强度的人群",
+        "温泉和山岳体验爱好者"
+      ],
+      "caution_notes": [
+        "当前气候、空气、森林和预算数值来自平台历史参考快照，发布前仍需逐项补充专项官方来源。",
+        "实时天气、客流、营业状态和住宿价格会变化，出发前需要再次查询。",
+        "医疗机构、目标科室、急诊能力和实际道路时间尚未逐院核验。"
+      ],
+      "facts": {
+        "average_temperature": {
+          "unit": "°C",
+          "scope": "峨眉山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于初筛，不替代逐月气象资料或实时天气。",
+          "value": "17.2℃（山麓）/ 3.1℃（金顶）"
+        },
+        "air_quality": {
+          "unit": "AQI",
+          "scope": "峨眉山平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是实时监测值；呼吸敏感人群必须查询出行日期附近监测站。",
+          "value": 38
+        },
+        "forest_coverage": {
+          "unit": "%",
+          "scope": "峨眉山所在区域平台历史参考口径",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "行政区域或景区覆盖率不等于住宿点周边绿化率，也不代表康养效果。",
+          "value": "95.8%"
+        },
+        "altitude": {
+          "unit": "m",
+          "scope": "峨眉山WGS84目的地点位参考",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "用于活动强度与环境适应提醒，个体健康影响需咨询专业医生。",
+          "value": 550
+        },
+        "medical_access": {
+          "unit": "status",
+          "scope": "峨眉山及周边医疗服务",
+          "status": "unknown",
+          "source_ids": [],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "旧数据中的医疗等级不作为正式结论；等待逐院官方资料、科室和道路时间核验。"
+        },
+        "monthly_budget": {
+          "unit": "CNY/month",
+          "scope": "平台初筛预算区间",
+          "status": "reference_only",
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "observed_at": null,
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "notes": "不是商家报价；缺少带观察时间的住宿、餐饮和交通价格快照。",
+          "value_low": 2000,
+          "value_high": 5500
+        }
+      },
+      "analysis_evidence": [
+        {
+          "evidence_id": "ev-sichuan-emeishan-identity-001",
+          "dimension": "destination_character",
+          "conclusion": "从山麓到金顶，在层层森林与古寺之间转换身心节奏。",
+          "destination_fields": [
+            "hero",
+            "day_in_life",
+            "suitable_conditions"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "activity_level",
+            "additional_notes"
+          ],
+          "source_ids": [
+            "src-sichuan-emeishan-official-1"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "medium",
+          "missing_data": [
+            "用户具体出行日期",
+            "住宿点日常生活实测"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-sichuan-emeishan-climate-001",
+          "dimension": "climate_comfort",
+          "conclusion": "现有气候数值只能用于初筛，不能替代逐月气象资料和个人体感。",
+          "destination_fields": [
+            "facts.average_temperature",
+            "seasons"
+          ],
+          "profile_fields": [
+            "climate_preference",
+            "health_status"
+          ],
+          "source_ids": [
+            "src-sichuan-emeishan-platform-geo"
+          ],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "专项官方气候序列",
+            "实时天气",
+            "个人体感"
+          ],
+          "rule_version": "decision-v1"
+        },
+        {
+          "evidence_id": "ev-sichuan-emeishan-medical-001",
+          "dimension": "medical_access",
+          "conclusion": "医疗可达性尚不足以形成适合结论，长住前必须按个人需求逐院核验。",
+          "destination_fields": [
+            "facts.medical_access",
+            "medical_access.items"
+          ],
+          "profile_fields": [
+            "health_status",
+            "additional_notes"
+          ],
+          "source_ids": [],
+          "verified_at": "2026-08-19",
+          "confidence": "low",
+          "missing_data": [
+            "医院官方资料",
+            "目标科室",
+            "急诊状态",
+            "住宿点道路时间"
+          ],
+          "rule_version": "decision-v1"
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src-sichuan-emeishan-official-1",
+          "title": "峨眉山—乐山大佛世界遗产资料",
+          "publisher": "UNESCO World Heritage Centre",
+          "source_level": "institution",
+          "url": "https://whc.unesco.org/en/list/779/",
+          "scope": "目的地身份、自然或文化旅游叙事；不单独证明医疗、动态价格或康养效果",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "public_reference"
+        },
+        {
+          "source_id": "src-sichuan-emeishan-platform-geo",
+          "title": "平台目的地 GeoJSON 历史参考快照",
+          "publisher": "AI康养旅居助手项目",
+          "source_level": "editorial",
+          "url": "data/destinations.geojson",
+          "scope": "WGS84坐标及旧版气候、海拔、环境、预算参考值；未完成专项官方复核",
+          "published_at": "2026-07-10",
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-02-19",
+          "verification_status": "reference_only",
+          "license_scope": "internal_dataset"
+        },
+        {
+          "source_id": "src-sichuan-emeishan-image",
+          "title": "峨眉山目的地影像文件页",
+          "publisher": "Wikimedia Commons",
+          "source_level": "institution",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_emei.jpg",
+          "scope": "目的地主视觉、作者署名和开放许可证",
+          "published_at": null,
+          "collected_at": "2026-08-19",
+          "verified_at": "2026-08-19",
+          "valid_until": "2027-08-19",
+          "verification_status": "verified",
+          "license_scope": "CC BY 2.0"
+        }
+      ],
+      "poi_dataset": {
+        "status": "pending",
+        "provider": "amap",
+        "verified_at": null
+      },
+      "route_readiness": {
+        "status": "pending",
+        "provider": "amap",
+        "provider_coordinate_system": "GCJ-02",
+        "render_coordinate_system": "WGS84/EPSG:3857 via explicit adapter",
+        "verified_at": null,
+        "valid_until": null,
+        "supports": [],
+        "blocked": [
+          "amap_poi_dataset",
+          "road_route_snapshot",
+          "live_opening_status",
+          "verified_price_budget",
+          "on_site_accessibility_audit"
+        ]
+      }
+    }
+  ],
+  "contract": "destination-details-v2",
+  "dataset_status": "partial"
+}

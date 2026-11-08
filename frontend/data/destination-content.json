@@ -1,0 +1,366 @@
+{
+  "version": "1.0.0",
+  "last_verified": "2026-07-27",
+  "content_policy": "地点故事基于政府、文旅部门或 UNESCO 资料转述；图片仅使用已核验文件页及明确开放许可证。",
+  "destinations": [
+    {
+      "id": 4,
+      "name": "大理古城",
+      "tagline": "苍山与洱海之间，把日常过成一段有风的慢旅。",
+      "story": "大理古城位于苍洱旅游核心区，西倚苍山、东临洱海。这里适合放慢脚步：沿古城街巷感受白族文化，也可以把骑行、散步和公共文化空间融入较长时间的旅居生活。",
+      "health_tags": [
+        "四季旅居",
+        "苍洱慢生活",
+        "白族文化",
+        "骑行徒步"
+      ],
+      "best_season": "全年可体验，3–5月、9–11月更舒适",
+      "suitable_for": [
+        "偏好温和高原气候的人群",
+        "文化与艺术旅居者",
+        "喜欢骑行和轻徒步的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/大理古城南门-2064560.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/大理古城南门-2064560.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Pixabay user 4537668 / Wikimedia Commons",
+      "image_license": "CC0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:大理古城南门-2064560.jpg",
+      "text_sources": [
+        "https://www.yndali.gov.cn/dlsrmzf/c106716/pc/content/1983786663283888128/content_1983786663283888128.html"
+      ],
+      "image_local": "assets/images/destinations/大理古城.svg"
+    },
+    {
+      "id": 1,
+      "name": "巴马瑶族自治县",
+      "tagline": "沿盘阳河与喀斯特群山，读懂长寿之乡的生活节奏。",
+      "story": "巴马以长寿文化、瑶族风情和喀斯特山水形成鲜明的康养旅居辨识度。比起匆忙打卡，这里更适合沿盘阳河、赐福湖与村落慢慢停留，体验当地饮食、民族文化和社区生活。",
+      "health_tags": [
+        "冬季避寒",
+        "长寿文化",
+        "瑶族体验",
+        "山水慢居"
+      ],
+      "best_season": "10月–次年4月，气候相对温暖干燥",
+      "suitable_for": [
+        "希望冬季温暖旅居的人群",
+        "关注慢节奏社区生活的人群",
+        "对长寿文化与瑶族文化感兴趣的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/河池市巴马县赐福湖.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/河池市巴马县赐福湖.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Hereisluwu / Wikimedia Commons",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:河池市巴马县赐福湖.jpg",
+      "text_sources": [
+        "https://www.mct.gov.cn/wlbphone/wlbydd/xxfb/qglb/gx/202311/t20231114_949695.html"
+      ],
+      "image_local": "assets/images/destinations/巴马瑶族自治县.svg"
+    },
+    {
+      "id": 6,
+      "name": "苏马荡",
+      "tagline": "在武陵山的清凉夏季，加入一场候鸟式山居。",
+      "story": "苏马荡位于湖北利川谋道镇，是以夏季清凉和候鸟式旅居形成规模的山地社区。这里的重点不是密集观光，而是在较长停留中体验买菜、散步、邻里活动与周边森林山地生活。",
+      "health_tags": [
+        "夏季避暑",
+        "候鸟旅居",
+        "山地森林",
+        "土家文化"
+      ],
+      "best_season": "6–9月，适合夏季避暑",
+      "suitable_for": [
+        "夏季避暑旅居人群",
+        "偏好山地社区生活的人群",
+        "希望中长期停留的人群"
+      ],
+      "image": "",
+      "gallery": [],
+      "asset_status": "pending_exact_licensed_image",
+      "image_attribution": "待补充：仅接受精确对应苏马荡且许可证明确的图片",
+      "image_license": "pending",
+      "image_source_url": "",
+      "text_sources": [
+        "https://wlt.hubei.gov.cn/bmdt/mtjj/202406/t20240624_5246241.shtml"
+      ],
+      "image_local": "assets/images/destinations/苏马荡.svg"
+    },
+    {
+      "id": 2,
+      "name": "三亚海棠湾",
+      "tagline": "把冬日交给海风、日光与绵长的热带海岸。",
+      "story": "海棠湾位于三亚东部，拥有连续海岸、热带景观与成熟的度假服务。它更适合把滨海散步、日光休闲和完善的住宿配套组合成冬季停留方案，而不是只安排一次海边打卡。",
+      "health_tags": [
+        "冬季避寒",
+        "热带滨海",
+        "度假配套",
+        "海岸漫步"
+      ],
+      "best_season": "10月–次年4月，温暖少雨",
+      "suitable_for": [
+        "冬季避寒人群",
+        "偏好滨海度假环境的人群",
+        "重视成熟住宿配套的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Haitang Bay in Sanya.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Haitang Bay in Sanya.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Charlie fong / Wikimedia Commons",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Haitang_Bay_in_Sanya.jpg",
+      "text_sources": [
+        "https://ht.sanya.gov.cn/htqsite/quqing/202603/a242509256864e8f84be07ee684c1429.shtml"
+      ],
+      "image_local": "assets/images/destinations/三亚海棠湾.svg"
+    },
+    {
+      "id": 3,
+      "name": "西双版纳嘎洒",
+      "tagline": "从嘎洒出发，让热带雨林与傣乡烟火进入日常。",
+      "story": "嘎洒连接景洪生活区、机场与西双版纳的雨林旅居资源。停留期间可以在温暖干季探索热带雨林、古茶山和民族村寨，也能回到城市生活圈感受傣族饮食与节庆。",
+      "health_tags": [
+        "冬季温养",
+        "热带雨林",
+        "傣族文化",
+        "茶山体验"
+      ],
+      "best_season": "11月–次年4月，干季相对凉爽",
+      "suitable_for": [
+        "冬季旅居人群",
+        "热带生态体验者",
+        "对民族文化和茶文化感兴趣的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/20251225 Tropical rainforest in the Xishuangbanna Tropical Botanical Garden, Chinese Academy of Sciences.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/20251225 Tropical rainforest in the Xishuangbanna Tropical Botanical Garden, Chinese Academy of Sciences.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified_region",
+      "image_attribution": "Yumeto / Wikimedia Commons",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:20251225_Tropical_rainforest_in_the_Xishuangbanna_Tropical_Botanical_Garden,_Chinese_Academy_of_Sciences.jpg",
+      "text_sources": [
+        "https://www.ynxc.gov.cn/html/2025/whxdfocus_0327/3021914.html"
+      ],
+      "image_local": "assets/images/destinations/西双版纳嘎洒.svg"
+    },
+    {
+      "id": 5,
+      "name": "桂林阳朔",
+      "tagline": "在漓江与峰林之间，用骑行和散步读一幅山水长卷。",
+      "story": "阳朔以漓江、遇龙河和喀斯特峰林构成独特的山水田园。适合把竹筏、骑行、轻徒步和村落停留组合起来，在自然节奏中体验比观光更从容的旅居方式。",
+      "health_tags": [
+        "山水田园",
+        "骑行徒步",
+        "喀斯特峰林",
+        "文化摄影"
+      ],
+      "best_season": "4–6月、9–11月，气候较温和",
+      "suitable_for": [
+        "喜欢山水田园的人群",
+        "骑行和轻户外爱好者",
+        "摄影与艺术旅居者"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/YangshuoFromTvTower.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/YangshuoFromTvTower.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Ericbolz / Wikimedia Commons",
+      "image_license": "Public Domain",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:YangshuoFromTvTower.jpg",
+      "text_sources": [
+        "https://zhuanti.mct.gov.cn/xcss2024_shjlzzxc/guangxi/detail/6871.html",
+        "https://dnr.gxzf.gov.cn/xwzx/zrzx/t16042301.shtml"
+      ],
+      "image_local": "assets/images/destinations/桂林阳朔.svg"
+    },
+    {
+      "id": 7,
+      "name": "庐山牯岭镇",
+      "tagline": "住进云雾里的山城，在街巷与森林间度过清凉夏日。",
+      "story": "牯岭镇坐落于庐山文化景观之中，山城街道、历史建筑与周边森林共同形成独特的避暑生活。这里适合放慢速度，在云雾、散步线路和人文遗迹之间安排一段夏季长住。",
+      "health_tags": [
+        "夏季避暑",
+        "山城慢居",
+        "世界遗产",
+        "人文漫步"
+      ],
+      "best_season": "6–9月适合避暑，冬季可体验雪景",
+      "suitable_for": [
+        "夏季避暑人群",
+        "喜欢山城步行生活的人群",
+        "文化景观与摄影爱好者"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Guling Street, Lushan.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Guling Street, Lushan.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "钉钉 / Wikimedia Commons",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Guling_Street,_Lushan.jpg",
+      "text_sources": [
+        "https://whc.unesco.org/en/list/778/"
+      ],
+      "image_local": "assets/images/destinations/庐山牯岭镇.svg"
+    },
+    {
+      "id": 8,
+      "name": "黄山汤口",
+      "tagline": "从山脚住下，循着奇松、云海与温泉进入黄山。",
+      "story": "汤口是进入黄山南大门的重要旅居节点。以这里为落脚点，可以把山岳徒步、云海观景、徽州文化和山脚休整拆成更从容的节奏，减少一次性登山带来的匆忙。",
+      "health_tags": [
+        "山岳旅居",
+        "森林步道",
+        "徽州文化",
+        "温泉休整"
+      ],
+      "best_season": "4–6月、9–11月，夏季山上较凉爽",
+      "suitable_for": [
+        "山岳与摄影爱好者",
+        "希望分段安排徒步的人群",
+        "对徽州文化感兴趣的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Panorama - HuangShan.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Panorama - HuangShan.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified_region",
+      "image_attribution": "Stephane.janel / Wikimedia Commons",
+      "image_license": "CC BY-SA 3.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Panorama_-_HuangShan.jpg",
+      "text_sources": [
+        "https://whc.unesco.org/en/list/547/"
+      ],
+      "image_local": "assets/images/destinations/黄山汤口.svg"
+    },
+    {
+      "id": 9,
+      "name": "武夷山",
+      "tagline": "沿九曲溪与茶山慢行，在山水之间感受岩骨花香。",
+      "story": "武夷山以九曲溪、丹霞峰林、亚热带森林与茶文化相互交织。旅居可以围绕竹筏、茶园、古迹和轻徒步展开，把自然观察与一杯武夷岩茶连接起来。",
+      "health_tags": [
+        "森林慢游",
+        "九曲溪",
+        "茶文化",
+        "轻徒步"
+      ],
+      "best_season": "4–6月、9–11月，适合山水与茶旅体验",
+      "suitable_for": [
+        "茶文化爱好者",
+        "森林与山水旅居者",
+        "喜欢轻徒步和自然观察的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jiuqu Brook in Wuyi Mountains.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jiuqu Brook in Wuyi Mountains.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "John Lian / Wikimedia Commons",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Jiuqu_Brook_in_Wuyi_Mountains.jpg",
+      "text_sources": [
+        "https://whc.unesco.org/en/list/911/"
+      ],
+      "image_local": "assets/images/destinations/武夷山.svg"
+    },
+    {
+      "id": 10,
+      "name": "青城山",
+      "tagline": "走进青城的幽静林径，让道家文化陪伴山居日常。",
+      "story": "青城山是道教文化的重要发源地，也是青城山—都江堰世界遗产的一部分。古寺、林径和山麓生活适合被安排成节奏舒缓的文化旅居，而不只是一次登山行程。",
+      "health_tags": [
+        "道家文化",
+        "幽静森林",
+        "山居慢行",
+        "世界遗产"
+      ],
+      "best_season": "4–10月，春秋温和、夏季适合山林活动",
+      "suitable_for": [
+        "偏好安静山林的人群",
+        "道家文化体验者",
+        "喜欢缓坡步行和慢节奏停留的人群"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount Qingcheng (54530907107).jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount Qingcheng (54530907107).jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Xiquinho Silva / Wikimedia Commons",
+      "image_license": "CC BY 2.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Mount_Qingcheng_(54530907107).jpg",
+      "text_sources": [
+        "https://whc.unesco.org/en/list/1001/"
+      ],
+      "image_local": "assets/images/destinations/青城山.svg"
+    },
+    {
+      "id": 11,
+      "name": "莫干山",
+      "tagline": "在竹海与民宿之间，寻找长三角近郊的山居松弛感。",
+      "story": "莫干山以竹林、茶园、历史别墅和成熟民宿形成鲜明的度假方式。除了短暂停留，也适合把步道、阅读、茶饮和小型户外活动编入几天到数周的山居生活。",
+      "health_tags": [
+        "竹海山居",
+        "夏季避暑",
+        "精品民宿",
+        "户外休闲"
+      ],
+      "best_season": "4–5月体验春日竹茶，6–9月适合避暑",
+      "suitable_for": [
+        "偏好精品山居的人群",
+        "长三角短中期旅居者",
+        "徒步、骑行与瑜伽爱好者"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount Mogan bamboo forest.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount Mogan bamboo forest.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Walter Grassroot / Wikimedia Commons",
+      "image_license": "CC BY-SA 4.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Mount_Mogan_bamboo_forest.jpg",
+      "text_sources": [
+        "https://zcom.zj.gov.cn/art/2021/2/5/art_1384592_58928877.html"
+      ],
+      "image_local": "assets/images/destinations/莫干山.svg"
+    },
+    {
+      "id": 12,
+      "name": "峨眉山",
+      "tagline": "从山麓到金顶，在层层森林与古寺之间转换身心节奏。",
+      "story": "峨眉山拥有显著的海拔梯度、丰富植被与深厚佛教文化。更适合依据体力和天气分段探索：山麓温泉与古寺、林间步道和高处景观可以组成不同强度的旅居体验。",
+      "health_tags": [
+        "森林康养",
+        "佛教文化",
+        "分段徒步",
+        "山麓温泉"
+      ],
+      "best_season": "5–10月适合山林活动，山麓可全年体验",
+      "suitable_for": [
+        "森林与文化旅居者",
+        "希望分级安排活动强度的人群",
+        "温泉和山岳体验爱好者"
+      ],
+      "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount emei.jpg?width=1600",
+      "gallery": [
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mount emei.jpg?width=1600"
+      ],
+      "asset_status": "remote_verified",
+      "image_attribution": "Tomasz Dunn / Wikimedia Commons",
+      "image_license": "CC BY 2.0",
+      "image_source_url": "https://commons.wikimedia.org/wiki/File:Mount_emei.jpg",
+      "text_sources": [
+        "https://whc.unesco.org/en/list/779/"
+      ],
+      "image_local": "assets/images/destinations/峨眉山.svg"
+    }
+  ]
+}

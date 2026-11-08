@@ -154,12 +154,12 @@
         "city": "大理市",
         "climate": "高原季风气候",
         "altitude": 1970,
-        "average_temperature": "15.1℃",
+        "average_temperature": "15.2℃",
         "summer_temperature": "18–26℃",
         "winter_temperature": "4–16℃",
         "air_quality": "优",
-        "air_quality_index": 40,
-        "forest_coverage": "58.2%",
+        "air_quality_index": null,
+        "forest_coverage": "38.72%",
         "medical_level": "三级甲等",
         "budget_level": "中等",
         "monthly_cost_low": 2000,
@@ -178,7 +178,11 @@
         "image_source": "Wikimedia Commons",
         "image_license": "CC BY-SA 4.0",
         "source": "OpenStreetMap Nominatim API (nominatim.openstreetmap.org); 中国天气网 (weather.com.cn) / 云南省气象局 2023年气候公报 / 大理州气象局公开数据; 中国环境监测总站《2023中国生态环境状况公报》；大理州生态环境局《2023年大理州环境状况公报》；云南省生态环境厅公开数据; 国家林业和草原局《中国森林资源报告》；云南省林业和草原局《2023年云南林业发展统计公报》；大理州林业和草原局公开数据; 国家卫生健康委员会医院等级公开信息；大理州人民医院官网；云南省卫生健康委员会公开数据",
-        "source_url": "http://www.weather.com.cn/cityintro/101290201.shtml; http://yn.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.yn.gov.cn/; http://www.forestry.gov.cn/; http://lcj.yn.gov.cn/; https://www.nhc.gov.cn/; http://ynswsjkw.yn.gov.cn/"
+        "source_url": "http://www.weather.com.cn/cityintro/101290201.shtml; http://yn.cma.gov.cn/; https://www.mee.gov.cn/; http://sthjt.yn.gov.cn/; http://www.forestry.gov.cn/; http://lcj.yn.gov.cn/; https://www.nhc.gov.cn/; http://ynswsjkw.yn.gov.cn/",
+        "air_quality_good_day_ratio": 99.9,
+        "air_quality_period": "2024",
+        "air_quality_scope": "大理州12县（市）平均值，非实时AQI",
+        "forest_coverage_scope": "大理市行政区"
       }
     },
     {

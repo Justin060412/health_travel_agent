@@ -26,9 +26,27 @@
   <!-- ── 问卷主体 ────────────────────────────────────────── -->
   <div class="q-container">
 
+    <!-- 从 Act2 进入时显示；普通问卷路径保持隐藏 -->
+    <section class="q-destination-context" id="q-destination-context" hidden>
+      <div class="q-destination-image">
+        <img id="q-destination-image" alt="" loading="eager">
+      </div>
+      <div class="q-destination-content">
+        <p class="q-destination-eyebrow">本次分析对象</p>
+        <h1><span id="q-destination-name">目的地</span>是否适合我</h1>
+        <p class="q-destination-tagline" id="q-destination-tagline"></p>
+        <div class="q-destination-facts" aria-label="当前目的地环境摘要">
+          <span id="q-destination-climate"></span>
+          <span id="q-destination-air"></span>
+          <span id="q-destination-altitude"></span>
+        </div>
+        <a class="q-destination-change" href="index.html">返回目的地探索</a>
+      </div>
+    </section>
+
     <div class="q-header">
-      <h2>📋 康养旅居偏好问卷</h2>
-      <p>填写以下信息，AI 将为您精准匹配最适合的康养目的地</p>
+      <h2 id="q-page-title">📋 康养旅居偏好问卷</h2>
+      <p id="q-page-desc">填写以下信息，AI 将为您精准匹配最适合的康养目的地</p>
     </div>
 
     <!-- 基础信息 -->
@@ -172,11 +190,16 @@
 
     <!-- 提交按钮 -->
     <div class="q-submit">
+      <label style="display:block;margin-bottom:16px;line-height:1.7">
+        <input id="recommend-ai-consent" type="checkbox">
+        可选：同意将本次年龄、健康选项、预算、偏好及当前目的地上下文发送给 DeepSeek 生成推荐。
+        不勾选仍可使用本地规则匹配；请勿填写姓名、电话或病历。
+      </label>
       <button id="submit-btn" class="btn btn-primary btn-lg" type="button"
               onclick="handleSubmit()">
         ✨ 开始 AI 智能分析
       </button>
-      <p class="q-submit-hint">提交后将由 AI 大模型为您生成个性化推荐</p>
+      <p class="q-submit-hint" id="q-submit-hint">提交后将由 AI 大模型为您生成个性化推荐</p>
     </div>
 
   </div>
@@ -187,7 +210,116 @@
   </footer>
 
   <!-- ── 表单交互脚本 ────────────────────────────────────── -->
+  <script src="js/api.js?v=web-closure-1"></script>
   <script>
+    // ── Act2 目的地上下文 ─────────────────────────────────
+    const ANALYSIS_QUERY = new URLSearchParams(window.location.search);
+    const DESTINATION_MODE = ANALYSIS_QUERY.get('mode') === 'destination';
+    const EXPECTED_DESTINATION_ID = ANALYSIS_QUERY.get('destination_id');
+
+    function readSessionJson(key) {
+      try {
+        const value = sessionStorage.getItem(key);
+        return value ? JSON.parse(value) : null;
+      } catch (error) {
+        console.warn('[Step5] 无法读取上下文:', key, error.message);
+        return null;
+      }
+    }
+
+    function readAnalysisContext() {
+      if (!DESTINATION_MODE) return null;
+      const destination = readSessionJson('ht_selected_dest');
+      const exploration = readSessionJson('ht_exploration_context');
+      if (!destination || destination.id == null || !destination.name) return null;
+      if (EXPECTED_DESTINATION_ID && String(destination.id) !== String(EXPECTED_DESTINATION_ID)) return null;
+      return { mode: 'destination', destination, exploration: exploration || {} };
+    }
+
+    const analysisContext = readAnalysisContext();
+    let lastAnalysisRequest = null;
+
+    function destinationAirLabel(destination) {
+      const air = destination.air_quality || {};
+      if (typeof air === 'string') return air;
+      const parts = [];
+      if (air.level) parts.push('空气' + air.level);
+      if (air.index != null) parts.push('AQI ' + air.index);
+      return parts.join(' · ') || '空气数据待核验';
+    }
+
+    function destinationTemperature(destination) {
+      const temperature = destination.temperature || {};
+      return typeof temperature === 'string' ? temperature : (temperature.average || '');
+    }
+
+    function contractFactText(label, fact) {
+      if (!fact || ['pending', 'unknown', 'conflict', 'stale'].includes(fact.status)) return '';
+      let value = fact.value;
+      if (value == null && fact.value_low != null && fact.value_high != null) {
+        value = fact.value_low + '–' + fact.value_high;
+      }
+      if (value == null || value === '') return '';
+      const unit = fact.unit ? String(fact.unit).replace('CNY/month', '元/月') : '';
+      return `${label}${value}${unit}（范围：${fact.scope || '未说明'}；状态：${fact.status}）`;
+    }
+
+    function contractEnvironmentSummary(exploration) {
+      const environment = exploration && exploration.environment;
+      const facts = environment && environment.verified_facts;
+      if (!facts) return '';
+      return [
+        contractFactText('年均气温', facts.average_temperature),
+        contractFactText('空气环境', facts.air_quality),
+        contractFactText('森林覆盖率', facts.forest_coverage),
+        contractFactText('海拔', facts.altitude),
+        contractFactText('医疗可达性', facts.medical_access),
+        contractFactText('月预算参考', facts.monthly_budget)
+      ].filter(Boolean).join('，');
+    }
+
+    function contractMissingData(exploration) {
+      const environment = exploration && exploration.environment;
+      const evidence = environment && environment.analysis_evidence;
+      if (!Array.isArray(evidence)) return [];
+      return [...new Set(evidence.flatMap(item => item.missing_data || []))];
+    }
+
+    function renderAnalysisContext() {
+      if (!analysisContext) return;
+      const destination = analysisContext.destination;
+      const contextCard = document.getElementById('q-destination-context');
+      contextCard.hidden = false;
+
+      document.body.classList.add('destination-analysis-mode');
+      document.title = '康养旅居 · ' + destination.name + '适合度分析';
+      document.getElementById('q-destination-name').textContent = destination.name;
+      document.getElementById('q-destination-tagline').textContent = destination.tagline || destination.story || '';
+      document.getElementById('q-destination-climate').textContent = destination.climate || '气候数据待核验';
+      document.getElementById('q-destination-air').textContent = destinationAirLabel(destination);
+      document.getElementById('q-destination-altitude').textContent = destination.altitude != null
+        ? '海拔 ' + destination.altitude + 'm' : '海拔待核验';
+
+      const image = document.getElementById('q-destination-image');
+      if (destination.image) {
+        image.src = destination.image;
+        image.alt = destination.name + '风景';
+        image.addEventListener('error', function () {
+          image.removeAttribute('src');
+          image.parentElement.classList.add('is-unavailable');
+        }, { once: true });
+      } else {
+        image.parentElement.classList.add('is-unavailable');
+      }
+
+      document.getElementById('q-page-title').textContent = '告诉 AI 您的生活与健康需求';
+      document.getElementById('q-page-desc').textContent = '以下回答将只用于判断' + destination.name + '与您的适配情况。';
+      document.getElementById('submit-btn').textContent = '分析' + destination.name + '是否适合我';
+      document.getElementById('q-submit-hint').textContent = '将结合当前地点的气候、空气、医疗与预算信息进行分析';
+    }
+
+    renderAnalysisContext();
+
     // “无特殊情况” 与其他健康选项互斥
     const healthNone = document.getElementById('health-6');
     const healthChecks = document.querySelectorAll('input[name="health"]:not(#health-6)');
@@ -209,7 +341,7 @@
     });
 
     // ── API 配置 ──────────────────────────────────────────
-    const API_BASE = 'http://127.0.0.1:8000';
+    const API_BASE = window.HealthTravelAPI.API_BASE;
 
     // ── 字段映射 ──────────────────────────────────────────
     const BUDGET_MAP = {
@@ -253,6 +385,10 @@
       'DeepSeek 大模型深度推理…',
       '生成个性化推荐方案…',
     ];
+    if (analysisContext) {
+      THINKING_STEPS[3] = '核对' + analysisContext.destination.name + '的环境与生活数据…';
+      THINKING_STEPS[5] = '生成当前地点适合度结论…';
+    }
     let animationAbort = null;
     let safetyTimer = null;
     let apiResolved = false;
@@ -357,14 +493,16 @@
     function setButtonLoading() {
       const btn = document.getElementById('submit-btn');
       btn.classList.add('btn-loading');
-      btn.innerHTML = '<span class="btn-spinner"></span>🤖 AI 正在分析…';
+      btn.innerHTML = '<span class="btn-spinner"></span>AI 正在分析…';
       btn.disabled = true;
     }
 
     function resetButton() {
       const btn = document.getElementById('submit-btn');
       btn.classList.remove('btn-loading');
-      btn.innerHTML = '✨ 开始 AI 智能分析';
+      btn.textContent = analysisContext
+        ? '分析' + analysisContext.destination.name + '是否适合我'
+        : '✨ 开始 AI 智能分析';
       btn.disabled = false;
     }
 
@@ -395,8 +533,10 @@
         return apiPromise.then(function (data) {
           completeAllSteps();
 
-          // Store results
-          sessionStorage.setItem('ht_recommend_results', JSON.stringify(data));
+          // Store results together with the immutable analysis context used for this request.
+          const storedResult = Object.assign({}, data);
+          if (lastAnalysisRequest) storedResult.analysis_context = lastAnalysisRequest;
+          sessionStorage.setItem('ht_recommend_results', JSON.stringify(storedResult));
 
           // Preload destinations
           var destCtrl = new AbortController();
@@ -462,14 +602,60 @@
       if (env.length && !env.includes('无要求')) {
         notesParts.push(`环境偏好：${env.join('、')}`);
       }
+      if (analysisContext) {
+        const destination = analysisContext.destination;
+        const act3 = analysisContext.exploration && analysisContext.exploration.act3;
+        const contractFacts = contractEnvironmentSummary(analysisContext.exploration);
+        const environmentFacts = contractFacts || [
+          destination.climate,
+          destinationTemperature(destination) ? '年均气温' + destinationTemperature(destination) : '',
+          destinationAirLabel(destination),
+          destination.forest_coverage ? '森林覆盖' + destination.forest_coverage : '',
+          destination.medical_level ? '医疗资源' + destination.medical_level : '',
+          destination.budget_level ? '预算等级' + destination.budget_level : '',
+          destination.altitude != null ? '海拔' + destination.altitude + '米' : ''
+        ].filter(Boolean).join('，');
+        const missingData = contractMissingData(analysisContext.exploration);
+        notesParts.push(
+          `当前分析目的地：${destination.name}（ID ${destination.id}）。` +
+          `用户希望重点判断该地点是否适合本人，请优先评估并明确说明适合条件、风险与注意事项。` +
+          `已知目的地数据：${environmentFacts}。` +
+          (missingData.length ? `明确缺失数据：${missingData.join('、')}；不得自行补全。` : '')
+        );
+        if (analysisContext.exploration.source === 'act3_v1' && act3) {
+          const act3Facts = [
+            act3.selected_season
+              ? `已选择季节：${act3.selected_season_label || act3.selected_season}` : '',
+            act3.budget_scenario
+              ? `预算情景：${act3.budget_scenario_label || act3.budget_scenario}` : '',
+            Array.isArray(act3.viewed_sections) && act3.viewed_sections.length
+              ? `已查看内容：${act3.viewed_sections.join('、')}` : ''
+          ].filter(Boolean).join('，');
+          if (act3Facts) notesParts.push(`Act3 深度体验上下文：${act3Facts}`);
+        }
+      }
 
       lastPayload = {
+        allow_external_ai: document.getElementById('recommend-ai-consent').checked,
         age, monthly_budget: BUDGET_MAP[budgetKey] || 4000,
         health_status: healthStatus,
         climate_preference: CLIMATE_MAP[climateRaw] || '不挑剔',
         activity_level: '轻度',
         additional_notes: notesParts.join('；'),
       };
+
+      lastAnalysisRequest = analysisContext ? {
+        mode: 'destination',
+        destination: analysisContext.destination,
+        exploration: analysisContext.exploration,
+        profile: lastPayload,
+        submitted_at: new Date().toISOString()
+      } : {
+        mode: 'general',
+        profile: lastPayload,
+        submitted_at: new Date().toISOString()
+      };
+      sessionStorage.setItem('ht_analysis_request', JSON.stringify(lastAnalysisRequest));
 
       // 显示加载层 + 提交（doSubmit 内部管理动画+API）
       setButtonLoading();

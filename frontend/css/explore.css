@@ -1,425 +1,266 @@
-/**
- * AI 康养旅居 — Explore Stage
- * Sprint 7 Act 2 Redesign: 沉浸式数字地球探索空间
- *
- * 设计参考：Google Earth · Apple Vision Pro · NASA Earth
- * 布局：左标题+HUD | 中地球 | 右信息卡
- */
-
-/* ═══════════════════════════════════════════════════════
-   Stage — 全屏黑暗空间
-   ═══════════════════════════════════════════════════════ */
+/** Act2 V2 — AI 康养旅居目的地探索 */
 
 .explore-stage {
   position: relative;
   width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  background: #060a08;
+  height: calc(100dvh - 64px);
+  min-height: calc(100dvh - 64px);
   overflow: hidden;
   isolation: isolate;
+  color: #f5f2e9;
+  background:
+    radial-gradient(circle at 35% 48%, rgba(43, 104, 100, .28), transparent 32%),
+    radial-gradient(circle at 76% 18%, rgba(178, 142, 83, .08), transparent 24%),
+    linear-gradient(135deg, #061a22 0%, #09242a 52%, #07171d 100%);
 }
 
-/* Three.js canvas container fills stage */
-.explore-canvas-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+.chapter-1 {
+  min-height: calc(100dvh - 64px);
 }
 
-.explore-canvas-wrap canvas {
-  display: block;
-}
-
-/* ═══════════════════════════════════════════════════════
-   Left Panel — Title + HUD
-   ═══════════════════════════════════════════════════════ */
-
-.explore-left {
-  position: absolute;
-  left: clamp(24px, 5vw, 64px);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  pointer-events: none;
-  max-width: 260px;
-}
-
-.explore-brand {
-  margin-bottom: 32px;
-}
-
-.explore-eyebrow {
-  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
-  margin-bottom: 12px;
-}
-
-.explore-title {
-  font-family: var(--font-display, 'HarmonyOS Sans SC', 'Inter', system-ui, sans-serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: rgba(255, 255, 255, 0.92);
-  margin: 0 0 12px;
-}
-
-.explore-desc {
-  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.38);
-  margin: 0;
-  max-width: 240px;
-}
-
-/* ═══════════════════════════════════════════════════════
-   HUD — 实时环境数据
-   ═══════════════════════════════════════════════════════ */
-
-.explore-hud {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  pointer-events: auto;
-}
-
-.hud-row {
-  display: flex;
-  gap: 8px;
-}
-
-.hud-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: background 0.4s ease, border-color 0.4s ease;
-}
-
-.hud-item:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.hud-icon {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2px;
-}
-
-.hud-icon svg {
-  width: 14px;
-  height: 14px;
-  opacity: 0.5;
-}
-
-.hud-value {
-  font-family: 'SF Pro Display', 'Inter', var(--font-sans, system-ui, sans-serif);
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.9);
-  font-variant-numeric: tabular-nums;
-}
-
-.hud-label {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* ═══════════════════════════════════════════════════════
-   Center — Earth Container (invisible, canvas does the work)
-   ═══════════════════════════════════════════════════════ */
-
-.explore-center {
+.explore-stage::after {
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(90deg, rgba(4, 18, 24, .22), transparent 42%, rgba(4, 14, 19, .2));
 }
 
-/* ═══════════════════════════════════════════════════════
-   Bottom Guidance — 始终可见的探索引导
-   ═══════════════════════════════════════════════════════ */
-
-.explore-guidance {
-  position: absolute;
-  bottom: 36px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  pointer-events: auto;
-}
-
-.explore-guidance-hint {
-  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.35);
-  transition: color 0.5s ease;
-  pointer-events: none;
-}
-
-/* 提示文字在不同状态的颜色变化 */
-.explore-guidance-hint.state-dragging,
-.explore-guidance-hint.state-inertia {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.explore-guidance-hint.state-focused {
-  color: rgba(210, 180, 130, 0.7);
-}
-
-/* Guidance CTA 按钮 — 玻璃质感 + 呼吸微光 */
-.explore-guidance .btn {
-  padding: 12px 32px;
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.92);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  box-shadow:
-    0 0 20px rgba(140, 180, 140, 0.06),
-    0 4px 24px rgba(0, 0, 0, 0.2);
-  animation: guidanceBreath 4s ease-in-out infinite;
-}
-
-@keyframes guidanceBreath {
-  0%, 100% { box-shadow: 0 0 20px rgba(140, 180, 140, 0.06), 0 4px 24px rgba(0, 0, 0, 0.2); }
-  50%      { box-shadow: 0 0 32px rgba(140, 180, 140, 0.12), 0 4px 24px rgba(0, 0, 0, 0.2); }
-}
-
-.explore-guidance .btn:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow:
-    0 0 40px rgba(140, 180, 140, 0.12),
-    0 8px 32px rgba(0, 0, 0, 0.3);
-  animation: none;
-}
-
-.explore-guidance .btn svg {
-  stroke: rgba(255, 255, 255, 0.6);
-}
-
-/* ═══════════════════════════════════════════════════════
-   Chapter Nav (dark theme override — kept for other chapters)
-   ═══════════════════════════════════════════════════════ */
-
-.explore-stage .chapter-nav {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-}
-
-.explore-stage .chapter-nav-label {
-  color: rgba(255, 255, 255, 0.22);
-}
-
-.explore-stage .chapter-nav-btn {
-  color: rgba(255, 255, 255, 0.45);
-  border-color: rgba(255, 255, 255, 0.07);
-}
-
-.explore-stage .chapter-nav-btn:hover {
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.explore-stage .chapter-nav-arrow {
-  stroke: rgba(255, 255, 255, 0.35);
-}
-
-/* ═══════════════════════════════════════════════════════
-   Entrance Animation — Stage-level
-   ═══════════════════════════════════════════════════════ */
-
-.chapter-1.active .explore-left {
-  animation: exploreLeftFadeIn 1000ms var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) 1000ms both;
-}
-
-/* Guidance bar fades in after entrance */
-.chapter-1.active .explore-guidance {
-  animation: guidanceFadeIn 600ms var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) 2200ms both;
-}
-
-@keyframes exploreLeftFadeIn {
-  from { opacity: 0; transform: translateY(calc(-50% + 20px)); }
-  to   { opacity: 1; transform: translateY(-50%); }
-}
-
-@keyframes guidanceFadeIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-/* ═══════════════════════════════════════════════════════
-   Responsive
-   ═══════════════════════════════════════════════════════ */
-
-@media (max-width: 1024px) {
-  .explore-left {
-    left: 24px;
-    max-width: 220px;
-  }
-  .explore-title {
-    font-size: 28px;
-  }
-  .hud-item {
-    padding: 8px 10px;
-  }
-  .hud-value {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 768px) {
-  .explore-left {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    max-width: 100%;
-    padding: 16px 20px 0;
-    text-align: center;
-  }
-  .explore-desc {
-    max-width: 100%;
-  }
-  .explore-hud {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hud-row {
-    flex: 1;
-    min-width: 140px;
-  }
-  .explore-stage {
-    display: flex;
-    flex-direction: column;
-  }
-  .explore-canvas-wrap {
-    position: relative;
-    flex: 1;
-    min-height: 50vh;
-  }
-}
-
-/* Act 2 — Wellness Earth: a brighter, cinematic spatial scene */
-.explore-stage {
-  background:
-    radial-gradient(ellipse 52% 72% at 51% 48%, rgba(31, 104, 91, .2) 0%, rgba(7, 29, 43, .12) 40%, transparent 70%),
-    radial-gradient(ellipse 100% 100% at 50% 0%, #163a55 0%, #071c2b 34%, #04121e 78%, #030b13 100%);
-}
-
-.explore-stage::before {
-  content: '';
+.explore-canvas-wrap {
   position: absolute;
   inset: 0;
-  pointer-events: none;
   z-index: 1;
-  background: linear-gradient(90deg, rgba(2, 13, 22, .48), transparent 28%, transparent 70%, rgba(2, 13, 22, .36));
+  filter: saturate(.94) brightness(1.08);
 }
 
-.explore-canvas-wrap { filter: saturate(1.12) brightness(1.2); }
+.explore-canvas-wrap canvas { display: block; }
 
-.explore-left { z-index: 4; }
-.explore-eyebrow { color: rgba(169, 235, 204, .78); letter-spacing: .14em; }
-.explore-title { font-size: clamp(38px, 3.25vw, 60px); text-shadow: 0 12px 40px rgba(0,0,0,.32); }
-.explore-desc { color: rgba(226, 243, 242, .67); max-width: 270px; }
-.explore-hud { border-color: rgba(164, 230, 203, .14); background: rgba(7, 29, 38, .38); backdrop-filter: blur(18px); }
-.hud-item { border-color: rgba(164, 230, 203, .08); background: rgba(255,255,255,.025); }
-
-.explore-journey {
+.explore-intro {
   position: absolute;
-  top: clamp(34px, 6vh, 72px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: clamp(32px, 7vw, 112px);
+  top: 50%;
   z-index: 5;
-  width: min(420px, 38vw);
-  text-align: center;
+  width: min(420px, 36vw);
+  transform: translateY(-50%);
+  transition: opacity .6s ease, transform .8s cubic-bezier(.16, 1, .3, 1), visibility .6s;
+}
+
+.explore-intro.is-complete {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(-32px, -50%, 0);
   pointer-events: none;
 }
-.journey-kicker { display:block; margin-bottom: 12px; color: rgba(193,232,223,.55); font-size: 10px; letter-spacing: .18em; }
-.journey-steps { display:flex; align-items:center; justify-content:center; gap:10px; color:rgba(220,240,239,.35); font-size:11px; letter-spacing:.05em; }
-.journey-steps i { width:34px; height:1px; background:rgba(183,235,211,.25); }
-.journey-steps span { transition:color .6s ease, text-shadow .6s ease; }
-.journey-steps span.is-active { color:#dcffef; text-shadow:0 0 18px rgba(104,234,172,.62); }
 
-.explore-guidance { z-index: 6; }
-.explore-guidance-hint { color: rgba(220,244,242,.72); background: rgba(5,24,33,.32); border: 1px solid rgba(177,237,213,.12); border-radius: 99px; padding: 8px 15px; }
+.explore-eyebrow {
+  margin-bottom: 16px;
+  color: rgba(200, 226, 213, .72);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+}
+
+.explore-title {
+  margin: 0 0 20px;
+  color: #f6f3eb;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.2vw, 66px);
+  font-weight: 650;
+  letter-spacing: -.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.explore-desc {
+  max-width: 380px;
+  margin: 0;
+  color: rgba(224, 235, 229, .72);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.explore-intro-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  color: rgba(229, 215, 183, .78);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+
+.explore-intro-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d8b87a;
+  box-shadow: 0 0 18px rgba(216, 184, 122, .6);
+  animation: journeyPulse 2s ease-in-out infinite;
+}
+
+.explore-start-btn {
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: 1px solid rgba(239, 224, 194, .25);
+  border-radius: 999px;
+  color: #f4ead6;
+  background: rgba(236, 220, 189, .08);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
+}
+
+.explore-start-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(239, 224, 194, .42);
+  background: rgba(236, 220, 189, .14);
+}
+
+.journey-controls {
+  position: absolute;
+  bottom: max(40px, calc(env(safe-area-inset-bottom) + 20px));
+  left: 50%;
+  z-index: 8;
+  display: grid;
+  grid-template-columns: 120px minmax(150px, 1fr) 120px;
+  align-items: center;
+  width: min(480px, calc(100vw - 40px));
+  padding: 8px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(219, 235, 225, .14);
+  border-radius: 999px;
+  background: rgba(6, 27, 33, .68);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .24);
+  backdrop-filter: blur(22px) saturate(1.2);
+  transition: left .7s cubic-bezier(.16, 1, .3, 1), background .25s ease, border-color .25s ease;
+}
+
+.journey-controls[hidden] { display: none; }
+
+/* 故事面板出现后，控制条居中于剩余的地球区域，避免“下一站”被面板覆盖。 */
+.destination-story.is-visible + .journey-controls {
+  left: calc((100% - min(410px, 34vw) - clamp(28px, 5vw, 84px)) / 2);
+}
+
+.journey-nav-btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  color: rgba(235, 242, 237, .72);
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease;
+}
+
+.journey-nav-btn:hover { color: #fff; background: rgba(255, 255, 255, .07); }
+.journey-nav-primary { color: #f6ead1; }
+
+.journey-progress { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.journey-progress strong { color: #f6f3ea; font-size: 13px; font-weight: 600; }
+.journey-progress span { color: rgba(207, 224, 216, .48); font-size: 10px; letter-spacing: .12em; }
+
+@keyframes journeyPulse {
+  0%, 100% { opacity: .55; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 900px) {
+  .explore-intro { left: 28px; width: min(360px, 42vw); }
+}
+
+@media (max-width: 1050px) and (min-width: 769px) {
+  .destination-story.is-visible + .journey-controls {
+    left: calc((100% - min(360px, 36vw) - 24px) / 2);
+  }
+}
 
 @media (max-width: 768px) {
-  .explore-journey { top: 30px; width: 90%; }
-  .journey-steps i { width: 18px; }
+  .explore-stage { height: auto; min-height: calc(100dvh - 64px); overflow-y: auto; }
+  .explore-canvas-wrap { height: 52dvh; min-height: 390px; }
+  .explore-intro { top: 118px; left: 22px; width: calc(100% - 44px); transform: none; }
+  .explore-intro.is-complete { transform: translateY(-24px); }
+  .explore-title { max-width: 420px; font-size: clamp(34px, 10vw, 48px); }
+  .explore-desc { max-width: 340px; }
+  .journey-controls {
+    position: fixed;
+    bottom: max(24px, calc(env(safe-area-inset-bottom) + 16px));
+    left: 50%;
+    grid-template-columns: 92px 1fr 92px;
+    width: calc(100vw - 24px);
+  }
+  .journey-nav-btn { padding: 0 8px; }
 }
-
-@media (max-width: 430px) {
-  .explore-left {
-    padding: 12px 16px 0;
-  }
-  .explore-title {
-    font-size: 22px;
-  }
-  .hud-row {
-    min-width: 120px;
-  }
-  .hud-value {
-    font-size: 14px;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════
-   Accessibility
-   ═══════════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
-  .chapter-1.active .explore-left {
-    animation: none;
-    opacity: 1;
-    transform: translateY(-50%);
-  }
+  .explore-intro, .explore-start-btn { transition: none; }
+  .explore-intro-status::before { animation: none; }
 }
 
-@media (forced-colors: active) {
-  .explore-stage {
-    background: Canvas;
-  }
+/* iOS 原生 App 仅嵌入地球画布。故事、导航与任务控制由 SwiftUI 承载。 */
+html.ios-embedded,
+html.ios-embedded body {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: #061a22;
+}
+
+html.ios-embedded .nav,
+html.ios-embedded .explore-intro,
+html.ios-embedded .destination-story,
+html.ios-embedded .journey-controls,
+html.ios-embedded .chapter-overlay {
+  display: none !important;
+}
+
+html.ios-embedded .chapters-container {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+html.ios-embedded .chapter {
+  display: none !important;
+  min-height: 0;
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+html.ios-embedded #chapter-platform {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html.ios-embedded .explore-stage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+html.ios-embedded .explore-stage::after {
+  background: radial-gradient(circle at 50% 46%, transparent 30%, rgba(2, 15, 20, .2) 100%);
+}
+
+html.ios-embedded .explore-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }

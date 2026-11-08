@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c2827">
+  <title>康养线路工作台</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="vendor/ol.css">
+  <link rel="stylesheet" href="css/route-planner.css?v=m8-1">
+</head>
+<body class="route-page">
+  <header class="route-topbar">
+    <a class="route-back" href="results.html" aria-label="返回推荐报告">← <span>推荐报告</span></a>
+    <div class="route-heading"><p>正在读取目的地…</p><h1>把合适，变成可走的一天</h1></div>
+    <div class="route-actions" aria-label="线路操作">
+      <span id="save-status" class="save-status">本地草稿</span>
+      <button id="undo-button" class="icon-button" type="button" title="撤销" disabled>↶</button>
+      <button id="redo-button" class="icon-button" type="button" title="重做" disabled>↷</button>
+      <button id="save-button" class="soft-button" type="button">保存线路</button>
+    </div>
+  </header>
+
+  <main class="route-workspace">
+    <aside class="route-sidebar" aria-label="线路编辑">
+      <section class="route-intro">
+        <div><span class="eyebrow">二维 / 三维同步</span><h2>你的旅居路线</h2></div>
+        <div class="view-switch" aria-label="地图视图"><button class="is-active" type="button" data-route-view="2d" aria-pressed="true">2D</button><button type="button" data-route-view="3d" aria-pressed="false">3D</button></div>
+      </section>
+
+      <section class="route-summary" aria-label="路线摘要">
+        <div><strong id="summary-distance">—</strong><span>总距离</span></div>
+        <div><strong id="summary-duration">—</strong><span>预计用时</span></div>
+        <div><strong id="summary-intensity">—</strong><span>活动强度</span></div>
+      </section>
+      <p id="budget-summary" class="budget-summary">预算来源核验中</p>
+      <p id="route-weather" class="budget-summary" role="status">天气信息加载中…</p>
+
+      <section class="route-section">
+        <div class="section-title"><h3>行程设置</h3><button id="add-day-button" type="button">+ 增加一天</button></div>
+        <div id="day-tabs" class="day-tabs" aria-label="按天查看"></div>
+        <div class="mode-switch" role="group" aria-label="出行方式">
+          <button type="button" data-mode="walking" class="is-active">步行</button>
+          <button type="button" data-mode="driving">驾车</button>
+          <button type="button" disabled title="公共交通数据后续接入">公交 · 后续</button>
+        </div>
+      </section>
+
+      <section class="route-section">
+        <div class="section-title">
+          <div><h3>路线节点</h3><p>拖动排序，或直接拖动地图点位</p></div>
+          <button id="draw-node-button" type="button">地图加点</button>
+        </div>
+        <ol id="node-list" class="node-list"></ol>
+        <div id="route-feedback" class="route-feedback" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="route-section">
+        <div class="section-title"><div><h3>真实地点</h3><p id="poi-data-status" class="poi-data-status">正在核对数据来源…</p></div></div>
+        <label class="poi-search"><span>搜索</span><input id="poi-search" type="search" placeholder="住宿、餐饮、活动、医疗"></label>
+        <div id="poi-filters" class="poi-filters">
+          <button class="is-active" type="button" data-category="all">全部</button>
+          <button type="button" data-category="lodging">住宿</button>
+          <button type="button" data-category="dining">餐饮</button>
+          <button type="button" data-category="activity">活动</button>
+          <button type="button" data-category="medical">医疗</button>
+        </div>
+        <div id="poi-list" class="poi-list"></div>
+      </section>
+
+      <section class="ai-entry-section">
+        <span>AI 康养规划</span><h3>先理解你，再安排路线</h3>
+        <p>AI 将先询问节奏、健康约束与预算，再生成可编辑路线。</p>
+        <button id="start-ai-planner" type="button" disabled>开始与 AI 规划 →</button>
+      </section>
+    </aside>
+
+    <section class="map-stage" aria-label="目的地路线地图">
+      <div id="route-map" class="route-map"></div>
+      <div id="route-3d-view" class="route-3d-view" aria-hidden="true">
+        <div class="route-3d-toolbar"><button id="route-3d-play" type="button">播放当日路线</button><span id="route-3d-status">等待路线数据</span></div>
+        <div class="route-3d-truth"><strong>空间概览</strong><span>水平位置来自同一份 WGS84 路线；尚无可核验高程，不显示坡度。</span></div>
+        <div class="route-3d-legend" aria-label="节点分类"><span class="is-lodging">住宿</span><span class="is-dining">餐饮</span><span class="is-activity">活动</span><span class="is-medical">医疗</span></div>
+      </div>
+      <div class="map-note"><span id="map-state-dot" class="map-state-dot"></span><div><strong id="map-state-title">已载入核验路线</strong><p id="map-state-copy">道路来自高德快照；地图拖动坐标为 WGS84。</p></div></div>
+      <button id="fit-route-button" class="fit-route-button" type="button">回到整条线路</button>
+      <div class="map-legend"><span><i class="legend-node"></i>行程节点</span><span><i class="legend-poi"></i>候选地点</span></div>
+    </section>
+
+    <aside id="detail-drawer" class="detail-drawer" aria-label="地点详情" aria-hidden="true">
+      <button id="close-drawer-button" class="drawer-close" type="button" aria-label="关闭详情">×</button>
+      <span id="drawer-category" class="eyebrow">地点</span><h2 id="drawer-name">请选择一个地点</h2><p id="drawer-address" class="drawer-address"></p>
+      <dl class="drawer-meta">
+        <div><dt>数据来源</dt><dd id="drawer-source">—</dd></div>
+        <div><dt>核验状态</dt><dd id="drawer-verification">—</dd></div>
+        <div><dt>价格</dt><dd id="drawer-price">—</dd></div>
+        <div><dt>价格观察</dt><dd id="drawer-price-date">—</dd></div>
+        <div><dt>营业时间</dt><dd id="drawer-hours">—</dd></div>
+        <div><dt>建议停留</dt><dd id="drawer-stay">—</dd></div>
+        <div><dt>活动强度</dt><dd id="drawer-intensity">—</dd></div>
+        <div><dt>无障碍信息</dt><dd id="drawer-accessibility">—</dd></div>
+        <div><dt>适合当前需求</dt><dd id="drawer-fit">—</dd></div>
+        <div><dt>到下一节点</dt><dd id="drawer-next-leg">—</dd></div>
+        <div><dt>数据日期</dt><dd id="drawer-verified-at">—</dd></div>
+        <div><dt>坐标</dt><dd id="drawer-coordinate">—</dd></div>
+      </dl>
+      <div class="drawer-notice"><strong>出行前复核</strong><p id="drawer-notice">营业状态、现场无障碍条件与动态路况可能变化。</p></div>
+      <a id="drawer-source-link" href="#" target="_blank" rel="noopener">查看数据来源 ↗</a>
+    </aside>
+
+    <aside id="ai-planner-panel" class="ai-planner-panel" aria-label="AI 康养线路规划" aria-hidden="true">
+      <header class="ai-panel-header">
+        <div><span class="eyebrow">康养需求</span><h2>一起规划旅居</h2></div>
+        <button id="close-ai-planner" type="button" aria-label="关闭 AI 规划">×</button>
+      </header>
+      <div class="ai-progress-row">
+        <span id="ai-progress-label">准备开始</span>
+        <div class="ai-progress-track"><i id="ai-progress-bar"></i></div>
+      </div>
+      <div id="ai-chat-log" class="ai-chat-log" aria-live="polite"></div>
+      <div id="ai-stage" class="ai-stage"></div>
+      <footer id="ai-panel-footer" class="ai-panel-footer">
+        <button id="ai-back-button" class="ai-secondary-button" type="button">上一步</button>
+        <button id="ai-next-button" class="ai-primary-button" type="button">继续</button>
+      </footer>
+    </aside>
+  </main>
+
+  <div id="route-error" class="route-error" hidden>
+    <span>路线工作台暂时无法载入</span><h2>请返回推荐报告后重试</h2><p id="route-error-copy"></p><a href="results.html">返回推荐报告</a>
+  </div>
+
+  <script src="vendor/ol.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/route-planner.js?v=multi-destination-1"></script>
+  <script src="js/route-ai.js?v=multi-destination-1"></script>
+  <script src="js/route-3d.js?v=m8-1"></script>
+</body>
+</html>

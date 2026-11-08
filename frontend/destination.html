@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="深入了解康养目的地的季节、生活、医疗与预算条件。">
+  <title>目的地深度体验 · AI 康养旅居</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/destination-detail.css">
+</head>
+<body class="destination-detail-page">
+  <a class="skip-link" href="#detail-main">跳到主要内容</a>
+
+  <header class="detail-nav" aria-label="目的地深度体验导航">
+    <a class="detail-brand" href="index.html" aria-label="返回 AI 康养旅居首页">
+      <span class="detail-brand-mark" aria-hidden="true"></span>
+      <span>AI 康养旅居</span>
+    </a>
+    <a class="detail-back" id="detail-back-link" href="index.html">
+      <span aria-hidden="true">←</span>
+      返回地球探索
+    </a>
+  </header>
+
+  <main id="detail-main">
+    <section class="detail-hero" id="overview" aria-labelledby="detail-title">
+      <div class="detail-hero-media" id="detail-hero-media" role="img" aria-label="目的地风景">
+        <div class="detail-hero-shade"></div>
+      </div>
+      <div class="detail-hero-content detail-container">
+        <p class="detail-eyebrow" id="detail-eyebrow">目的地深度体验</p>
+        <h1 id="detail-title">正在准备这段旅居体验</h1>
+        <p class="detail-hero-summary" id="detail-summary">我们正在整理这里的生活节奏、季节变化与长住条件。</p>
+        <div class="detail-hero-actions">
+          <a class="detail-primary-action" href="#day-life">看看在这里如何生活</a>
+          <button class="detail-text-action" id="hero-analysis-btn" type="button">直接进入 AI 分析</button>
+        </div>
+      </div>
+      <p class="detail-image-credit" id="detail-image-credit"></p>
+    </section>
+
+    <section class="detail-snapshot detail-container" aria-label="目的地概要">
+      <div class="detail-section-intro detail-section-intro--compact">
+        <p class="detail-kicker">先看结论</p>
+        <h2>这里是否适合停留一段时间</h2>
+      </div>
+      <div class="detail-facts" id="detail-facts"></div>
+    </section>
+
+    <section class="detail-section detail-day" id="day-life" aria-labelledby="day-life-title">
+      <div class="detail-container detail-two-column">
+        <div class="detail-section-intro">
+          <p class="detail-kicker">一天的生活</p>
+          <h2 id="day-life-title">不是打卡，而是感受这里的日常</h2>
+          <p>用一天的节奏，判断自然环境、出行方式与生活密度是否符合你的习惯。</p>
+        </div>
+        <ol class="detail-timeline" id="detail-day-timeline"></ol>
+      </div>
+    </section>
+
+    <section class="detail-section detail-seasons" id="seasons" aria-labelledby="seasons-title">
+      <div class="detail-container">
+        <div class="detail-section-intro">
+          <p class="detail-kicker">什么时候来</p>
+          <h2 id="seasons-title">不同季节，是不同的生活版本</h2>
+          <p>选择你计划停留的季节，AI 分析会记住这个偏好。</p>
+        </div>
+        <div class="season-tabs" id="season-tabs" role="tablist" aria-label="选择旅居季节"></div>
+        <div class="season-panel" id="season-panel" role="tabpanel" tabindex="0"></div>
+      </div>
+    </section>
+
+    <section class="detail-section detail-living" id="long-stay" aria-labelledby="long-stay-title">
+      <div class="detail-container">
+        <div class="detail-section-intro">
+          <p class="detail-kicker">长住条件</p>
+          <h2 id="long-stay-title">把风景放回真实生活里</h2>
+          <p>从步行、文化体验到公共服务，了解长期停留需要面对的日常条件。</p>
+        </div>
+        <div class="living-grid" id="detail-living-grid"></div>
+      </div>
+    </section>
+
+    <section class="detail-section detail-practical" id="practical" aria-labelledby="practical-title">
+      <div class="detail-container">
+        <div class="detail-section-intro">
+          <p class="detail-kicker">做决定之前</p>
+          <h2 id="practical-title">医疗与预算，需要更具体地看</h2>
+          <p>只呈现可追溯的基础信息；实际距离、科室、房价与旺季费用仍需在出发前核实。</p>
+        </div>
+        <div class="practical-layout">
+          <article class="medical-card">
+            <div class="card-heading">
+              <span class="card-index">01</span>
+              <div>
+                <p>医疗可及性</p>
+                <h3 id="medical-status">按个人健康需求核验</h3>
+              </div>
+            </div>
+            <div class="medical-list" id="medical-list"></div>
+            <p class="data-disclaimer" id="medical-disclaimer"></p>
+          </article>
+
+          <article class="budget-card">
+            <div class="card-heading">
+              <span class="card-index">02</span>
+              <div>
+                <p>月度旅居预算</p>
+                <h3 id="budget-range">根据停留方式评估</h3>
+              </div>
+            </div>
+            <div class="budget-options" id="budget-options" role="radiogroup" aria-label="选择预算情景"></div>
+            <p class="data-disclaimer">预算来自当前目的地基础数据，仅用于前期比较，不是预订报价。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section detail-fit" id="fit-summary" aria-labelledby="fit-title">
+      <div class="detail-container">
+        <div class="detail-section-intro">
+          <p class="detail-kicker">适合度预判</p>
+          <h2 id="fit-title">先理解适合条件，再让 AI 判断</h2>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card fit-card--positive">
+            <p class="fit-label">可能更适合</p>
+            <ul id="suitable-list"></ul>
+          </article>
+          <article class="fit-card fit-card--caution">
+            <p class="fit-label">需要提前确认</p>
+            <ul id="caution-list"></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section detail-evidence" id="evidence" aria-labelledby="evidence-title">
+      <div class="detail-container detail-evidence-layout">
+        <div class="detail-section-intro">
+          <p class="detail-kicker">可信依据</p>
+          <h2 id="evidence-title">先查证，再做康养判断</h2>
+          <p>回答仅使用已登记、未过期的政府或机构资料。证据不足时，系统会直接说明不知道。</p>
+          <div class="evidence-coverage" id="evidence-coverage" role="status">正在确认当前目的地的证据覆盖</div>
+        </div>
+        <div class="evidence-workbench">
+          <div class="evidence-prompts" id="evidence-prompts" aria-label="常见证据问题"></div>
+          <form class="evidence-form" id="evidence-form">
+            <label for="evidence-question">继续追问当前目的地</label>
+            <div class="evidence-input-row">
+              <input id="evidence-question" name="question" type="text" minlength="2" maxlength="300" autocomplete="off" placeholder="例如：周边医疗能力有哪些官方依据？">
+              <button type="submit">查找依据</button>
+            </div>
+            <p>默认使用本地检索，不会把问题发送给外部 AI。</p>
+          </form>
+          <div class="evidence-answer" id="evidence-answer" aria-live="polite">
+            <p class="evidence-answer-placeholder">选择一个问题，查看结论、原文范围和可点击来源。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-analysis" id="analysis" aria-labelledby="analysis-title">
+      <div class="detail-container detail-analysis-inner">
+        <div>
+          <p class="detail-kicker">下一步</p>
+          <h2 id="analysis-title">把这里与你的真实需求放在一起分析</h2>
+          <p id="analysis-summary">AI 会结合你看过的季节、预算与当前目的地环境数据，继续完成适合度判断。</p>
+        </div>
+        <button class="detail-analysis-btn" id="detail-analysis-btn" type="button">分析这里是否适合我</button>
+      </div>
+    </section>
+
+    <section class="detail-sources detail-container" id="sources" aria-labelledby="sources-title">
+      <details>
+        <summary id="sources-title">查看资料来源与数据说明</summary>
+        <div class="source-list" id="source-list"></div>
+      </details>
+    </section>
+  </main>
+
+  <div class="detail-error" id="detail-error" hidden>
+    <p class="detail-kicker">内容暂时无法加载</p>
+    <h1>这段目的地体验还没有准备好</h1>
+    <p id="detail-error-message">请返回地球探索后重新选择目的地。</p>
+    <a class="detail-primary-action" href="index.html">返回地球探索</a>
+  </div>
+
+  <script src="js/api.js?v=act2-v2-5"></script>
+  <script src="js/destination-detail.js?v=act3-v1-2"></script>
+</body>
+</html>

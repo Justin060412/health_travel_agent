@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "contract": "poi-price-snapshots-v1",
+  "updated_at": null,
+  "source_policy": {
+    "accepted_sources": [
+      "商家官方公开页面或书面报价",
+      "具备展示授权的预订或消费数据",
+      "记录观察时间、条件与核验人的人工快照"
+    ],
+    "ai_fill_forbidden": true,
+    "dynamic_price_notice": "动态价格，以商家实时价格为准。"
+  },
+  "snapshots": [],
+  "missing_data": [
+    "当前尚未获得可在产品中展示的商家或授权价格快照。",
+    "在来源、观察日期和适用条件完整前，住宿与餐饮金额保持为空。"
+  ]
+}

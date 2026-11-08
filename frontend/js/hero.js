@@ -1,9 +1,18 @@
 /**
  * AI 康养旅居 — Hero
- * 入场动画 + 玻璃数据面板实时更新 + Mouse Parallax
+ * 入场动画 + 玻璃数据面板 + Mouse Parallax
  *
- * 数据全部来自 API，不硬编码
- * 数字使用计数动画（count-up）
+ * 数据全部来自统一数据层 window.HealthTravelAPI.getDestinationsSnapshot()，
+ * 不在本文件内发起请求，也不硬编码任何指标数值。
+ * 读取标准化结构：air_quality.index / temperature.average /
+ * forest_coverage / medical_level / province。
+ *
+ * 数据来源如实展示：
+ *   api         — 目的地数据库 · 静态汇总，非实时监测
+ *   api+geojson — 数据库 + 本地静态资料补充 · 内容待统一核验
+ *   geojson     — 本地静态目的地资料 · 后端暂不可用
+ *
+ * 数字使用计数动画（count-up），仅在数值有效时执行。
  *
  * Sprint 6 Phase 3: 新增 Mouse Parallax 空间深度效果
  *   背景 ±15px | 面板反向 ±5px | 标题 ±3px | 标签 ±2px
@@ -13,7 +22,17 @@
 (function () {
   'use strict';
 
-  var API_BASE = 'http://127.0.0.1:8000';
+  // ── 面板文案 ───────────────────────────────────────────
+  var PENDING_TEXT = '载入中';
+  var MISSING_TEXT = '待核验';
+
+  // 数据来源文案：按实际数据源说明，不把静态数据描述成实时监测或已核验内容
+  var SOURCE_LINES = {
+    'api': '数据来源：目的地数据库 · 静态汇总，非实时监测',
+    'api+geojson': '数据来源：目的地数据库 + 本地静态资料补充 · 非实时监测 · 内容待统一核验',
+    'geojson': '数据来源：本地静态目的地资料 · 后端暂不可用 · 非实时监测',
+    'github-pages-static': '数据来源：本地静态目的地资料 · GitHub Pages 预览 · 非实时监测',
+  };
 
   // ── Parallax 元素引用 ──────────────────────────────────
   var heroEl = null;
@@ -63,13 +82,42 @@
   }
 
   /**
-   * 更新 Hero 玻璃面板数据
-   * @param {Array} destinations - 目的地数据数组
+   * 安全解析字符串数字（如 "78.4%"、"20.5℃"）。
+   * 对 null、空字符串、"待核验"/"暂无" 等无数字内容返回 null。
+   * @param {*} text - 待解析的原始值
+   * @returns {number|null}
    */
-  function updateHeroPanel(destinations) {
-    if (!destinations || !destinations.length) return;
+  function parseNumeric(text) {
+    if (text === undefined || text === null) return null;
+    var str = String(text).trim();
+    if (!str || str === '--' || str === '-' || /待核验|暂无|未知/.test(str)) return null;
+    var match = str.match(/-?\d+(?:\.\d+)?/);
+    return match ? parseFloat(match[0]) : null;
+  }
 
-    var count = destinations.length;
+  /**
+   * 更新 Hero 玻璃面板数据
+   * @param {Array} destinations - 标准化目的地数组（HealthTravelAPI 统一结构）
+   * @param {Object} meta - 数据快照元信息（source / database_snapshot_updated_at / verification_status）
+   */
+  function updateHeroPanel(destinations, meta) {
+    var elAqi = document.getElementById('hero-aqi');
+    var elForest = document.getElementById('hero-forest');
+    var elProvince = document.getElementById('hero-provinces');
+    var elMedical = document.getElementById('hero-medical');
+    var elAqiLabel = document.getElementById('hero-aqi-label');
+
+    if (!destinations || !destinations.length) {
+      // 数据确实缺失：明确标注待核验，不伪装成 0 或一直停在 --
+      if (elAqi) elAqi.textContent = MISSING_TEXT;
+      if (elForest) elForest.textContent = MISSING_TEXT;
+      if (elProvince) elProvince.textContent = MISSING_TEXT;
+      if (elMedical) elMedical.textContent = MISSING_TEXT;
+      if (elAqiLabel) elAqiLabel.textContent = MISSING_TEXT;
+      updateSourceLine(meta);
+      return;
+    }
+
     var aqiValues = [];
     var forestValues = [];
     var tempValues = [];
@@ -77,22 +125,25 @@
     var medicalLevels = {};
 
     destinations.forEach(function (d) {
-      if (d.province) provinces.add(d.province);
-      if (d.air_quality_index != null) aqiValues.push(d.air_quality_index);
-      if (d.forest_coverage) {
-        var fp = parseFloat(String(d.forest_coverage).replace(/[^\d.]/g, ''));
-        if (!isNaN(fp)) forestValues.push(fp);
-      }
-      if (d.average_temperature) {
-        var tp = parseFloat(String(d.average_temperature).replace(/[^\d.]/g, ''));
-        if (!isNaN(tp)) tempValues.push(tp);
-      }
-      if (d.medical_level) {
-        medicalLevels[d.medical_level] = (medicalLevels[d.medical_level] || 0) + 1;
+      if (d.province && String(d.province).trim()) provinces.add(String(d.province).trim());
+
+      // 标准化结构：air_quality.index / temperature.average / forest_coverage / medical_level
+      var aqi = d.air_quality ? d.air_quality.index : null;
+      if (typeof aqi === 'number' && isFinite(aqi)) aqiValues.push(aqi);
+
+      var forest = parseNumeric(d.forest_coverage);
+      if (forest !== null) forestValues.push(forest);
+
+      var temp = d.temperature ? parseNumeric(d.temperature.average) : null;
+      if (temp !== null) tempValues.push(temp);
+
+      var medical = d.medical_level ? String(d.medical_level).trim() : '';
+      if (medical && medical !== MISSING_TEXT) {
+        medicalLevels[medical] = (medicalLevels[medical] || 0) + 1;
       }
     });
 
-    // 计算平均值
+    // 计算平均值（全部基于数据计算，不硬编码任何指标数值）
     var avgAqi = aqiValues.length
       ? Math.round(aqiValues.reduce(function (a, b) { return a + b; }, 0) / aqiValues.length)
       : null;
@@ -104,7 +155,7 @@
       : null;
 
     // 最主流医疗等级
-    var topMedical = '--';
+    var topMedical = MISSING_TEXT;
     var maxCount = 0;
     Object.keys(medicalLevels).forEach(function (level) {
       if (medicalLevels[level] > maxCount) {
@@ -114,70 +165,105 @@
     });
 
     // 空气质量描述
-    var aqiLabel = '--';
+    var aqiLabel = MISSING_TEXT;
     if (avgAqi !== null) {
       if (avgAqi <= 50) aqiLabel = '优质';
       else if (avgAqi <= 100) aqiLabel = '良好';
       else aqiLabel = '一般';
     }
 
-    // 更新 DOM（仅在元素存在时）
-    var elAqi = document.getElementById('hero-aqi');
-    var elForest = document.getElementById('hero-forest');
-    var elProvince = document.getElementById('hero-provinces');
-    var elMedical = document.getElementById('hero-medical');
-
-    if (elAqi && avgAqi !== null) {
-      countUp(elAqi, avgAqi, 1200, false);
+    // 更新 DOM（仅在元素存在时）——只有数值有效时才执行 countUp
+    if (elAqi) {
+      if (avgAqi !== null) countUp(elAqi, avgAqi, 1200, false);
+      else elAqi.textContent = MISSING_TEXT;
     }
-    if (elForest && avgForest !== null) {
-      countUp(elForest, avgForest, 1200, true);
+    if (elForest) {
+      if (avgForest !== null) countUp(elForest, avgForest, 1200, true);
+      else elForest.textContent = MISSING_TEXT;
     }
     if (elProvince) {
-      countUp(elProvince, provinces.size, 1000, false);
+      if (provinces.size > 0) countUp(elProvince, provinces.size, 1000, false);
+      else elProvince.textContent = MISSING_TEXT;
     }
     if (elMedical) {
       elMedical.textContent = topMedical;
     }
-
-    // 空气质量标签
-    var elAqiLabel = document.getElementById('hero-aqi-label');
     if (elAqiLabel) {
       elAqiLabel.textContent = aqiLabel;
     }
 
-    // 更新 Hero 统计数字行（向后兼容）
+    // 更新 Hero 统计数字行（向后兼容；当前首页无此元素）
     var elStats = document.getElementById('hero-stats');
     if (elStats) {
       elStats.innerHTML =
         '<span>覆盖 <strong>' + provinces.size + '</strong> 个省份</span>' +
-        '<span>平均 AQI <strong>' + (avgAqi !== null ? avgAqi : '--') + '</strong></span>' +
-        '<span>森林覆盖 <strong>' + (avgForest !== null ? avgForest.toFixed(1) + '%' : '--') + '</strong></span>' +
-        '<span>年均气温 <strong>' + (avgTemp !== null ? avgTemp.toFixed(1) + '℃' : '--') + '</strong></span>';
+        '<span>平均 AQI <strong>' + (avgAqi !== null ? avgAqi : MISSING_TEXT) + '</strong></span>' +
+        '<span>森林覆盖 <strong>' + (avgForest !== null ? avgForest.toFixed(1) + '%' : MISSING_TEXT) + '</strong></span>' +
+        '<span>年均气温 <strong>' + (avgTemp !== null ? avgTemp.toFixed(1) + '℃' : MISSING_TEXT) + '</strong></span>';
     }
+
+    updateSourceLine(meta);
   }
 
   /**
-   * 从 API 加载数据并更新面板
+   * 按实际数据源更新来源说明。
+   * 静态数据不得被描述成实时监测或已核验内容；
+   * 数据库快照时间仅表示文件更新时间，不是内容核验时间。
+   * @param {Object} meta - 数据快照元信息
+   */
+  function updateSourceLine(meta) {
+    var sourceEl = document.getElementById('hero-data-source');
+    if (!sourceEl) return;
+
+    var source = meta && meta.source ? meta.source : 'geojson';
+    var line = SOURCE_LINES[source] || SOURCE_LINES.geojson;
+
+    var snapshotAt = meta && meta.database_snapshot_updated_at;
+    if ((source === 'api' || source === 'api+geojson') && snapshotAt) {
+      var snapshotDate = new Date(snapshotAt);
+      if (!isNaN(snapshotDate.getTime())) {
+        line += ' · 数据库快照更新于 ' + snapshotDate.toLocaleDateString('zh-CN');
+      }
+    }
+
+    sourceEl.textContent = line;
+  }
+
+  /**
+   * 请求期间显示载入中，避免占位符 -- 一直留在页面上
+   */
+  function showLoadingState() {
+    var ids = ['hero-aqi', 'hero-forest', 'hero-provinces', 'hero-medical', 'hero-aqi-label'];
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = PENDING_TEXT;
+    });
+    var sourceEl = document.getElementById('hero-data-source');
+    if (sourceEl) sourceEl.textContent = '数据来源：正在载入…';
+  }
+
+  /**
+   * 通过统一数据层 HealthTravelAPI 加载目的地快照并更新面板
    */
   async function loadHeroData() {
-    var ctrl = new AbortController();
-    var tid = setTimeout(function () { ctrl.abort(); }, 8000);
+    showLoadingState();
+
+    var api = window.HealthTravelAPI;
+    if (!api || typeof api.getDestinationsSnapshot !== 'function') {
+      console.warn('[Hero] 统一数据层不可用');
+      updateHeroPanel([], null);
+      return [];
+    }
 
     try {
-      var resp = await fetch(API_BASE + '/api/destinations', { signal: ctrl.signal });
-      clearTimeout(tid);
-      if (resp.ok) {
-        var data = await resp.json();
-        var destinations = data.results || [];
-        updateHeroPanel(destinations);
-        return destinations;
-      }
-    } catch (e) {
-      console.warn('[Hero] API 数据加载失败:', e.message);
+      var snapshot = await api.getDestinationsSnapshot();
+      updateHeroPanel(snapshot.results || [], snapshot.meta || {});
+      return snapshot.results || [];
+    } catch (error) {
+      console.warn('[Hero] 目的地数据加载失败:', error.message);
+      updateHeroPanel([], null);
+      return [];
     }
-    clearTimeout(tid);
-    return [];
   }
 
   // ═══════════════════════════════════════════════════════
@@ -328,5 +414,7 @@
     initParallax: initParallax,
     destroyParallax: destroyParallax,
     countUp: countUp,
+    updateHeroPanel: updateHeroPanel,
+    parseNumeric: parseNumeric,
   };
 })();

@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    if (new URLSearchParams(window.location.search).get('embedded') === 'ios') {
+      document.documentElement.classList.add('ios-embedded');
+    }
+  </script>
   <title>康养旅居 — AI 智能规划平台</title>
   <meta name="description" content="AI 康养旅居智能规划平台。整合真实环境数据、医疗资源与 AI 深度分析，为您精准匹配最适合的康养旅居方案。">
 
@@ -23,9 +28,8 @@
   <!-- Sprint 7: Chapter System -->
   <link rel="stylesheet" href="css/chapters.css">
   <!-- Sprint 7 Act 2 Redesign: Digital Earth Explorer -->
-  <link rel="stylesheet" href="css/explore.css">
-  <link rel="stylesheet" href="css/explore-portal.css">
-  <link rel="stylesheet" href="css/explore-info.css">
+  <link rel="stylesheet" href="css/explore.css?v=act2-v2-5">
+  <link rel="stylesheet" href="css/explore-info.css?v=act2-v2-4">
 
   <!-- Preload hero background for faster LCP -->
   <link rel="preload" as="image"
@@ -39,7 +43,7 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <nav class="nav">
     <div class="nav-inner">
-      <a class="nav-brand" href="/">
+      <a class="nav-brand" href="./index.html">
         <span class="nav-brand-icon">
           <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17 4L28 22H20L24 30H10L14 22H6L17 4Z"
@@ -50,8 +54,7 @@
         <span>康养旅居</span>
       </a>
       <div class="nav-links">
-        <a href="javascript:void(0)" class="nav-link" data-chapter="1">平台能力</a>
-        <a href="javascript:void(0)" class="nav-link" data-chapter="2">探索世界</a>
+        <a href="javascript:void(0)" class="nav-link" data-chapter="1">目的地探索</a>
         <a href="questionnaire.html" class="nav-link">AI 分析</a>
       </div>
       <a href="questionnaire.html" class="nav-cta">开始规划</a>
@@ -122,7 +125,7 @@
           
           <div class="hero-panel">
             <div class="hero-panel-card">
-              <div class="hero-panel-label">实时数据概览</div>
+              <div class="hero-panel-label">目的地数据概览</div>
               <div class="hero-panel-metrics">
                 <div class="hero-metric">
                   <div class="hero-metric-icon">
@@ -131,8 +134,8 @@
                     </svg>
                   </div>
                   <div class="hero-metric-info">
-                    <div class="hero-metric-value" id="hero-aqi">--</div>
-                    <div class="hero-metric-label">平均 AQI <span id="hero-aqi-label" style="margin-left:4px;opacity:0.7;">--</span></div>
+                    <div class="hero-metric-value" id="hero-aqi">载入中</div>
+                    <div class="hero-metric-label">平均 AQI <span id="hero-aqi-label" style="margin-left:4px;opacity:0.7;">载入中</span></div>
                   </div>
                 </div>
                 <div class="hero-metric">
@@ -143,7 +146,7 @@
                     </svg>
                   </div>
                   <div class="hero-metric-info">
-                    <div class="hero-metric-value" id="hero-forest">--</div>
+                    <div class="hero-metric-value" id="hero-forest">载入中</div>
                     <div class="hero-metric-label">平均森林覆盖率</div>
                   </div>
                 </div>
@@ -157,7 +160,7 @@
                     </svg>
                   </div>
                   <div class="hero-metric-info">
-                    <div class="hero-metric-value" id="hero-provinces">--</div>
+                    <div class="hero-metric-value" id="hero-provinces">载入中</div>
                     <div class="hero-metric-label">覆盖省份</div>
                   </div>
                 </div>
@@ -170,13 +173,13 @@
                     </svg>
                   </div>
                   <div class="hero-metric-info">
-                    <div class="hero-metric-value" id="hero-medical">--</div>
+                    <div class="hero-metric-value" id="hero-medical">载入中</div>
                     <div class="hero-metric-label">主要医疗等级</div>
                   </div>
                 </div>
               </div>
-              <div class="hero-panel-source">
-                数据来源：中国气象局 · 国家卫健委 · 生态环境部
+              <div class="hero-panel-source" id="hero-data-source">
+                数据来源：正在载入…
               </div>
             </div>
           </div>
@@ -184,9 +187,9 @@
 
         <!-- 章节导航：探索平台 -->
         <div class="chapter-nav">
-          <span class="chapter-nav-label">探索平台能力</span>
+          <span class="chapter-nav-label">开启目的地旅程</span>
           <button class="chapter-nav-btn dark js-hero-explore magnetic">
-            了解更多
+            探索康养目的地
             <svg class="chapter-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M6 9l6 6 6-6"/>
             </svg>
@@ -196,194 +199,123 @@
     </section>
 
     <!-- ────────────────────────────────────────────────────── -->
-    <!-- Chapter 1: Digital Earth Explorer ★                    -->
-    <!-- 设计：左标题+HUD | 中地球(Three.js) | 右信息卡 | 漂浮入口  -->
+    <!-- Chapter 1: AI Wellness Destination Journey             -->
     <!-- ────────────────────────────────────────────────────── -->
     <section class="chapter chapter-1" id="chapter-platform">
       <div class="explore-stage">
 
-        <!-- Three.js Canvas (fills entire stage) -->
-        <div class="explore-canvas-wrap" id="earth-stage" aria-hidden="true"></div>
+        <div class="explore-canvas-wrap" id="earth-stage" aria-label="可旋转的康养目的地地球"></div>
 
-        <!-- Left: Title + HUD Data -->
-        <div class="explore-left">
-          <div class="explore-brand">
-            <div class="explore-eyebrow">Digital Earth · 康养探索</div>
-            <h2 class="explore-title">探索你的<br>康养目的地</h2>
-            <p class="explore-desc">基于真实环境数据，在数字地球上发现属于您的健康旅居之地</p>
-          </div>
-          <div class="explore-hud">
-            <div class="hud-row">
-              <div class="hud-item">
-                <div class="hud-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
-                    <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2"/>
-                    <circle cx="12" cy="12" r="5"/>
-                    <path d="M12 7v5l3 3"/>
-                  </svg>
-                </div>
-                <span class="hud-value" id="hud-temp">--°C</span>
-                <span class="hud-label">年均气温</span>
-              </div>
-              <div class="hud-item">
-                <div class="hud-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
-                    <path d="M2 12h3l3-8 4 16 3-8h7"/>
-                  </svg>
-                </div>
-                <span class="hud-value" id="hud-aqi">--</span>
-                <span class="hud-label">平均 AQI</span>
-              </div>
-            </div>
-            <div class="hud-row">
-              <div class="hud-item">
-                <div class="hud-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
-                    <path d="M12 2L4 8l8 5 8-5-8-6z"/>
-                    <path d="M4 16l8 5 8-5M4 12l8 5 8-5"/>
-                  </svg>
-                </div>
-                <span class="hud-value" id="hud-forest">--%</span>
-                <span class="hud-label">森林覆盖</span>
-              </div>
-              <div class="hud-item">
-                <div class="hud-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
-                    <path d="M19 14c1.5-1.8 3-4 3-7 0-3.3-2.7-6-6-6s-6 2.7-6 6c0 3 1.5 5.2 3 7"/>
-                    <circle cx="12" cy="17" r="4"/>
-                  </svg>
-                </div>
-                <span class="hud-value" id="hud-medical">--</span>
-                <span class="hud-label">医疗等级</span>
-              </div>
-            </div>
-          </div>
+        <div class="explore-intro" id="explore-intro" aria-live="polite">
+          <div class="explore-eyebrow">AI 康养旅居探索</div>
+          <h2 class="explore-title">从世界出发，<br>寻找适合生活的地方</h2>
+          <p class="explore-desc">系统将从气候、生态与生活环境出发，带您抵达第一站。</p>
+          <div class="explore-intro-status" id="journey-status">正在建立全球视角</div>
+          <button class="explore-start-btn" id="journey-start-btn">立即前往第一站</button>
         </div>
 
-        <!-- Right: Dynamic Destination Info Card -->
-        <div class="explore-right">
-          <div class="explore-info-card" id="dest-info-card">
-            <!-- Empty State -->
-            <div class="info-card-state info-card-empty" id="info-empty-state">
-              <div class="info-empty-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/>
-                  <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                </svg>
+        <aside class="destination-story" id="destination-story" aria-live="polite" aria-hidden="true">
+
+          <!-- ═══ 第一层：视觉入口 — 大尺寸主图 ═══ -->
+          <div class="destination-image" id="info-image-area" role="img">
+            <div class="destination-image-overlay"></div>
+            <div class="destination-image-attr" id="info-image-attr" aria-live="off"></div>
+          </div>
+
+          <!-- ═══ 第二～五层 + 康养数据 + AI入口 ═══ -->
+          <div class="destination-story-body">
+
+            <!-- 第二层：地点身份 -->
+            <p class="destination-province" id="info-province"></p>
+            <h3 class="destination-name" id="info-name"></h3>
+
+            <!-- 第三层：故事表达 -->
+            <p class="destination-tagline" id="info-tagline"></p>
+            <p class="destination-story-text" id="info-story"></p>
+
+            <!-- 第四层：康养标签 -->
+            <div class="destination-health-tags" id="info-health-tags" aria-label="康养特色标签"></div>
+
+            <!-- 第五层：旅居信息 -->
+            <div class="destination-living-info">
+              <div class="living-info-row" id="info-season-row">
+                <span class="living-info-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </span>
+                <span class="living-info-label">最佳季节</span>
+                <span class="living-info-value" id="info-best-season"></span>
               </div>
-              <p class="info-empty-text">将光标悬停在<br>金色光点上探索目的地</p>
-            </div>
-            <!-- Data State (hidden by default) -->
-            <div class="info-card-state info-card-data" id="info-data-state" style="display:none">
-              <div class="info-dest-image-placeholder" id="info-image-area">
-                <span>🏔️</span>
+              <div class="living-info-row" id="info-suitable-row">
+                <span class="living-info-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span class="living-info-label">适合人群</span>
+                <span class="living-info-value" id="info-suitable-for"></span>
               </div>
-              <div class="info-dest-header">
-                <h3 class="info-dest-name" id="info-name"></h3>
-                <p class="info-dest-province" id="info-province"></p>
+            </div>
+
+            <!-- 康养数据重新表达 -->
+            <div class="destination-wellness" id="info-wellness" aria-label="康养环境数据">
+              <div class="wellness-item" id="wellness-air">
+                <div class="wellness-item-header">
+                  <span class="wellness-item-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 8h4"/><path d="M12 4h2"/><path d="M6 16h6"/><path d="M14 12h6"/></svg>
+                  </span>
+                  <span class="wellness-item-title" id="wellness-air-title"></span>
+                  <span class="wellness-item-badge" id="wellness-air-value"></span>
+                </div>
+                <p class="wellness-item-desc" id="wellness-air-desc"></p>
               </div>
-              <span class="info-climate-tag" id="info-climate"></span>
-              <p class="info-dest-desc" id="info-desc"></p>
-              <div class="info-dest-stats">
-                <div class="info-stat">
-                  <span class="info-stat-value" id="info-stat-temp">--</span>
-                  <span class="info-stat-label">年均气温</span>
+              <div class="wellness-item" id="wellness-forest">
+                <div class="wellness-item-header">
+                  <span class="wellness-item-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 2v20"/><path d="M2 22l5-8"/><path d="M17 14l5 8"/></svg>
+                  </span>
+                  <span class="wellness-item-title" id="wellness-forest-title"></span>
+                  <span class="wellness-item-badge" id="wellness-forest-value"></span>
                 </div>
-                <div class="info-stat">
-                  <span class="info-stat-value" id="info-stat-altitude">--</span>
-                  <span class="info-stat-label">海拔高度</span>
-                </div>
-                <div class="info-stat">
-                  <span class="info-stat-value" id="info-stat-aqi">--</span>
-                  <span class="info-stat-label">AQI 指数</span>
-                </div>
-                <div class="info-stat">
-                  <span class="info-stat-value" id="info-stat-forest">--</span>
-                  <span class="info-stat-label">森林覆盖</span>
-                </div>
+                <p class="wellness-item-desc" id="wellness-forest-desc"></p>
               </div>
-              <button class="info-dest-cta" id="info-cta-btn">AI 健康分析 →</button>
+              <div class="wellness-item" id="wellness-medical">
+                <div class="wellness-item-header">
+                  <span class="wellness-item-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </span>
+                  <span class="wellness-item-title" id="wellness-medical-title"></span>
+                  <span class="wellness-item-badge" id="wellness-medical-value"></span>
+                </div>
+                <p class="wellness-item-desc" id="wellness-medical-desc"></p>
+              </div>
+              <div class="wellness-item" id="wellness-budget">
+                <div class="wellness-item-header">
+                  <span class="wellness-item-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                  </span>
+                  <span class="wellness-item-title" id="wellness-budget-title"></span>
+                  <span class="wellness-item-badge" id="wellness-budget-value"></span>
+                </div>
+                <p class="wellness-item-desc" id="wellness-budget-desc"></p>
+              </div>
             </div>
+
+            <!-- 深度体验与 AI 入口：一条主路径，一个快捷入口 -->
+            <div class="destination-actions">
+              <button class="destination-deep-btn" id="info-deep-btn">了解在这里生活会怎样</button>
+              <button class="destination-analysis-btn" id="info-cta-btn">直接分析是否适合我</button>
+            </div>
+
           </div>
+        </aside>
+
+        <div class="journey-controls" id="journey-controls" aria-label="目的地旅程控制" hidden>
+          <button class="journey-nav-btn" id="journey-prev" aria-label="上一站">← 上一站</button>
+          <div class="journey-progress">
+            <strong id="journey-current-name">第一站</strong>
+            <span id="journey-progress-text">01 / 03</span>
+          </div>
+          <button class="journey-nav-btn journey-nav-primary" id="journey-next" aria-label="下一站">下一站 →</button>
         </div>
 
-        <!-- Floating Portals — 4 个空间入口围绕地球 -->
-        <div class="explore-portals" id="explore-portals">
-          <div class="explore-portal" data-portal="recommend" data-link="questionnaire.html" tabindex="0" role="link">
-            <div class="explore-portal-dot portal-breathing"></div>
-            <div class="explore-portal-body">
-              <span class="explore-portal-title">AI 智能推荐</span>
-              <span class="explore-portal-desc">健康需求 · 精准匹配</span>
-            </div>
-          </div>
-          <div class="explore-portal" data-portal="explore" data-chapter="2" tabindex="0" role="link">
-            <div class="explore-portal-dot portal-breathing"></div>
-            <div class="explore-portal-body">
-              <span class="explore-portal-title">探索目的地</span>
-              <span class="explore-portal-desc">12 个精选康养胜地</span>
-            </div>
-          </div>
-          <div class="explore-portal" data-portal="environment" tabindex="0" role="link">
-            <div class="explore-portal-dot portal-breathing"></div>
-            <div class="explore-portal-body">
-              <span class="explore-portal-title">实时环境</span>
-              <span class="explore-portal-desc">全国 AQI · 气候数据</span>
-            </div>
-          </div>
-          <div class="explore-portal" data-portal="daily" tabindex="0" role="link">
-            <div class="explore-portal-dot portal-breathing"></div>
-            <div class="explore-portal-body">
-              <span class="explore-portal-title">今日推荐</span>
-              <span class="explore-portal-desc">AI 每日精选目的地</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom Guidance — 始终可见的探索引导 -->
-        <div class="explore-guidance" id="explore-guidance">
-          <div class="explore-guidance-hint" id="guidance-hint">拖动地球 · 探索目的地</div>
-          <button class="btn btn-primary btn-lg magnetic" id="guidance-cta" onclick="document.querySelector('.js-hero-explore') && document.querySelector('.js-hero-explore').click()">
-            开始探索
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ────────────────────────────────────────────────────── -->
-    <!-- Chapter 2: Earth Journey — Three.js 地球探索 ★          -->
-    <!-- ────────────────────────────────────────────────────── -->
-    <section class="chapter chapter-2" id="chapter-earth">
-      <div style="min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--space-20);background:var(--color-bg);text-align:center;">
-        <div style="max-width:600px;">
-          <div style="font-size:var(--text-xs);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-4);">
-            Chapter 2 · Earth Journey
-          </div>
-          <h2 style="font-family:var(--font-display);font-size:var(--text-3xl);font-weight:700;letter-spacing:-0.02em;color:var(--color-gray-900);margin-bottom:var(--space-4);">
-            环游中国康养目的地
-          </h2>
-          <p style="font-size:var(--text-lg);color:var(--color-text-secondary);line-height:1.7;margin-bottom:var(--space-8);">
-            Three.js 半透明旋转地球 · Fly-To 镜头飞行动画 · 12 个目的地光点标记
-          </p>
-          <p style="font-size:var(--text-sm);color:var(--color-text-muted);">
-            🚧 核心体验 — Act 3 即将实现
-          </p>
-        </div>
-
-        <div class="chapter-nav" style="position:relative;bottom:auto;left:auto;transform:none;margin-top:var(--space-12);">
-          <span class="chapter-nav-label">深入了解</span>
-          <button class="chapter-nav-btn js-chapter-next magnetic">
-            进入目的地故事
-            <svg class="chapter-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </button>
-        </div>
       </div>
     </section>
 
@@ -448,11 +380,11 @@
   <!-- JavaScript Modules (load order matters)                  -->
   <!-- ═══════════════════════════════════════════════════════ -->
 
-  <!-- Three.js CDN (core 3D engine) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <!-- Three.js core: local copy keeps Act2 available without a CDN connection. -->
+  <script src="vendor/three.min.js?v=0.159.0-local"></script>
 
   <!-- App Modules -->
-  <script src="js/api.js"></script>
+  <script src="js/api.js?v=act2-v2-5"></script>
   <script src="js/icons.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/nav.js"></script>
@@ -462,9 +394,9 @@
   <!-- UX Engine -->
   <script src="js/ux.js"></script>
   <!-- Sprint 7 Act 2 Redesign: Earth Engine (Three.js globe + markers + interaction) -->
-  <script src="js/earth-engine.js"></script>
+  <script src="js/earth-engine.js?v=act2-v2-5"></script>
   <!-- Main Entry -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=act3-v1-1"></script>
 
 </body>
 </html>

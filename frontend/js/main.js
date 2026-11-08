@@ -1,329 +1,461 @@
 /**
- * AI 康养旅居 — Main Entry v2.2
- * 延迟信息卡揭示 · 地点层级 · NaN 防护 · 状态感知引导
+ * Act2 V2 — AI 康养旅居目的地探索
+ * Phase 1: guided first journey, sequential discovery and analysis handoff.
  */
 
 (function () {
   'use strict';
 
   var earthInitialized = false;
-  var destinationsCache = null;
+  var journeyStarted = false;
+  var selectedIndex = 0;
+  var introTimers = [];
+  var earthInitPromise = null;
+  var resumeParams = new URLSearchParams(window.location.search);
+  var embeddedIOS = resumeParams.get('embedded') === 'ios';
+  var resumeRequested = resumeParams.get('resume') === 'act2';
+  var resumeDestinationId = resumeParams.get('destination_id');
+  var resumeDestinationName = resumeParams.get('destination_name') || '';
 
-  async function init() {
-    if (window.HealthTravelAPI) {
-      destinationsCache = await window.HealthTravelAPI.fetchDestinations();
-    }
-
+  function init() {
+    console.log('[Act2] main.js init — DOM ready');
     bindChapterButtons();
     bindHeroCTA();
-    document.addEventListener('chapterready', function (e) { onChapterReady(e.detail); });
-
-    if (destinationsCache && destinationsCache.length > 0) updateHUD(destinationsCache);
-    bindInfoCardCTA();
+    bindJourneyControls();
+    bindDeepExperienceCTA();
+    bindAnalysisCTA();
+    document.addEventListener('chapterready', function (event) {
+      console.log('[Act2] chapterready:', event.detail.id);
+      if (event.detail.id === 'chapter-platform') initExploreChapter();
+    });
+    if ((resumeRequested || embeddedIOS) && window.ChapterManager) {
+      window.ChapterManager.navigateTo(1);
+    }
   }
 
   function bindChapterButtons() {
-    document.querySelectorAll('.js-chapter-next').forEach(function (btn) {
-      btn.addEventListener('click', function () { if (window.ChapterManager) window.ChapterManager.next(); });
+    document.querySelectorAll('.js-chapter-next').forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (window.ChapterManager) window.ChapterManager.next();
+      });
     });
-    document.querySelectorAll('[data-chapter]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var t = parseInt(btn.getAttribute('data-chapter'), 10);
-        if (window.ChapterManager && !isNaN(t)) window.ChapterManager.navigateTo(t);
+
+    document.querySelectorAll('[data-chapter]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var target = parseInt(button.getAttribute('data-chapter'), 10);
+        if (window.ChapterManager && !isNaN(target)) window.ChapterManager.navigateTo(target);
       });
     });
   }
 
   function bindHeroCTA() {
-    document.querySelectorAll('.js-hero-explore').forEach(function (btn) {
-      btn.addEventListener('click', function () { if (window.ChapterManager) window.ChapterManager.navigateTo(1); });
+    document.querySelectorAll('.js-hero-explore').forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (window.ChapterManager) window.ChapterManager.navigateTo(1);
+      });
     });
   }
-
-  function bindInfoCardCTA() {
-    var btn = document.getElementById('info-cta-btn');
-    if (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var idx = window.EarthEngine ? window.EarthEngine.getSelectedIndex() : -1;
-        if (idx >= 0) {
-          var dests = window.EarthEngine.getDestinations();
-          if (dests && dests[idx]) sessionStorage.setItem('ht_selected_dest', JSON.stringify(dests[idx]));
-        }
-        window.location.href = 'questionnaire.html';
-      });
-    }
-  }
-
-  function onChapterReady(detail) {
-    if (detail.id === 'chapter-platform') initExploreChapter();
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     Earth Explorer Init
-     ═══════════════════════════════════════════════════════ */
 
   function initExploreChapter() {
-    if (earthInitialized) { if (window.EarthEngine) window.EarthEngine.startEntrance(); return; }
-    if (!window.EarthEngine) { showExploreFallback(); return; }
-
-    earthInitialized = true;
-
-    window.EarthEngine.init('earth-stage', {
-      onMarkerHover: handleMarkerHover,
-      onMarkerSelect: handleMarkerSelect,
-      onMarkerFocusDone: handleMarkerFocusDone,
-      onMarkerDeselect: handleMarkerDeselect,
-      onStateChange: handleStateChange,
-    });
-
-    setTimeout(function () { window.EarthEngine.startEntrance(); }, 400);
-    startJourneyNarrative();
-    initPortals();
-    if (destinationsCache && destinationsCache.length > 0) updateHUD(destinationsCache);
-  }
-
-  function setJourneyStep(step) {
-    document.querySelectorAll('[data-journey-step]').forEach(function (el) {
-      el.classList.toggle('is-active', el.getAttribute('data-journey-step') === step);
-    });
-    if (window.EarthEngine && window.EarthEngine.setJourneyStage) window.EarthEngine.setJourneyStage(step);
-  }
-
-  function startJourneyNarrative() {
-    setJourneyStep('global');
-    setTimeout(function () { setJourneyStep('country'); }, 2600);
-    setTimeout(function () { setJourneyStep('city'); }, 4700);
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     State → Guidance
-     ═══════════════════════════════════════════════════════ */
-
-  function handleStateChange(newState, data) {
-    var hint = document.getElementById('guidance-hint');
-    if (!hint) return;
-    hint.classList.remove('state-dragging', 'state-inertia', 'state-focused');
-
-    switch (newState) {
-      case 'idle':
-        hint.textContent = '移动光标 · 发现康养目的地';
-        break;
-      case 'inertia':
-        hint.textContent = '地球旋转中…';
-        hint.classList.add('state-inertia');
-        break;
-      case 'focusing':
-        hint.textContent = '正在定位目的地…';
-        break;
-      case 'focused':
-        if (data && data.dest) {
-          hint.textContent = '已到达 · ' + data.dest.city + '  |  移动光标继续探索';
-        }
-        hint.classList.add('state-focused');
-        break;
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     Marker Hover → 预览信息卡（不干扰聚焦状态）
-     ═══════════════════════════════════════════════════════ */
-
-  function handleMarkerHover(dest, idx) {
-    var engState = window.EarthEngine ? window.EarthEngine.getState() : '';
-    if (engState === 'focusing' || engState === 'focused') return;
-
-    var emptyEl = document.getElementById('info-empty-state');
-    var dataEl = document.getElementById('info-data-state');
-    var card = document.getElementById('dest-info-card');
-
-    if (!dest) {
-      if (emptyEl) emptyEl.style.display = '';
-      if (dataEl) { dataEl.style.display = 'none'; dataEl.classList.remove('revealed'); }
-      if (card) card.classList.remove('has-data');
+    if (!window.EarthEngine) {
+      showExploreFallback();
       return;
     }
 
-    // Hover confirms that the marker is interactive; details are reserved for a click
-    // so the side panel does not flicker while the user explores the globe.
-    if (emptyEl) emptyEl.style.display = '';
-    if (dataEl) { dataEl.style.display = 'none'; dataEl.classList.remove('revealed'); }
-    if (card) card.classList.remove('has-data');
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     Marker Select → 聚焦开始（隐藏旧卡片，等待聚焦完成）
-     ═══════════════════════════════════════════════════════ */
-
-  function handleMarkerSelect(dest, idx) {
-    // 聚焦开始时不立即显示卡片，等镜头到位后由 handleMarkerFocusDone 触发
-    var dataEl = document.getElementById('info-data-state');
-    if (dataEl) { dataEl.style.display = 'none'; dataEl.classList.remove('revealed'); }
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     Focus Done → 镜头就位，渐入信息卡
-     ═══════════════════════════════════════════════════════ */
-
-  function handleMarkerFocusDone(dest, idx) {
-    setJourneyStep('city');
-    populateInfoCard(dest);
-
-    var emptyEl = document.getElementById('info-empty-state');
-    var dataEl = document.getElementById('info-data-state');
-    var card = document.getElementById('dest-info-card');
-
-    if (emptyEl) emptyEl.style.display = 'none';
-    if (dataEl) {
-      dataEl.style.display = 'flex';
-      dataEl.classList.add('revealed');
+    if (earthInitialized) {
+      activateExploreJourney();
+      return;
     }
-    if (card) card.classList.add('has-data');
+
+    if (earthInitPromise) return;
+    setText('journey-status', '正在加载精选目的地');
+    earthInitPromise = loadDestinations().then(function (destinations) {
+      if (!destinations.length) {
+        showExploreFallback('目的地数据暂时无法加载');
+        return false;
+      }
+      earthInitialized = window.EarthEngine.init('earth-stage', {
+        destinations: destinations,
+        onMarkerSelect: handleMarkerSelect,
+        onMarkerFocusDone: handleMarkerFocusDone,
+        onStateChange: handleStateChange,
+      }) === true;
+      if (!earthInitialized) showExploreFallback('地球体验正在准备中');
+      return earthInitialized;
+    }).catch(function (error) {
+      console.error('[Act2] 目的地初始化失败:', error);
+      showExploreFallback('目的地数据暂时无法加载');
+      return false;
+    }).then(function (ready) {
+      if (ready) activateExploreJourney();
+      earthInitPromise = null;
+    });
   }
 
-  /* ═══════════════════════════════════════════════════════
-     Deselect
-     ═══════════════════════════════════════════════════════ */
-
-  function handleMarkerDeselect() {
-    var dataEl = document.getElementById('info-data-state');
-    var emptyEl = document.getElementById('info-empty-state');
-    var card = document.getElementById('dest-info-card');
-    if (dataEl) { dataEl.style.display = 'none'; dataEl.classList.remove('revealed'); }
-    if (emptyEl) emptyEl.style.display = '';
-    if (card) card.classList.remove('has-data');
+  function loadDestinations() {
+    if (!window.HealthTravelAPI || !window.HealthTravelAPI.getDestinations) {
+      return Promise.resolve([]);
+    }
+    return window.HealthTravelAPI.getDestinations();
   }
 
-  /* ═══════════════════════════════════════════════════════
-     Populate Info Card — NaN safe, hierarchy display
-     ═══════════════════════════════════════════════════════ */
+  function activateExploreJourney() {
+    resetJourneyView();
+    window.EarthEngine.startEntrance();
+    if (resumeRequested) {
+      resumeRequested = false;
+      var destinations = window.EarthEngine.getDestinations();
+      var resumeIndex = destinations.findIndex(function (destination) {
+        var idMatches = resumeDestinationId !== null && String(destination.id) === String(resumeDestinationId);
+        var nameMatches = resumeDestinationName && destination.name === resumeDestinationName;
+        return nameMatches || (idMatches && (!resumeDestinationName || destination.name === resumeDestinationName));
+      });
+      selectedIndex = resumeIndex >= 0 ? resumeIndex : 0;
+      journeyStarted = true;
+      setJourneyStage('city', '正在返回 · ' + shortName(destinations[selectedIndex] || {}));
+      introTimers.push(setTimeout(function () {
+        window.EarthEngine.focusOnMarker(selectedIndex);
+      }, 420));
+      return;
+    }
+    beginGuidedJourney();
+  }
 
-  function populateInfoCard(dest) {
+  function resetJourneyView() {
+    journeyStarted = false;
+    selectedIndex = 0;
+    clearIntroTimers();
+    if (window.EarthEngine && window.EarthEngine.deselectMarker) {
+      window.EarthEngine.deselectMarker();
+    }
+
+    var intro = document.getElementById('explore-intro');
+    var story = document.getElementById('destination-story');
+    var controls = document.getElementById('journey-controls');
+    if (intro) intro.classList.remove('is-complete');
+    if (story) {
+      story.classList.remove('is-visible');
+      story.setAttribute('aria-hidden', 'true');
+    }
+    if (controls) controls.hidden = true;
+    setText('journey-status', '正在建立全球视角');
+  }
+
+  function beginGuidedJourney() {
+    var startButton = document.getElementById('journey-start-btn');
+    if (startButton) startButton.onclick = function () { startFirstDestination(); };
+
+    setJourneyStage('global', '正在建立全球视角');
+    introTimers.push(setTimeout(function () {
+      setJourneyStage('country', '视线正在转向亚洲与中国');
+    }, 1100));
+    introTimers.push(setTimeout(function () {
+      startFirstDestination();
+    }, 2600));
+  }
+
+  function startFirstDestination() {
+    if (journeyStarted || !window.EarthEngine) return;
+    journeyStarted = true;
+    clearIntroTimers();
+    setJourneyStage('city', '第一站 · 正在前往目的地');
+    window.EarthEngine.focusOnMarker(0);
+  }
+
+  function setJourneyStage(stage, message) {
+    if (window.EarthEngine && window.EarthEngine.setJourneyStage) {
+      window.EarthEngine.setJourneyStage(stage);
+    }
+    setText('journey-status', message);
+  }
+
+  function clearIntroTimers() {
+    introTimers.forEach(function (timer) { clearTimeout(timer); });
+    introTimers = [];
+  }
+
+  function handleStateChange(state, data) {
+    if (state === 'focusing' && data && data.dest) {
+      setText('journey-status', '正在前往 · ' + shortName(data.dest));
+    }
+  }
+
+  function handleMarkerSelect(dest, index) {
+    selectedIndex = index;
+    journeyStarted = true;
+    setText('journey-status', '正在前往 · ' + shortName(dest));
+  }
+
+  function handleMarkerFocusDone(dest, index) {
+    selectedIndex = index;
+    populateDestinationStory(dest);
+
+    var intro = document.getElementById('explore-intro');
+    var story = document.getElementById('destination-story');
+    var controls = document.getElementById('journey-controls');
+
+    if (intro) intro.classList.add('is-complete');
+    if (story) {
+      story.classList.add('is-visible');
+      story.setAttribute('aria-hidden', 'false');
+    }
+    if (controls) controls.hidden = false;
+    updateJourneyProgress(dest, index);
+    notifyIOSDestination(dest, index);
+  }
+
+  function selectDestinationFromIOS(index) {
+    if (!window.EarthEngine || window.EarthEngine.getState() === 'focusing') return;
+    var destinations = window.EarthEngine.getDestinations();
+    if (!destinations || !destinations.length) return;
+    var nextIndex = Math.max(0, Math.min(Number(index) || 0, destinations.length - 1));
+    selectedIndex = nextIndex;
+    journeyStarted = true;
+    clearIntroTimers();
+    window.EarthEngine.focusOnMarker(nextIndex);
+  }
+
+  function notifyIOSDestination(dest, index) {
+    if (!embeddedIOS || !window.webkit || !window.webkit.messageHandlers) return;
+    var handler = window.webkit.messageHandlers.destinationSelected;
+    if (!handler) return;
+    handler.postMessage({ index: index, id: dest && dest.id, name: shortName(dest || {}) });
+  }
+
+  window.HealthTravelIOS = {
+    selectDestination: selectDestinationFromIOS
+  };
+
+  function bindJourneyControls() {
+    var previous = document.getElementById('journey-prev');
+    var next = document.getElementById('journey-next');
+    if (previous) previous.addEventListener('click', function () { goToRelativeDestination(-1); });
+    if (next) next.addEventListener('click', function () { goToRelativeDestination(1); });
+  }
+
+  function goToRelativeDestination(direction) {
+    if (!window.EarthEngine || window.EarthEngine.getState() === 'focusing') return;
+    var destinations = window.EarthEngine.getDestinations();
+    if (!destinations || destinations.length === 0) return;
+    selectedIndex = (selectedIndex + direction + destinations.length) % destinations.length;
+    window.EarthEngine.focusOnMarker(selectedIndex);
+  }
+
+  function updateJourneyProgress(dest, index) {
+    var destinations = window.EarthEngine ? window.EarthEngine.getDestinations() : [];
+    var total = destinations.length || 1;
+    setText('journey-current-name', shortName(dest));
+    setText('journey-progress-text', pad(index + 1) + ' / ' + pad(total));
+  }
+
+  function populateDestinationStory(dest) {
     if (!dest) return;
+    try { populateDestinationStoryInternal(dest); } catch (e) {
+      console.error('[Act2] populateDestinationStory 失败:', e.message, e);
+    }
+  }
 
-    // 名称
+  function populateDestinationStoryInternal(dest) {
+    var storyPanel = document.getElementById('destination-story');
+    var wasVisible = storyPanel && storyPanel.classList.contains('is-visible');
+
+    /* ── Layer 2: Place identity ── */
+    var cleanProvince = (dest.province || '').replace(/[（(].*?[）)]/g, '').trim();
+    setText('info-province', cleanProvince || '中国');
     setText('info-name', dest.name || '--');
 
-    // 地点层级：县 → 市 → 省 → 国家
-    var locationParts = [];
-    if (dest.city) locationParts.push(dest.city);
-    if (dest.prefecture) locationParts.push(dest.prefecture);
-    if (dest.province) locationParts.push(dest.province);
-    if (dest.country) locationParts.push(dest.country);
-    setText('info-location', locationParts.length > 0 ? locationParts.join(' · ') : '--');
+    /* ── Layer 3: Storytelling ── */
+    setText('info-tagline', dest.tagline || '');
+    setText('info-story', dest.story || '在自然与生活之间，发现更适合长期停留的康养方式。');
 
-    // 气候标签
-    setText('info-climate', dest.climate || '--');
+    /* ── Layer 4: Health tags ── */
+    renderHealthTags(dest.health_tags || []);
 
-    // 描述
-    setText('info-desc', dest.desc || '暂无描述');
+    /* ── Layer 5: Living info ── */
+    setText('info-best-season', dest.best_season || '全年皆宜');
+    var suitableText = (dest.suitable_for || []).join(' · ');
+    setText('info-suitable-for', suitableText || '各类康养旅居人群');
 
-    // 统计数据 — 全部带 NaN 防护
-    setStat('info-stat-temp', dest.temp, '°C');
-    setStat('info-stat-altitude', dest.altitude, 'm');
-    setStat('info-stat-aqi', dest.aqi, '');
-    setStat('info-stat-humidity', dest.humidity, '%');
-    setStat('info-stat-forest', dest.forest, '%');
-    setStat('info-stat-medical', dest.medical, '级');
-
-    // Hero 字符
-    var heroChar = document.getElementById('info-hero-char');
-    if (heroChar) heroChar.textContent = (dest.name || '山').charAt(0);
-
-    // A real destination image makes the detail view feel like a place, not a data popup.
-    var hero = document.getElementById('info-image-area');
-    if (hero) {
-      var imageById = {
-        1: 'https://images.unsplash.com/photo-1518694348460-5c1b8ed2a5b3?auto=format&fit=crop&w=900&q=82',
-        2: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=82',
-        3: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=82'
-      };
-      hero.style.setProperty('--destination-image', 'url("' + (imageById[dest.id] || imageById[3]) + '")');
-      hero.setAttribute('aria-label', (dest.name || '目的地') + '风景');
+    /* ── Wellness summary cards ── */
+    var ws = dest.wellness_summary;
+    if (ws) {
+      setWellnessItem('wellness-air', ws.air_quality);
+      setWellnessItem('wellness-forest', ws.forest);
+      setWellnessItem('wellness-medical', ws.medical);
+      setWellnessItem('wellness-budget', ws.budget);
     }
-  }
 
-  function setText(id, val) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = (val != null) ? val : '--';
-  }
+    /* ── Layer 1: Image ── 远程授权照片 → 本地降级图 → CSS 占位 */
+    var imageArea = document.getElementById('info-image-area');
+    if (imageArea) {
+      var imageUrl = dest.image || '';
+      var localImageUrl = dest.image_local || '';
+      var destinationKey = String(dest.id || dest.name || '');
+      imageArea.dataset.destinationId = destinationKey;
+      imageArea.dataset.imageShown = '';
+      imageArea.style.removeProperty('--destination-image');
+      imageArea.dataset.imageStatus = (imageUrl || localImageUrl) ? 'loading' : 'unavailable';
 
-  function setStat(id, val, unit) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    if (val == null || (typeof val === 'number' && isNaN(val))) {
-      el.textContent = '--';
-      return;
+      var imageLoader = window.HealthTravelAPI && window.HealthTravelAPI.loadImageWithFallback;
+      if (imageLoader) {
+        imageLoader(imageUrl, localImageUrl).then(function (loadedUrl) {
+          if (imageArea.dataset.destinationId !== destinationKey) return;
+          if (loadedUrl) {
+            imageArea.style.setProperty('--destination-image', 'url("' + loadedUrl + '")');
+            imageArea.dataset.imageStatus = 'loaded';
+            imageArea.dataset.imageShown = loadedUrl;
+          } else {
+            imageArea.style.removeProperty('--destination-image');
+            imageArea.dataset.imageStatus = 'unavailable';
+          }
+          updateImageAttribution(dest, imageArea);
+        });
+      }
+      updateImageAttribution(dest, imageArea);
+      imageArea.setAttribute('aria-label', (dest.name || '目的地') + '风景');
     }
-    if (unit && id === 'info-stat-aqi') {
-      el.textContent = 'AQI ' + val;
-    } else if (unit) {
-      el.textContent = val + unit;
-    } else {
-      el.textContent = val;
+
+    /* ── Image attribution ── */
+    function updateImageAttribution(dest, imageArea) {
+      var attrEl = document.getElementById('info-image-attr');
+      if (!attrEl) return;
+      // 本地占位图为项目自绘，无需署名；署名仅随远程授权照片展示
+      var isLocalShown = String(imageArea.dataset.imageShown || '').indexOf('assets/images/destinations') !== -1;
+      var attrParts = [];
+      if (!isLocalShown) {
+        if (dest.image_attribution) attrParts.push(dest.image_attribution);
+        if (dest.image_license && dest.image_license !== 'pending') attrParts.push(dest.image_license);
+      }
+      attrEl.textContent = attrParts.join(' · ');
     }
+
+    /* ── Deep experience + AI CTA ── */
+    var deepButton = document.getElementById('info-deep-btn');
+    if (deepButton) deepButton.textContent = '了解在' + shortName(dest) + '生活会怎样';
+    var analysisButton = document.getElementById('info-cta-btn');
+    if (analysisButton) analysisButton.textContent = '直接分析' + shortName(dest);
+
+    /* ── Refresh: re-trigger fade-up on destination switch ── */
+    if (wasVisible && storyPanel) refreshStoryEntrance(storyPanel);
   }
 
-  /* ═══════════════════════════════════════════════════════
-     Portals
-     ═══════════════════════════════════════════════════════ */
-
-  function initPortals() {
-    positionPortals(); bindPortalClicks();
-    window.addEventListener('resize', positionPortals);
+  /* ── Render health tags as glass pills ── */
+  function renderHealthTags(tags) {
+    var container = document.getElementById('info-health-tags');
+    if (!container) return;
+    container.innerHTML = '';
+    var displayTags = (tags || []).slice(0, 4);
+    displayTags.forEach(function (tag) {
+      var pill = document.createElement('span');
+      pill.className = 'destination-health-tag';
+      pill.textContent = tag;
+      container.appendChild(pill);
+    });
   }
 
-  function positionPortals() {
-    var mobile = window.innerWidth <= 768;
-    var portals = document.querySelectorAll('.explore-portal');
-    if (mobile) { portals.forEach(function(p){p.style.left='';p.style.top='';p.style.right='';p.style.bottom='';}); return; }
-    var pos = [{left:'10%',top:'20%'},{right:'10%',top:'20%'},{left:'10%',bottom:'20%'},{right:'10%',bottom:'20%'}];
-    portals.forEach(function(p,i){if(pos[i])Object.keys(pos[i]).forEach(function(k){p.style[k]=pos[i][k];});});
+  /* ── Populate a single wellness data card ── */
+  function setWellnessItem(id, data) {
+    if (!data) return;
+    setText(id + '-title', data.title || '');
+    setText(id + '-value', data.value || '');
+    setText(id + '-desc', data.description || '');
   }
 
-  function bindPortalClicks() {
-    document.querySelectorAll('.explore-portal').forEach(function(p){
-      p.addEventListener('click',function(e){
-        var portal=e.currentTarget;
-        var ripple=document.createElement('div');ripple.className='portal-ripple';portal.appendChild(ripple);
-        ripple.addEventListener('animationend',function(){ripple.remove();});
-        var link=portal.getAttribute('data-link'),chapter=portal.getAttribute('data-chapter');
-        setTimeout(function(){if(link)window.location.href=link;else if(chapter){var t=parseInt(chapter,10);if(window.ChapterManager&&!isNaN(t))window.ChapterManager.navigateTo(t);}},320);
+  /* ── Re-trigger entrance animations on destination switch ── */
+  function refreshStoryEntrance(panel) {
+    var animated = panel.querySelectorAll(
+      '.destination-tagline, .destination-story-text, .destination-living-info, .destination-wellness, .destination-health-tag'
+    );
+    animated.forEach(function (el) {
+      el.style.animation = 'none';
+      void el.offsetWidth; /* force reflow */
+      el.style.animation = '';
+    });
+  }
+
+  function getCurrentDestination() {
+    if (!window.EarthEngine) return null;
+    var destinations = window.EarthEngine.getDestinations();
+    return destinations && destinations[selectedIndex] ? destinations[selectedIndex] : null;
+  }
+
+  function persistDestinationContext(dest, source) {
+    if (!dest || !window.EarthEngine) return;
+    var destinations = window.EarthEngine.getDestinations();
+    sessionStorage.setItem('ht_selected_dest', JSON.stringify(dest));
+    sessionStorage.setItem('ht_exploration_context', JSON.stringify({
+      source: source || 'act2_v2',
+      destination_id: dest.id,
+      destination_name: dest.name,
+      viewed_index: selectedIndex,
+      viewed_total: destinations.length,
+      earth_state: window.EarthEngine.getState ? window.EarthEngine.getState() : 'focused',
+      environment: {
+        climate: dest.climate,
+        temperature: dest.temperature,
+        air_quality: dest.air_quality,
+        forest_coverage: dest.forest_coverage,
+        medical_level: dest.medical_level,
+        budget_level: dest.budget_level,
+        monthly_budget: dest.monthly_budget,
+        altitude: dest.altitude
+      },
+      selected_at: new Date().toISOString()
+    }));
+  }
+
+  function bindDeepExperienceCTA() {
+    var button = document.getElementById('info-deep-btn');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var dest = getCurrentDestination();
+      if (!dest) return;
+      persistDestinationContext(dest, 'act2_to_act3');
+      var query = new URLSearchParams({
+        destination_id: String(dest.id),
+        destination_name: dest.name,
+        source: 'act2'
       });
-      p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();e.currentTarget.click();}});
+      window.location.href = 'destination.html?' + query.toString();
     });
   }
 
-  /* ═══════════════════════════════════════════════════════
-     HUD — 左侧聚合数据
-     ═══════════════════════════════════════════════════════ */
-
-  function updateHUD(destinations) {
-    if (!destinations || destinations.length === 0) return;
-    var tf = 0, ta = 0, tt = 0, cnt = destinations.length;
-    var levels = {'A':3,'B':2,'C':1}, maxM = 'C', maxS = 0;
-    destinations.forEach(function(d){
-      tf += (d.forest_coverage || d.forest || 0);
-      ta += (d.air_quality_index || d.aqi || 0);
-      tt += (d.average_temperature || d.temp || 0);
-      var ml = d.medical_level || d.medical || 'C';
-      var s = levels[ml] || 0;
-      if (s > maxS) { maxS = s; maxM = ml; }
+  function bindAnalysisCTA() {
+    var button = document.getElementById('info-cta-btn');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var dest = getCurrentDestination();
+      if (!dest) return;
+      persistDestinationContext(dest, 'act2_v2');
+      var query = new URLSearchParams({
+        mode: 'destination',
+        destination_id: String(dest.id),
+        destination_name: dest.name,
+        source: 'act2'
+      });
+      window.location.href = 'questionnaire.html?' + query.toString();
     });
-    setHUD('hud-temp', (tt/cnt).toFixed(1) + '°C');
-    setHUD('hud-aqi', Math.round(ta/cnt));
-    setHUD('hud-forest', Math.round(tf/cnt) + '%');
-    setHUD('hud-medical', maxM + '级');
   }
 
-  function setHUD(id, val) { var el = document.getElementById(id); if (el) el.textContent = (val != null) ? val : '--'; }
+  function shortName(dest) { return dest.name || dest.city || '目的地'; }
 
-  function showExploreFallback() {
-    var s = document.getElementById('earth-stage');
-    if (s) s.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;pointer-events:none;"><div style="width:45vmin;height:45vmin;border-radius:50%;background:radial-gradient(circle,rgba(30,90,70,0.2),rgba(15,50,40,0.1) 40%,transparent);"></div></div>';
+  function pad(value) { return String(value).padStart(2, '0'); }
+
+  function setText(id, value) {
+    var element = document.getElementById(id);
+    if (element) element.textContent = value == null ? '--' : value;
+  }
+
+  function showExploreFallback(message) {
+    var stage = document.getElementById('earth-stage');
+    if (stage) {
+      var fallback = document.createElement('div');
+      fallback.className = 'explore-fallback';
+      fallback.textContent = message || '地球体验正在准备中';
+      stage.replaceChildren(fallback);
+    }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
-
 })();
