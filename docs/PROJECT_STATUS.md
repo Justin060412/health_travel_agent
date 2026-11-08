@@ -4,9 +4,9 @@
 
 ## 项目概况
 
-- 当前版本：M11 iPhone App / 发布收口 v0.1 + GitHub 静态展示准备
-- 当前阶段：M11.0 SwiftUI 原生基础；GitHub Pages 展示工作流已在本地准备
-- 下一阶段：确认并推送本地版本后运行 Pages 工作流；另行完成 iOS 模拟器验收
+- 当前版本：M11 iPhone App / 发布收口 v0.1 + GitHub Pages 静态展示
+- 当前阶段：M11.0 SwiftUI 原生基础；GitHub Pages 已公开发布
+- 下一阶段：iOS 模拟器验收；继续区分静态前端展示与后端服务发布
 - 当前唯一项目路径：`/Users/juxtin/Documents/Codex/aipro/health- travel-aipro/health_travel_agent`
 
 ## 产品结构
@@ -114,7 +114,7 @@
 
 状态：M11.0 开发中。
 
-GitHub 静态展示：只发布 `frontend/` 的 Pages 工作流、静态模式说明与本地目的地数据 fallback 已推送到 `main`。Actions 两次尝试均在 Pages 配置阶段失败：Pages 站点尚未由仓库设置启用，且仓库 `GITHUB_TOKEN` 无权创建 Pages 站点（`Resource not accessible by integration`）。需仓库管理员在 Settings → Pages 启用并选择 GitHub Actions，再重跑工作流。在线 URL 尚未验收；私有仓库能否公开 Pages 取决于账号套餐。该展示不托管 FastAPI，不提供 AI、在线 POI/道路服务、个性化结果、路线保存或 RAG。
+GitHub 静态展示：仓库已公开，Pages 来源为 GitHub Actions；工作流重跑成功并发布 `frontend/`。公开 URL 为 `https://justin060412.github.io/health_travel_agent/`，首页和主要 CSS/JS、Three.js/OpenLayers、本地目的地 GeoJSON、详情与路线页面均返回 HTTP 200。静态页不托管 FastAPI，因此 AI、在线 POI/道路、个性化结果、路线保存和 RAG 不可在线运行。
 
 - 采用 SwiftUI 原生主应用，不做纯 WebView 套壳
 - 原生接入目的地列表、详情、MapKit 地图、本机收藏和服务状态

@@ -6,13 +6,13 @@
 
 ## 在线浏览
 
-启用 GitHub Pages 后，访客可通过下面的链接直接浏览前端页面：
+GitHub Pages 已启用，访客可通过下面的链接直接浏览前端页面：
 
-**[网页预览地址（需先在仓库 Settings 启用 Pages）](https://justin060412.github.io/health_travel_agent/)**
+**[打开 AI 康养旅居网页预览](https://justin060412.github.io/health_travel_agent/)**
 
 这是一份 GitHub Pages 静态预览：Act1/Act2 的首页与目的地探索、静态目的地资料和页面视觉可浏览；FastAPI、AI 分析、个性化结果、在线 POI/道路服务和路线保存需要后端，**不会在 GitHub Pages 上运行**。页面会显示静态预览提示。GitHub Pages 不支持运行 Python/FastAPI 服务。
 
-仓库当前为私有；Pages 能否从私有仓库发布取决于 GitHub 套餐。发布网页不要求把源代码仓库改为公开。
+仓库现为公开，因此代码与 Git 提交历史均可被查看；不要在仓库提交 API Key、`.env`、访问令牌或用户健康信息。
 
 ## 你可以在产品中看到什么
 
